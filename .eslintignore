@@ -1,0 +1,9 @@
+.svelte-kit/
+package-lock.json
+yarn.lock
+build/
+functions/
+node_modules/
+static/
+pnpm-lock.yaml
+.nova/
