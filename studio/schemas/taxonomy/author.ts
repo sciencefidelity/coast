@@ -5,8 +5,9 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
-      type: 'string'
+      title: 'Full name',
+      type: 'string',
+      description: 'Use your real name so people can recognize you'
     },
     {
       name: 'slug',
@@ -18,14 +19,39 @@ export default {
       }
     },
     {
-      name: 'twitterHandle',
-      title: 'Twitter Handle',
+      name: 'email',
+      title: 'Email',
       type: 'string'
+    },
+    {
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      description: 'Where in the world do you live?'
+    },
+    {
+      name: 'website',
+      title: 'Website',
+      type: 'url',
+      description: 'Have a website or blog other than this one? Link it!'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook profile',
+      type: 'url',
+      description: 'URL of your personal Facebook Profile'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook profile',
+      type: 'url',
+      description: 'URL of your personal Twitter Profile'
     },
     {
       name: 'body',
       title: 'Bio',
-      type: 'portableText'
+      type: 'text',
+      description: 'Recommended: 200 characters.'
     },
     {
       name: 'image',

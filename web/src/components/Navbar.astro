@@ -1,27 +1,17 @@
 ---
-import sanityClient from "../lib/sanityClient"
-import { navQuery } from "../lib/queries"
-import { Menu } from "../lib/interfaces"
+import { Navigation } from "../lib/interfaces"
 
-const response = await sanityClient.fetch(navQuery)
-const data: { menu: Menu } = await response
-const { siteName } = Astro.props
-const { menu } = data
+const { navigation } = Astro.props as { navigation: Navigation }
 ---
 <nav class="text-white inner mx-auto leading-8 py-3">
   <ul class="flex gap-7">
-    <li>
-      <a href="/" class="opacity-80 hover:opacity-100 font-medium">
-        {siteName}
-      </a>
-    </li>
-    {menu.item.map(item =>
+    {navigation.primary.map(item =>
       <li>
         <a
-          href={`/${item.slug}`}
+          href={`/${item.url.slug}`}
           class="opacity-80 hover:opacity-100 font-medium"
         >
-          {item.title}
+          {item.label}
         </a>
       </li>
     )}

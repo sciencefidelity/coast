@@ -1,43 +1,43 @@
 ---
-import { Head } from "../lib/interfaces"
+import { Design, Settings } from "../lib/interfaces"
 const {
-  keywords,
-  permalink,
-  seoDescription,
-  seoImage,
-  siteName,
-  socialDescription,
-  socialTitle,
-  title,
-  twitter,
-  twitterHandle
-} = Astro.props as Head
+  design,
+  settings
+} = Astro.props as {
+  design: Design
+  settings: Settings
+}
 ---
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 
-<title>{title && title}</title>
-<meta name="description" content={seoDescription}>
-<meta name="keywords" content={keywords}>
+<title>{settings.siteName && settings.siteName}</title>
+<meta
+  name="description"
+  content={settings.siteDescription && settings.siteDescription}
+>
+<!-- <meta name="keywords" content={keywords}> -->
 
-<meta property="og:title" content={socialTitle}>
+<!-- <meta property="og:title" content={socialTitle}>
 <meta property="og:description" content={socialDescription}>
 <meta property="og:url" content={permalink}>
 <meta property="og:image" content={seoImage}>
 <meta property="og:site_name" content={siteName}>
 <meta property="og:locale" content="en_GB">
-<meta property="og:type" content="article">
+<meta property="og:type" content="article"> -->
 
-<meta name="twitter:card" content="summary_large_image">
+<!-- <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={socialTitle}>
 <meta name="twitter:description" content={socialDescription}>
 <meta name="twitter:site" content={twitterHandle}>
 <meta name="twitter:image" content={seoImage}>
 {twitterHandle !== undefined &&
   <meta name="twitter:creator" content={twitterHandle}>
-}
+} -->
 
 <link rel="icon" type="image/x-icon" href="/favicon.svg" />
 <link rel="mask-icon" href="/mask-icon.svg" color="#FFDC5D" />
+<meta name="theme-color" content={design.accentColor}>
 <link rel="stylesheet" href={Astro.resolve("../styles/global.scss")}>
+

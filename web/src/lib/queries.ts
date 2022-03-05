@@ -92,6 +92,58 @@ export const layoutQuery = groq`{
   }
 }`
 
+export const indexQuery = groq`{
+  "design": *[_type == "design" && ${omitDrafts}][0]{
+    "accentColor": accentColor.hex, image
+  },
+  "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
+    primary[]{
+      _key, label, url->{"slug": slug.current, title}
+    },
+    secondary[]{
+      _key, label, url->{"slug": slug.current, title}
+    }
+  },
+  "posts": *[_type == "post" && ${omitDrafts}] | order(publishedAt) {
+    _id,
+    _type,
+    authors[]->{
+      _id, _type, name, "slug": slug.current
+    },
+    ${body},
+    excerpt,
+    image,
+    publishedAt,
+    "slug": slug.current,
+    tags[]->{
+      _id, _type, "slug": slug.current, title
+    },
+    title
+  },
+  "settings": *[_type == "settings" && ${omitDrafts}][0]{
+    siteDescription, siteName
+  }
+}`
+
+export const navQuery = groq`{
+  "menu": *[_type == "menu"][0]{
+    "item": items[]->{
+      "slug": slug.current,
+      title
+    }
+  }
+}`
+
+export const pagesQuery = groq`{
+  "pages": *[_type == "page" && ${omitDrafts}]{
+    ${body},
+    ${seo},
+    "slug": slug.current,
+    template[0],
+    title
+  }
+}`
+
 export const postQuery = groq`{
   "posts": *[_type == "post" && ${omitDrafts}]{
     author->{
@@ -120,32 +172,6 @@ export const postQuery = groq`{
     publishedAt,
     ${seo},
     "slug": slug.current,
-    title
-  }
-}`
-
-export const indexQuery = groq`{
-  "home": *[_type == "home" && ${omitDrafts}][0]{
-    ${body},
-    title
-  }
-}`
-
-export const navQuery = groq`{
-  "menu": *[_type == "menu"][0]{
-    "item": items[]->{
-      "slug": slug.current,
-      title
-    }
-  }
-}`
-
-export const pagesQuery = groq`{
-  "pages": *[_type == "page" && ${omitDrafts}]{
-    ${body},
-    ${seo},
-    "slug": slug.current,
-    template[0],
     title
   }
 }`

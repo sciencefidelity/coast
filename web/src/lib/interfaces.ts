@@ -7,35 +7,20 @@ import {
 } from "../generated/schema"
 
 export interface Author {
-  body: BlockContent
+  _id: string
+  _type: string
+  body: string
   name: string
-  posts: Post[]
   slug: string
-  twitterHandle: string
 }
 
-export interface Category {
-  _id: string
-  posts: Post[]
-  slug: string
-  title: string
+export interface Design {
+  accentColor: string
+  image: Image
 }
 
 export interface Head {
-  keywords: string
-  permalink: string
-  seoTitle: string
-  seoDescription: string
-  seoImage: Image
-  title: string
-  twitter: string
-  twitterHandle: string
-}
-
-export interface Home {
-  body: BlockContent
-  featured: Post[]
-  title: string
+  settings: Settings
 }
 
 export interface Image {
@@ -46,54 +31,97 @@ export interface Image {
 }
 
 export interface Layout {
-  title: string
-  keywords: string
-  slug: string
-  seoTitle: string
-  seoDescription: string
-  seoImage: Image
-  twitterHandle: string
-  url: string
+  design: Design
+  navigation: Navigation
+  settings: Settings
 }
 
-export interface Menu {
-  item: MenuItem[]
+export interface NavItem {
+  _key: string
+  label: string
+  url: {
+    slug: string
+    title: string
+  }
 }
 
-export interface MenuItem {
-  slug: string
-  title: string
+export interface Navigation {
+  primary: NavItem[]
+  secondary: NavItem[]
 }
 
-export interface Site extends SEO {
-  siteDescription: string
-  siteName: string
-  twitterHandle: string
-  url: string
-}
-
-export interface SEO {
-  keywords: string
-  seoDescription: string
-  seoImage: Image
-  seoTitle: string
-}
-
-export interface Page extends SEO {
+export interface Post {
+  _id: string
+  _type: string
+  authors: Author[]
   body: BlockContent
-  slug: string
-  template: string
-  title: string
-}
-
-export interface Post extends SEO {
-  author: Author
-  body: BlockContent
-  categories: Category[]
-  next: Post
-  previous: Post
+  excerpt: string
+  image: Image
   publishedAt: string
   slug: string
+  tags: Tag[]
   title: string
 }
+
+export interface Settings {
+  siteDescription: string
+  siteName: string
+}
+
+export interface Tag {
+  _id: string
+  _type: string
+  slug: string
+  title: string
+}
+
+// export interface Category {
+//   _id: string
+//   posts: Post[]
+//   slug: string
+//   title: string
+// }
+//
+// export interface Home {
+//   body: BlockContent
+//   featured: Post[]
+//   title: string
+// }
+//
+// export interface MenuItem {
+//   slug: string
+//   title: string
+// }
+//
+// export interface Site extends SEO {
+//   siteDescription: string
+//   siteName: string
+//   twitterHandle: string
+//   url: string
+// }
+//
+// export interface SEO {
+//   keywords: string
+//   seoDescription: string
+//   seoImage: Image
+//   seoTitle: string
+// }
+//
+// export interface Page extends SEO {
+//   body: BlockContent
+//   slug: string
+//   template: string
+//   title: string
+// }
+//
+// export interface Post extends SEO {
+//   author: Author
+//   body: BlockContent
+//   categories: Category[]
+//   next: Post
+//   previous: Post
+//   publishedAt: string
+//   slug: string
+//   title: string
+// }
 

@@ -1,15 +1,27 @@
 ---
+import { Design, Navigation, Settings } from "../lib/interfaces"
 import Navbar from "../components/Navbar.astro"
 
-const { siteName, subtitle } = Astro.props as {
-  siteName: string
-  subtitle: string
+const { design, navigation, settings } = Astro.props as {
+  design: Design
+  navigation: Navigation
+  settings: Settings
 }
 ---
-<header class="outer bg-rose-500">
-  <Navbar siteName={siteName} />
+<header class="gh-head">
+  <Navbar navigation={navigation} />
   <div class="text-center text-white mt-20 pb-32">
-    <h1 class="text-5xl font-bold">{siteName}</h1>
-    <p class="text-2xl leading-10">{subtitle}</p>
+    <h1 class="text-5xl font-bold">{settings.siteName}</h1>
+    <p class="text-2xl leading-10">{settings.siteDescription}</p>
   </div>
 </header>
+
+<style>
+  .gh-head {
+    padding: 1vmin 4vmin;
+    font-size: 1.6rem;
+    line-height: 1.3em;
+    color: #fff;
+    background: var(--accentColor);
+  }
+</style>
