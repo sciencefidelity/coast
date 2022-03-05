@@ -1,0 +1,83 @@
+---
+import format from "date-fns/format"
+import sanityClient from "../lib/sanityClient"
+import { toPlainText } from "../lib/utils"
+import { featuredPostsQuery } from "../lib/queries"
+import { Home } from "../lib/interfaces"
+
+const response = await sanityClient.fetch(featuredPostsQuery)
+const data: { posts: Home } = await response
+const { featured } = data.posts
+---
+<section>
+  <h2 class="text-3xl font-bold mb-7">Featured Posts</h2>
+  <div class="grid grid-cols-1 gap-v md:grid-cols-2 lg:grid-cols-3">
+    {featured.map(post =>
+      <div class="posts-card">
+        <a href={`/blog/${post.slug}`}>
+          <div class="rounded-sm h-50 bg-amber-300 mb-6"></div>
+        </a>
+        <div>
+          <ul
+            class="uppercase text-xs font-medium text-pink-500 mb-1.5"
+          >
+            {post.categories.map(category =>
+              <li class="horizontal-list inline">{category.title}</li>
+            )}
+          </ul>
+          <h3 class="text-2xl font-bold mb-3 leading-5">
+            <a href={`/blog/${post.slug}`}>{post.title}</a>
+          </h3>
+          <p class="excerpt serif mb-5 text-slate-500">
+            {toPlainText(post.body).substring(0, 210)}
+            <!-- <a
+              href={`/blog/${post.slug}`}
+              class="serif underline text-slate-600"
+            >
+              read&nbsp;more
+            </a> -->
+          </p>
+          <div class="flex gap-3">
+            <div class="avatar rounded-full bg-amber-300"></div>
+            <div>
+              <p class="font-medium text-sm">
+                <a href={`/authors/${post.author.slug}`}>{post.author.name}</a>
+              </p>
+              <p class="text-slate-500 text-xs">
+                {format(new Date(post.publishedAt), "MMM do, yyyy")}
+                &bull;
+                {Math.ceil(toPlainText(post.body).split(/\W+/).length / 275)}
+                min read
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- <style lang="scss">
+li {
+  &:not(:last-child)::after {
+    content: ', ';
+  }
+}
+
+.avatar {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.leading-5 {
+  line-height: 1.1;
+}
+
+.excerpt {
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+</style> -->

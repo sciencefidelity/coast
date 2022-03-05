@@ -3,10 +3,6 @@
   "project": {
     "name": "coast"
   },
-  "api": {
-    "projectId": "eom0zz6k",
-    "dataset": "production"
-  },
   "plugins": [
     "@sanity/base",
     "@sanity/default-layout",

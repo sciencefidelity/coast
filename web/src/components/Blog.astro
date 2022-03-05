@@ -1,0 +1,17 @@
+---
+import format from "date-fns/format"
+import sanityClient from "../lib/sanityClient"
+import { blogQuery } from "../lib/queries"
+import { Post } from "../lib/interfaces"
+
+const response = await sanityClient.fetch(blogQuery)
+const data: { posts: Post[] } = await response
+const { posts } = data
+---
+<ul>
+  {posts.map(post =>
+    <li><a href={`/blog/${post.slug}`}>{post.title}</a>
+      {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
+    </li>
+  )}
+</ul>

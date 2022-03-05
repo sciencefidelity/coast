@@ -1,0 +1,35 @@
+---
+import format from "date-fns/format"
+import sanityClient from "../../lib/sanityClient"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import { categoriesQuery } from "../../lib/queries"
+import { Category } from "../../lib/interfaces"
+
+export async function getStaticPaths() {
+  const data: { categories: Category[] } = await sanityClient
+    .fetch(categoriesQuery)
+    .then(response => response)
+  return data.categories.map(category => {
+    return {
+      params: { slug: category.slug },
+      props: { category }
+    }
+  })
+}
+const { slug } = Astro.request.params
+const { category } = Astro.props as { category: Category }
+const title = `Category: ${category.title}`
+---
+<BaseLayout title={title}>
+  <div>
+    <h1>{title}</h1>
+    <ul>
+      {category.posts.map(post =>
+        <li><a href={`/blog/${post.slug}`}>{post.title}</a>
+          {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
+        </li>
+      )}
+    </ul>
+    <p><a href="/categories">All categories</a></p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import sanityClient from "../lib/sanityClient"
+import BaseLayout from "../layouts/BaseLayout.astro"
+// import Featured from "../components/Featured.astro"
+import Latest from "../components/Latest.astro"
+import { indexQuery } from "../lib/queries"
+import { Home } from "../lib/interfaces"
+
+const response = await sanityClient.fetch(indexQuery)
+const data: { home: Home } = await response
+const { home } = data
+const title = "Home"
+---
+<BaseLayout
+  title={title}
+  subtitle={home.title}
+>
+  <!-- <Featured /> -->
+  <Latest />
+</BaseLayout>

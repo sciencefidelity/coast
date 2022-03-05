@@ -1,1 +1,7 @@
 node_modules
+*.log
+*.bak
+.DS_Store
+dist
+.env
+.env.*

@@ -1,0 +1,60 @@
+---
+import sanityClient from "../lib/sanityClient"
+import BaseHead from "../components/BaseHaad.astro"
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import { layoutQuery } from "../lib/queries"
+import { Site } from "../lib/interfaces"
+import { Layout } from "../lib/interfaces"
+import "../styles/global.scss"
+
+const response = await sanityClient.fetch(layoutQuery)
+const data: { site: Site } = await response
+const { site } = data
+const {
+  title,
+  keywords,
+  slug,
+  seoTitle,
+  seoDescription,
+  seoImage,
+  subtitle,
+  twitterHandle,
+  url
+} = Astro.props as Layout
+---
+<html lang="en">
+  <head>
+    <BaseHead
+      keywords={keywords || site.keywords}
+      permalink={`${url}/${slug || ''}`}
+      seoDescription={seoDescription || site.seoDescription}
+      seoImage={seoImage || site.seoImage}
+      siteName={title}
+      socialDescription={seoTitle
+        ? `${seoTitle} ${seoDescription}`
+        : site.siteDescription}
+      socialTitle={seoTitle
+        ? seoTitle
+        : `${title} | ${site.seoTitle}`}
+      title={`${title} | ${site.siteName}`}
+      twitter={site.twitterHandle}
+      twitterHandle={twitterHandle}
+    />
+  </head>
+  <body>
+    <div id="app">
+      <Header siteName={site.siteName} subtitle={subtitle} />
+      <main class="outer mx-auto mb-20 mt-10">
+        <div class="inner">
+          <slot />
+        </div>
+      </main>
+      <Footer siteName={site.siteName} />
+    </div>
+  </body>
+</html>
+
+<style>
+
+</style>
