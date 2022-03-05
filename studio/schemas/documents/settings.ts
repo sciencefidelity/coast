@@ -34,8 +34,8 @@ export default {
       group: 'site'
     },
     {
-      name: 'subtitle',
-      title: 'Subtitle',
+      name: 'siteDescription',
+      title: 'Site description',
       type: 'string',
       description: 'Used in your theme, meta data and search results',
       group: 'site'
