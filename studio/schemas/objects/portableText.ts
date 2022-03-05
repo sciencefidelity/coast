@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 export default {
-  title: 'Block Content',
-  name: 'blockContent',
+  title: 'Rich Text',
+  name: 'portableText',
   type: 'array',
   of: [
     {
@@ -33,7 +33,7 @@ export default {
                 type: 'reference',
                 to: [
                   { type: 'author' },
-                  { type: 'category' },
+                  { type: 'tag' },
                   { type: 'page' },
                   { type: 'post' }
                 ]
@@ -69,6 +69,9 @@ export default {
     {
       type: 'image',
       options: { hotspot: true }
+    },
+    {
+      type: 'horizontalRule'
     }
   ]
 }

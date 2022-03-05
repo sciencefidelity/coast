@@ -1,25 +1,64 @@
-import { Rule } from '@sanity/types'
-
 export default {
   name: 'page',
   title: 'Page',
   type: 'document',
   groups: [
     {
-      name: 'content',
-      title: 'Content'
+      name: 'page',
+      title: 'Page'
     },
     {
-      name: 'seo',
-      title: 'SEO'
+      name: 'settings',
+      title: 'Settings'
+    },
+    {
+      name: 'meta',
+      title: 'Meta data'
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter card'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook card'
     }
   ],
   fields: [
     {
-      name: 'title',
-      title: 'Title',
+      name: 'image',
+      title: 'Feature image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      group: 'page'
+    },
+    {
+      name: 'imageCaption',
+      title: 'Feature Image Caption',
       type: 'string',
-      group: 'content'
+      description: 'Add a caption to the feature image',
+      group: 'page'
+    },
+    {
+      name: 'imageAltText',
+      title: 'Feature Image Alt Text',
+      type: 'string',
+      description: 'Add alt text to the feature image',
+      group: 'page'
+    },
+    {
+      name: 'title',
+      title: 'page Title',
+      type: 'string',
+      group: 'page'
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'portableText',
+      group: 'page'
     },
     {
       name: 'slug',
@@ -29,83 +68,125 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      group: 'content'
+      group: 'settings'
     },
     {
-      name: 'template',
-      title: 'Template',
+      name: 'publishedAt',
+      title: 'Publish date',
+      type: 'datetime',
+      group: 'settings'
+    },
+    {
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'grid',
-        list: [
-          { title: 'Article', value: 'article' },
-          { title: 'Blog', value: 'blog' },
-          { title: 'Contact Us', value: 'contact' }
-        ]
-      },
-      initialValue: {
-        title: 'Article',
-        value: 'article'
-      },
-      validation: (Rule: Rule) => Rule.required(),
-      group: 'content'
+      of: [{ type: 'reference', to: { type: 'tag' } }],
+      group: 'settings'
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      group: 'settings'
+    },
+    {
+      name: 'authors',
+      title: 'Authors',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'author' } }],
+      group: 'settings'
+    },
+    {
+      name: 'feature',
+      title: 'Feature this page',
+      type: 'boolean',
+      group: 'settings'
+    },
+    {
+      name: 'metaTitle',
+      title: 'Meta Title',
+      type: 'string',
+      description: 'Recommended: 70 characters.', // You’ve used 0
+      group: 'meta'
+    },
+    {
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'text',
+      description: 'Recommended: 156 characters.', // You’ve used 0
+      group: 'meta'
+    },
+    {
+      name: 'canonicalURL',
+      title: 'Canonical URL',
+      type: 'url',
+      group: 'meta'
+    },
+    {
+      name: 'twitterImage',
+      title: 'Twitter image',
       type: 'image',
       options: {
         hotspot: true
       },
-      group: 'content'
+      group: 'twitter'
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-      group: 'content'
-    },
-    {
-      name: 'seoTitle',
-      title: 'SEO title',
+      name: 'twitterTitle',
+      title: 'Twitter title',
       type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 60 characters).',
-      validation: (Rule: Rule) =>
-        Rule.max(60).warning('Only 60 characters will be visible.'),
-      group: 'seo'
+      description: 'Recommended: 70 characters.', // You’ve used 0
+      group: 'twitter'
     },
     {
-      name: 'seoDescription',
-      title: 'SEO description',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 65 characters).',
-      validation: (Rule: Rule) =>
-        Rule.max(65).warning('Only 65 characters will be visible.'),
-      group: 'seo'
+      name: 'twitterDescription',
+      title: 'Twitter Description',
+      type: 'text',
+      description: 'Recommended: 125 characters.', // You’ve used 0
+      group: 'twitter'
     },
     {
-      name: 'keywords',
-      title: 'Keywords',
-      type: 'string',
-      description: 'A list of keywords seperated by commas.',
-      group: 'seo'
-    },
-    {
-      name: 'seoImage',
-      title: 'SEO Image',
+      name: 'facebookImage',
+      title: 'Facebook image',
       type: 'image',
-      description:
-        'Ideal size 1200 x 630px (if not added main image will be used).',
-      group: 'seo'
+      options: {
+        hotspot: true
+      },
+      group: 'facebook'
+    },
+    {
+      name: 'facebookTitle',
+      title: 'Facebook title',
+      type: 'string',
+      description: 'Recommended: 70 characters.', // You’ve used 0
+      group: 'facebook'
+    },
+    {
+      name: 'facebookDescription',
+      title: 'Facebook Description',
+      type: 'text',
+      description: 'Recommended: 125 characters.', // You’ve used 0
+      group: 'facebook'
     }
   ],
+
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage'
+      author0: 'authors.0.name',
+      author1: 'authors.1.name',
+      author2: 'authors.2.name',
+      author3: 'authors.3.name',
+      media: 'image'
+    },
+    prepare: ({title, author0, author1, author2, author3}) => {
+      const authors = [author0, author1, author2].filter(Boolean)
+      const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
+      const hasMoreAuthors = Boolean(author3)
+      return {
+        title,
+        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle
+      }
     }
   }
 }

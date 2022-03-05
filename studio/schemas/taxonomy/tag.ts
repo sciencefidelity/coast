@@ -1,15 +1,11 @@
 export default {
-  name: 'post',
-  title: 'Post',
+  name: 'tag',
+  title: 'Tag',
   type: 'document',
   groups: [
     {
-      name: 'post',
-      title: 'Post'
-    },
-    {
-      name: 'settings',
-      title: 'Settings'
+      name: 'tag',
+      title: 'Tag'
     },
     {
       name: 'meta',
@@ -26,39 +22,10 @@ export default {
   ],
   fields: [
     {
-      name: 'image',
-      title: 'Feature image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      group: 'post'
-    },
-    {
-      name: 'imageCaption',
-      title: 'Feature Image Caption',
+      name: 'title', // Color
+      title: 'Title',
       type: 'string',
-      description: 'Add a caption to the feature image',
-      group: 'post'
-    },
-    {
-      name: 'imageAltText',
-      title: 'Feature Image Alt Text',
-      type: 'string',
-      description: 'Add alt text to the feature image',
-      group: 'post'
-    },
-    {
-      name: 'title',
-      title: 'Post Title',
-      type: 'string',
-      group: 'post'
-    },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'portableText',
-      group: 'post'
+      group: 'tag'
     },
     {
       name: 'slug',
@@ -68,39 +35,23 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      group: 'settings'
+      group: 'tag'
     },
     {
-      name: 'publishedAt',
-      title: 'Publish date',
-      type: 'datetime',
-      group: 'settings'
-    },
-    {
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'tag' } }],
-      group: 'settings'
-    },
-    {
-      name: 'excerpt',
-      title: 'Excerpt',
+      name: 'description',
+      title: 'Description',
       type: 'text',
-      group: 'settings'
+      description: 'Maximum: 500 characters.', // You’ve used 0
+      group: 'tag'
     },
     {
-      name: 'authors',
-      title: 'Authors',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'author' } }],
-      group: 'settings'
-    },
-    {
-      name: 'feature',
-      title: 'Feature this post',
-      type: 'boolean',
-      group: 'settings'
+      name: 'image',
+      title: 'Tag image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      group: 'tag'
     },
     {
       name: 'metaTitle',
@@ -168,25 +119,5 @@ export default {
       description: 'Recommended: 125 characters.', // You’ve used 0
       group: 'facebook'
     }
-  ],
-
-  preview: {
-    select: {
-      title: 'title',
-      author0: 'authors.0.name',
-      author1: 'authors.1.name',
-      author2: 'authors.2.name',
-      author3: 'authors.3.name',
-      media: 'image'
-    },
-    prepare: ({title, author0, author1, author2, author3}) => {
-      const authors = [author0, author1, author2].filter(Boolean)
-      const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
-      const hasMoreAuthors = Boolean(author3)
-      return {
-        title,
-        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle
-      }
-    }
-  }
+  ]
 }
