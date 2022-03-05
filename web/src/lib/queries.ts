@@ -94,7 +94,7 @@ export const layoutQuery = groq`{
 
 export const indexQuery = groq`{
   "design": *[_type == "design" && ${omitDrafts}][0]{
-    "accentColor": accentColor.hex, image
+    "accentColor": accentColor.hex, "icon": icon.asset->{url}, image
   },
   "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
     primary[]{
@@ -121,7 +121,7 @@ export const indexQuery = groq`{
     title
   },
   "settings": *[_type == "settings" && ${omitDrafts}][0]{
-    siteDescription, siteName
+    facebookURL, siteDescription, siteName, twitterURL
   }
 }`
 

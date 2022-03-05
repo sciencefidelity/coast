@@ -17,22 +17,39 @@ const accentColor = design.accentColor
     <BaseHead settings={settings} design={design} />
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="viewport">
       <Header
         design={design}
         navigation={navigation}
         settings={settings}
       />
-      <main class="outer mx-auto mb-20 mt-10">
-        <div class="inner">
-          <slot />
+      <div class="site-content">
+        <div class="site-header-content">
+          <img
+            class="site-header-cover"
+            srcset="
+              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 300w,
+              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 600w,
+              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 1000w,
+              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 2000w
+            "
+            sizes="100vw"
+            src="https://static.ghost.org/v4.0.0/images/publication-cover.jpg"
+            alt=""
+          >
+          <h1 class="site-title">{settings.siteName}</h1>
+          <p>{settings.siteDescription}</p>
         </div>
-      </main>
-      <Footer
-        design={design}
-        navigation={navigation}
-        settings={settings}
-      />
+        <main id="site-main" class="site-main outer">
+          <slot />
+        </main>
+
+        <Footer
+          design={design}
+          navigation={navigation}
+          settings={settings}
+        />
+      </div>
     </div>
   </body>
 </html>

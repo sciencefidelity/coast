@@ -7,6 +7,7 @@ const {
   design: Design
   settings: Settings
 }
+console.log(design)
 ---
 
 <meta charset="UTF-8">
@@ -36,8 +37,8 @@ const {
   <meta name="twitter:creator" content={twitterHandle}>
 } -->
 
-<link rel="icon" type="image/x-icon" href="/favicon.svg" />
-<link rel="mask-icon" href="/mask-icon.svg" color="#FFDC5D" />
+<link rel="icon" type="image/x-icon" href={design.icon.url} />
+<link rel="mask-icon" href={design.icon.url} color="#FFDC5D" />
 <meta name="theme-color" content={design.accentColor}>
 <link rel="stylesheet" href={Astro.resolve("../styles/global.scss")}>
 

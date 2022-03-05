@@ -16,6 +16,9 @@ export interface Author {
 
 export interface Design {
   accentColor: string
+  icon: {
+    url: string
+  }
   image: Image
 }
 
@@ -64,8 +67,10 @@ export interface Post {
 }
 
 export interface Settings {
+  facebookURL: string
   siteDescription: string
   siteName: string
+  twitterURL: string
 }
 
 export interface Tag {
