@@ -42,8 +42,8 @@ export default {
       description: 'URL of your personal Facebook Profile'
     },
     {
-      name: 'facebook',
-      title: 'Facebook profile',
+      name: 'twitter',
+      title: 'Twitter profile',
       type: 'url',
       description: 'URL of your personal Twitter Profile'
     },
