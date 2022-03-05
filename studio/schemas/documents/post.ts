@@ -36,21 +36,21 @@ export default {
     },
     {
       name: 'imageCaption',
-      title: 'Feature Image Caption',
+      title: 'Feature image caption',
       type: 'string',
       description: 'Add a caption to the feature image',
       group: 'post'
     },
     {
       name: 'imageAltText',
-      title: 'Feature Image Alt Text',
+      title: 'Feature image alt text',
       type: 'string',
       description: 'Add alt text to the feature image',
       group: 'post'
     },
     {
       name: 'title',
-      title: 'Post Title',
+      title: 'Post title',
       type: 'string',
       group: 'post'
     },
@@ -74,6 +74,10 @@ export default {
       name: 'publishedAt',
       title: 'Publish date',
       type: 'datetime',
+      options: {
+        timeStep: 15,
+        calendarTodayLabel: 'Today'
+      },
       group: 'settings'
     },
     {
@@ -179,13 +183,14 @@ export default {
       author3: 'authors.3.name',
       media: 'image'
     },
-    prepare: ({title, author0, author1, author2, author3}) => {
+    prepare: ({title, author0, author1, author2, author3, media}) => {
       const authors = [author0, author1, author2].filter(Boolean)
       const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
       const hasMoreAuthors = Boolean(author3)
       return {
         title,
-        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle
+        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle,
+        media
       }
     }
   }

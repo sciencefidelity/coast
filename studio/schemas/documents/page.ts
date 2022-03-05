@@ -36,21 +36,21 @@ export default {
     },
     {
       name: 'imageCaption',
-      title: 'Feature Image Caption',
+      title: 'Feature image caption',
       type: 'string',
       description: 'Add a caption to the feature image',
       group: 'page'
     },
     {
       name: 'imageAltText',
-      title: 'Feature Image Alt Text',
+      title: 'Feature image alt text',
       type: 'string',
       description: 'Add alt text to the feature image',
       group: 'page'
     },
     {
       name: 'title',
-      title: 'page Title',
+      title: 'Page title',
       type: 'string',
       group: 'page'
     },

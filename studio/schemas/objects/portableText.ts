@@ -71,7 +71,7 @@ export default {
       options: { hotspot: true }
     },
     {
-      type: 'horizontalRule'
+      type: 'code'
     }
   ]
 }
