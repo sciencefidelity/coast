@@ -108,7 +108,7 @@ export const indexQuery = groq`{
     _id,
     _type,
     authors[]->{
-      _id, _type, name, "slug": slug.current
+      _id, _type, image, name, "slug": slug.current
     },
     ${body},
     excerpt,

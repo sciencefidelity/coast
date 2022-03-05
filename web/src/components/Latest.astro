@@ -1,70 +1,74 @@
 ---
 import format from "date-fns/format"
 import { toPlainText } from "../lib/utils"
+import Image from "../components/Image.astro"
 import { Post } from "../lib/interfaces"
 
 const {
   posts
 } = Astro.props as { posts: Post[] }
-const bg = [
-  "bg-pink-600",
-  "bg-amber-300",
-  "bg-cyan-500",
-  "bg-sky-600"
-]
 ---
-<section>
-  <div class="posts-cards grid grid-cols-1 gap-v md:grid-cols-2 lg:grid-cols-3">
-    {posts.map((post, idx) =>
-      <article class={`posts-card ${idx === 0 ? "post-card-large" : ""}`}>
-        <a href={`/blog/${post.slug}`} class="mb-6">
-          <div
-            class={`
-              image rounded-sm h-50 mb-6
-              ${idx < 4 ? bg[idx] : bg[idx - 4]}
-            `}
-          ></div>
+<div class="inner posts">
+  <div class="post-feed">
+    {posts && posts.map((post, idx) =>
+      <article class={`
+        post-card post tag-getting-started
+        ${idx === 0 ? "post-card-large" : ""}
+      `}>
+        <a href={`/blog/${post.slug}`} class="post-card-image-link">
+          <Image
+            className="post-card-image"
+            image={post.image}
+            width={800}
+            lazy={true}
+          />
         </a>
-        <a href={`/blog/${post.slug}`}>
-          <header>
-            {post.tags && (
-              <ul class="uppercase text-xs font-medium text-pink-500 mb-1.5">
-                {post.tags.map(tag =>
-                  <li class="horizontal-list inline">{tag.title}</li>
-                )}
-              </ul>
-            )}
-            <h2 class="post-card-title text-2xl font-bold mb-3 leading-5">
-              {post.title}
-            </h2>
-          </header>
-          <div>
-            <p class="excerpt serif mb-5 text-slate-500">
-              {toPlainText(post.body).substring(0, 210)}
-            </p>
-          </div>
-        </a>
-        <footer class="flex gap-3">
-          {post.authors && (
-            <a href={`/authors/${post.authors[0].slug}`}>
-              <div class="avatar rounded-full bg-stone-500"></div>
-            </a>
-          )}
-          <div class="flex flex-col">
-            {post.authors && (
-              <span class="font-medium text-sm">
-                <a href={`/authors/${post.authors[0].slug}`}>
-                  {post.authors[0].name}
+        <div class="post-card-content">
+          <a href={`/blog/${post.slug}`} class="post-card-content-link">
+            <header>
+              <div class="post-card-primary-tag">{post.tags[0].title}</div>
+              <h2 class="post-card-title">
+                {post.title}
+              </h2>
+            </header>
+            <div class="post-card-excerpt">
+              <p>
+                {post.excerpt
+                  ? post.excerpt
+                  : toPlainText(post.body).substring(0, 210)}
+              </p>
+            </div>
+          </a>
+        </div>
+        <footer class="post-card-meta">
+          <ul class="author-list">
+            {post.authors && post.authors.map(author =>
+              <li class="author-list-item">
+                <a href={`/authors/${author.slug}`} class="static-avatar">
+                  <Image
+                    className="author-profile-image"
+                    image={author.image}
+                    width={36}
+                    height={36}
+                    lazy={true}
+                  />
                 </a>
-              </span>
+              </li>
             )}
-            <span class="text-slate-500 text-xs">
+          </ul>
+          <div class="post-card-byline-content">
+            <span>
+              <a href={`/authors/${post.authors[0].slug}`}>
+                {post.authors[0].name}
+              </a>
+            </span>
+            <span class="post-card-byline-date">
               <time
                 datetime={format(new Date(post.publishedAt), "yyyy-MM-dd")}
               >
                 {format(new Date(post.publishedAt), "MMM do, yyyy")}
               </time>
-              <span class="inline-block mx-0.5">&bull;</span>
+              <span class="bull">&bull;</span>
               {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
               min read
             </span>
@@ -73,4 +77,4 @@ const bg = [
       </article>
     )}
   </div>
-</section>
+</div>

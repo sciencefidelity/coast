@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
+import Image from "../components/Image.astro"
 import { Layout } from "../lib/interfaces"
 import "../styles/global.scss"
 
@@ -10,35 +11,34 @@ const {
   navigation,
   settings
 } = Astro.props as Layout
-const accentColor = design.accentColor
+const accentColor = design.accentColor || "#0284C7"
 ---
 <html lang="en">
   <head>
     <BaseHead settings={settings} design={design} />
   </head>
-  <body>
+  <body class="home-template">
     <div id="app" class="viewport">
       <Header
-        design={design}
         navigation={navigation}
         settings={settings}
       />
       <div class="site-content">
         <div class="site-header-content">
-          <img
-            class="site-header-cover"
-            srcset="
-              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 300w,
-              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 600w,
-              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 1000w,
-              https://static.ghost.org/v4.0.0/images/publication-cover.jpg 2000w
-            "
-            sizes="100vw"
-            src="https://static.ghost.org/v4.0.0/images/publication-cover.jpg"
-            alt=""
-          >
-          <h1 class="site-title">{settings.siteName}</h1>
-          <p>{settings.siteDescription}</p>
+          {design.image &&
+            <Image
+              className="site-header-cover"
+              image={design.image}
+              width={1512}
+              lazy={false}
+            />
+          }
+          {settings.siteName &&
+            <h1 class="site-title">{settings.siteName}</h1>
+          }
+          {settings.siteDescription &&
+            <p>{settings.siteDescription}</p>
+          }
         </div>
         <main id="site-main" class="site-main outer">
           <slot />

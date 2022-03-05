@@ -10,6 +10,7 @@ export interface Author {
   _id: string
   _type: string
   body: string
+  image: Image
   name: string
   slug: string
 }

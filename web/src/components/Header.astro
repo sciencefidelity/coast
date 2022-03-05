@@ -1,14 +1,13 @@
 ---
-import { Design, Navigation, Settings } from "../lib/interfaces"
+import { Navigation, Settings } from "../lib/interfaces"
 import Navbar from "../components/Navbar.astro"
 
 const { navigation, settings } = Astro.props as {
-  // design: Design
   navigation: Navigation
   settings: Settings
 }
 ---
-<header class="gh-head">
+<header id="gh-head" class="gh-head has-cover">
   <Navbar
     navigation={navigation}
     settings={settings}

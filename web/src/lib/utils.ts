@@ -1,7 +1,10 @@
 import htm from "htm"
 import vhtml from "vhtml"
 import { uriLooksSafe } from "@portabletext/to-html"
+import imageUrlBuilder from "@sanity/image-url"
 import { BlockContent } from "../generated/schema"
+import sanityClient from "./sanityClient"
+import { Image } from "./interfaces"
 
 export const buildUrl = (type: string, slug: string): string => {
   return `${subdir(type)}/${slug}`
@@ -75,4 +78,8 @@ export const toPlainText = (blocks: BlockContent = []): string => {
     })
     // join the paragraphs leaving split by two linebreaks
     .join('\n\n')
+}
+
+export const urlFor = (source: Image) => {
+  return imageUrlBuilder(sanityClient).image(source)
 }
