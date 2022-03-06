@@ -91,17 +91,10 @@ export default {
       group: 'facebook'
     },
     {
-      name: 'facebookURL',
-      title: 'Facebook URL',
-      type: 'url',
-      description: 'URL of your publication\'s Facebook Page',
-      group: 'social'
-    },
-    {
-      name: 'twitterURL',
-      title: 'Twitter URL',
-      type: 'url',
-      description: 'URL of your publication\'s Twitter profile',
+      name: 'socialLinks',
+      title: 'Social links',
+      type: 'socialLinks',
+      description: 'URLs of your social profiles',
       group: 'social'
     }
   ],

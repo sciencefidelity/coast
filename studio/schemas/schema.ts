@@ -7,6 +7,7 @@ import imageData from './objects/imageData'
 import metaData from './objects/metaData'
 import portableText from './objects/portableText'
 import pageSettings from './objects/pageSettings'
+import socialLinks from './objects/socialLinks'
 import twitterCard from './objects/twitterCard'
 import youtube from './objects/youtube'
 
@@ -30,6 +31,7 @@ export default createSchema({
     metaData,
     pageSettings,
     portableText,
+    socialLinks,
     twitterCard,
     youtube,
 
