@@ -39,7 +39,7 @@ export default {
     {
       name: 'email',
       title: 'Email',
-      type: 'string'
+      type: 'email'
     },
     {
       name: 'location',

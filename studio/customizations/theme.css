@@ -10,8 +10,13 @@
   --selectable-item-color-highlighted: #212326;
   --list-border-color: #2b2d31;
   --list-border: 1px solid #2b2d31;
+  --card-code-bg-color: #151719;
 }
 
 [data-ui="Card"] * {
   mix-blend-mode: normal !important;
+}
+
+[data-text] {
+  font-family: Georgia, serif !important;
 }
