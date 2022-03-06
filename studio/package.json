@@ -32,7 +32,6 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
-    "sanity-codegen": "^0.9.8"
+    "prettier": "^2.5.1"
   }
 }

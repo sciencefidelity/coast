@@ -38,41 +38,21 @@ const pageSettings = `
   }
 `
 const pagePostFields = `
-  _id, _type, ${body}, excerpt, feature, image, title, ${pageSettings}, ${seo},
-  authors[]->{
-    _id, _type, image, name, ${slug}
-  },
-  tags[]->{
-    _id, _type, ${body}, ${slug}, title
-  }
+  _id, _type, ${body}, excerpt, feature, image, title, ${pageSettings}, ${seo}
 `
 
 const postReferenceFields = `
-  _id, _type, excerpt, image, title, ${pageSettings},
-  authors[]->{
-    _id, _type, image, name, ${slug}
-  },
-  tags[]->{
-    _id, _type, ${body}, ${slug}, title
-  }
+  _id, _type, excerpt, image, title, ${pageSettings}
 `
 
 export const authors = `
   "authors": *[_type == "author" && ${omitDrafts}] | order(name){
-    body, email, facebook, image, location, name, ${slug}, twitter, website,
-    "posts": *[_type == "post" && author._ref == ^._id && ${omitDrafts}]{
+    _id, _type, body, email, facebook, image,
+    location, name, twitter, website, ${slug},
+    "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
+    | order(publishedAt){
       ${postReferenceFields}
     }
-  }[count(posts) > 0]
-`
-
-export const tags = `
-  "tags": *[_type == "tag"] | order(title){
-    _id, _type, description, image, ${slug}, title,
-    "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
-    | order(publishedAt desc){
-      ${postReferenceFields}
-    },
   }[count(posts) > 0]
 `
 
@@ -116,6 +96,16 @@ const settings = `
     },
     ${seo}
   }
+`
+
+export const tags = `
+  "tags": *[_type == "tag"] | order(title){
+    _id, _type, description, image, ${slug}, title,
+    "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
+    | order(publishedAt){
+      ${postReferenceFields}
+    },
+  }[count(posts) > 0]
 `
 
 export const indexQuery = groq`{

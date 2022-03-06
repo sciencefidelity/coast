@@ -30,7 +30,6 @@
     "postcss-html": "^1.3.0",
     "postcss-scss": "^4.0.3",
     "prettier": "^2.5.1",
-    "sanity-codegen": "^0.9.8",
     "sass": "^1.49.9",
     "stylelint": "^14.5.3",
     "stylelint-config-html": "^1.0.0",
