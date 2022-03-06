@@ -51,72 +51,25 @@ export default {
       title: 'Publication language',
       type: 'string',
       description: 'Default: English (en)',
+      placeholder: 'en',
       group: 'site'
     },
     {
-      name: 'metaTitle',
-      title: 'Meta Title',
-      type: 'string',
-      description: 'Recommended: 70 characters.', // You’ve used 0
+      name: 'meta',
+      title: 'Site meta',
+      type: 'metaData',
       group: 'meta'
     },
     {
-      name: 'metaDescription',
-      title: 'Meta Description',
-      type: 'text',
-      description: 'Recommended: 156 characters.', // You’ve used 0
-      group: 'meta'
-    },
-    {
-      name: 'canonicalURL',
-      title: 'Canonical URL',
-      type: 'url',
-      group: 'meta'
-    },
-    {
-      name: 'twitterImage',
-      title: 'Twitter image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
+      name: 'twitterCard',
+      title: 'Twitter Card',
+      type: 'twitterCard',
       group: 'twitter'
     },
     {
-      name: 'twitterTitle',
-      title: 'Twitter title',
-      type: 'string',
-      description: 'Recommended: 70 characters.', // You’ve used 0
-      group: 'twitter'
-    },
-    {
-      name: 'twitterDescription',
-      title: 'Twitter Description',
-      type: 'text',
-      description: 'Recommended: 125 characters.', // You’ve used 0
-      group: 'twitter'
-    },
-    {
-      name: 'facebookImage',
-      title: 'Facebook image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      group: 'facebook'
-    },
-    {
-      name: 'facebookTitle',
-      title: 'Facebook title',
-      type: 'string',
-      description: 'Recommended: 70 characters.', // You’ve used 0
-      group: 'facebook'
-    },
-    {
-      name: 'facebookDescription',
-      title: 'Facebook Description',
-      type: 'text',
-      description: 'Recommended: 125 characters.', // You’ve used 0
+      name: 'facebookCard',
+      title: 'Facebook Card',
+      type: 'facebookCard',
       group: 'facebook'
     },
     {
@@ -137,7 +90,8 @@ export default {
   preview: {
     select: {
       title: 'siteName',
-      media: 'mainImage'
+      subtitle: 'siteDescription',
+      media: 'twitterCard.image'
     }
   }
 }

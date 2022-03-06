@@ -44,7 +44,14 @@ export default {
   ],
   preview: {
     select: {
+      title: 'title',
       media: 'image'
+    },
+    prepare: ({ media }) => {
+      return {
+        title: 'Site design',
+        media: media
+      }
     }
   }
 }
