@@ -1,5 +1,6 @@
 export default {
   name: 'imageData',
+  title: 'Image data',
   type: 'object',
   fields: [
     {

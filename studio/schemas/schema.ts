@@ -3,12 +3,12 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // objects
 import facebookCard from './objects/facebookCard'
-import horizontalRule from './objects/horizontalRule'
 import imageData from './objects/imageData'
 import metaData from './objects/metaData'
 import portableText from './objects/portableText'
 import pageSettings from './objects/pageSettings'
 import twitterCard from './objects/twitterCard'
+import youtube from './objects/youtube'
 
 // documents
 import design from './documents/design'
@@ -26,12 +26,12 @@ export default createSchema({
   types: schemaTypes.concat([
     // objects
     facebookCard,
-    horizontalRule,
     imageData,
     metaData,
     pageSettings,
     portableText,
     twitterCard,
+    youtube,
 
     // documents
     post,
