@@ -11,6 +11,7 @@ import twitterCard from './objects/twitterCard'
 import youtube from './objects/youtube'
 
 // documents
+import author from './documents/author'
 import design from './documents/design'
 import navigation from './documents/navigation'
 import page from './documents/page'
@@ -18,7 +19,6 @@ import post from './documents/post'
 import settings from './documents/settings'
 
 // taxonomy
-import author from './taxonomy/author'
 import tag from './taxonomy/tag'
 
 export default createSchema({
