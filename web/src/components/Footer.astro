@@ -1,5 +1,13 @@
 ---
-const { siteName } = Astro.props
+import { Navigation, Settings } from "../lib/interfaces"
+
+const {
+  navigation,
+  settings
+} = Astro.props as {
+  navigation: Navigation
+  settings: Settings
+}
 const year = new Date().getFullYear()
 ---
 
@@ -8,7 +16,7 @@ const year = new Date().getFullYear()
     class="inner mx-auto text-sm text-gray-100 grid grid-cols-3 pt-10 pb-40"
   >
     <p>
-      <a href="/">{siteName}</a>
+      <a href="/">{settings.siteName}</a>
       &copy; {year}</p>
     <p class="text-center">Data & privacy &bull; Contact</p>
     <p class="text-right">

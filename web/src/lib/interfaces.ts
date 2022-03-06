@@ -177,16 +177,21 @@ export declare type SanityReference<_T> = {
 };
 
 export interface Settings extends SanityDocument {
-  facebookURL: string
   siteDescription: string
   siteName: string
-  twitterURL: string
+  socialLinks: socialLink[]
 }
 
 export interface SocalCard {
   description: string
   image: Image
   title: string
+}
+
+export interface socialLink {
+  _key: string
+  url: string
+  name: "facebook" | "github" | "intagram" | "linkedin" | "pinterest" | "soundcloud" | "tiktok" | "twitter" | "youtube"
 }
 
 export interface Tag extends SanityDocument {
