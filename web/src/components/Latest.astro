@@ -24,7 +24,10 @@ const {
           />
         </a>
         <div class="post-card-content">
-          <a href={`/blog/${post.settings.slug}`} class="post-card-content-link">
+          <a
+            href={`/blog/${post.settings.slug}`}
+            class="post-card-content-link"
+          >
             <header>
               <div class="post-card-primary-tag">
                 {post.settings.tags[0].title}
@@ -60,13 +63,20 @@ const {
           </ul>
           <div class="post-card-byline-content">
             <span>
-              <a href={`/authors/${post.settings.authors[0].slug}`}>
-                {post.settings.authors[0].name}
-              </a>
+              {post.settings.authors.map((author, idx) => {
+                const len = post.settings.authors.length
+                return (
+                  <a href={`/authors/${author.slug}`}>
+                    {author.name + (idx === len - 1 ? "" : ", ")}
+                  </a>
+                )
+              })}
             </span>
             <span class="post-card-byline-date">
               <time
-                datetime={format(new Date(post.settings.publishedAt), "yyyy-MM-dd")}
+                datetime={format(
+                  new Date(post.settings.publishedAt), "yyyy-MM-dd"
+                )}
               >
                 {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
               </time>
