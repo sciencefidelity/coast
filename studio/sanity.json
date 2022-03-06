@@ -9,7 +9,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/color-input",
-    "@sanity/code-input"
+    "@sanity/code-input",
+    "@sanity/dashboard"
   ],
   "env": {
     "development": {
@@ -25,7 +26,11 @@
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "overrides/overrides.css"
+      "path": "./customizations/theme.css"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./customizations/dashboard.ts"
     }
   ]
 }
