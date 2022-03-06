@@ -1,183 +1,126 @@
 import groq from "groq"
 
-const omitDrafts = "!(_id in path('drafts.**'))"
+const omitDrafts = `!(_id in path('drafts.**'))`
+
+const slug = `"slug": slug.current`
 
 const body = `body[]{
   ...,
   markDefs[]{
     ...,
     item->{
-      _type,
-      "slug": slug.current
+      _type, ${slug}
     }
   }
 }`
 
 const seo = `
-  keywords,
-  seoDescription,
-  seoImage,
-  seoTitle
-`
-
-const siteFields = `
-  ${seo},
-  siteDescription,
-  siteName,
-  twitterHandle,
-  url
-`
-
-export const authorsQuery = groq`{
-  "authors": *[_type == "author" && ${omitDrafts}]{
-    ${body},
-    name,
-    "posts": *[_type == "post" && author._ref == ^._id && ${omitDrafts}]{
-      publishedAt, "slug": slug.current, title
-    },
-    "slug": slug.current
-  }[count(posts) > 0]
-}`
-
-export const blogQuery = groq`{
-  "posts": *[_type == "post"] | order(publishedAt desc){
-    publishedAt,
-    "slug": slug.current,
-    title
+  facebookCard{
+    description, image, title
+  },
+  meta{
+    canonicalURL, description, title
+  },
+  twitterCard{
+    description, image, title
   }
-}`
+`
 
-export const categoriesQuery = groq`{
-  "categories": *[_type == "category" && ${omitDrafts}] | order(title){
-    _id,
-    "posts": *[_type == "post" && references(^._id) && ${omitDrafts}] | order(publishedAt desc){
-      _id, publishedAt, "slug": slug.current, title
+const pageSettings = `
+  settings{
+    excerpt, publishedAt, ${slug},
+    authors[]->{
+      _id, _type, image, name, ${slug}
     },
-    "slug": slug.current,
-    title
-  }[count(posts) > 0]
-}`
-
-export const featuredPostsQuery = groq`{
-  "posts": *[_type == "home" && ${omitDrafts}][0]{
-    featured[0..2]->{
-      author->{name, "slug": slug.current},
-      body,
-      categories[]->{
-        _id, "slug": slug.current, title
-      },
-      publishedAt,
-      "slug": slug.current,
-      title,
+    tags[]->{
+      _id, _type, ${slug}, title
     }
   }
-}`
-
-export const latestPostsQuery = groq`{
-  "posts": *[_type == "post"] | order(publishedAt desc)[0..7]{
-    author->{name, "slug": slug.current},
-    body,
-    categories[]->{
-      _id, "slug": slug.current, title
-    },
-    publishedAt,
-    "slug": slug.current,
-    title,
-  }
-}`
-
-export const layoutQuery = groq`{
-  "site": *[_type == "site"][0]{
-    ${siteFields}
-  }
-}`
-
-export const indexQuery = groq`{
-  "design": *[_type == "design" && ${omitDrafts}][0]{
-    "accentColor": accentColor.hex, "icon": icon.asset->{url}, image
+`
+const pagePostFields = `
+  _id, _type, ${body}, excerpt, feature, image, title, ${pageSettings}, ${seo},
+  authors[]->{
+    _id, _type, image, name, ${slug}
   },
+  tags[]->{
+    _id, _type, ${body}, ${slug}, title
+  }
+`
+
+const postReferenceFields = `
+  _id, _type, excerpt, image, title, ${pageSettings},
+  authors[]->{
+    _id, _type, image, name, ${slug}
+  },
+  tags[]->{
+    _id, _type, ${body}, ${slug}, title
+  }
+`
+
+export const authors = `
+  "authors": *[_type == "author" && ${omitDrafts}] | order(name){
+    body, email, facebook, image, location, name, ${slug}, twitter, website,
+    "posts": *[_type == "post" && author._ref == ^._id && ${omitDrafts}]{
+      ${postReferenceFields}
+    }
+  }[count(posts) > 0]
+`
+
+export const tags = `
+  "tags": *[_type == "tag"] | order(title){
+    _id, _type, description, image, ${slug}, title,
+    "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
+    | order(publishedAt desc){
+      ${postReferenceFields}
+    },
+  }[count(posts) > 0]
+`
+
+const design = `
+  "design": *[_type == "design" && ${omitDrafts}][0]{
+    "accentColor": accentColor.hex,
+    "icon": icon.asset->{url},
+    image,
+    "logo": logo.asset->{url}
+  }
+`
+
+const navigation = `
   "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
     primary[]{
-      _key, label, url->{"slug": slug.current, title}
+      _key, label, url->{${slug}, title}
     },
     secondary[]{
-      _key, label, url->{"slug": slug.current, title}
-    }
-  },
-  "posts": *[_type == "post" && ${omitDrafts}] | order(publishedAt) {
-    _id,
-    _type,
-    authors[]->{
-      _id, _type, image, name, "slug": slug.current
-    },
-    ${body},
-    excerpt,
-    image,
-    publishedAt,
-    "slug": slug.current,
-    tags[]->{
-      _id, _type, "slug": slug.current, title
-    },
-    title
-  },
-  "settings": *[_type == "settings" && ${omitDrafts}][0]{
-    facebookURL, siteDescription, siteName, twitterURL
-  }
-}`
-
-export const navQuery = groq`{
-  "menu": *[_type == "menu"][0]{
-    "item": items[]->{
-      "slug": slug.current,
-      title
+      _key, label, url->{${slug}, title}
     }
   }
-}`
+`
 
-export const pagesQuery = groq`{
-  "pages": *[_type == "page" && ${omitDrafts}]{
-    ${body},
-    ${seo},
-    "slug": slug.current,
-    template[0],
-    title
+export const pages = `
+  "posts": *[_type == "post" && ${omitDrafts}] | order(settings.publishedAt){
+    ${pagePostFields}
   }
-}`
+`
 
-export const postQuery = groq`{
-  "posts": *[_type == "post" && ${omitDrafts}]{
-    author->{
-      name,
-      "slug": slug.current,
-      twitterHandle
-    },
-    ${body},
-    "categories": categories[]->{
-      _id, "slug": slug.current, title
-    },
-    "next": *[
-      _type == 'post' && publishedAt > ^.publishedAt && ${omitDrafts}
-    ] | order(publishedAt asc)[0]{
-      publishedAt,
-      "slug": slug.current,
-      title
-    },
-    "previous": *[
-      _type == 'post' && publishedAt < ^.publishedAt && ${omitDrafts}
-    ] | order(publishedAt desc)[0]{
-      publishedAt,
-      "slug": slug.current,
-      title
-    },
-    publishedAt,
-    ${seo},
-    "slug": slug.current,
-    title
+export const posts = `
+  "posts": *[_type == "post" && ${omitDrafts}] | order(settings.publishedAt){
+    ${pagePostFields}
   }
-}`
+`
 
-export const tagsQuery = groq`{
-  "posts": *[_type == "post" && ${omitDrafts}]{
-    keywords
+const settings = `
+  "settings": *[_type == "settings"][0]{
+    language, siteDescription, siteName,
+    socialLinks[]{
+      _key, name, url
+    },
+    ${seo}
   }
+`
+
+export const indexQuery = groq`{
+  ${design},
+  ${navigation},
+  ${posts},
+  ${settings}
 }`
