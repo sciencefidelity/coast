@@ -11,7 +11,6 @@ export default {
       title: 'Meta Title',
       type: 'string',
       inputComponent: StringWithLimits,
-      // description: 'Recommended: 70 characters.', // You’ve used 0
       validation: Rule => Rule.max(70).warning('Some text won\'t be visible.')
     },
     {

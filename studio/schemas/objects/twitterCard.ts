@@ -1,3 +1,5 @@
+import StringWithLimits from '../components/StringWithLimits'
+
 export default {
   name: 'twitterCard',
   title: 'Twitter Card',
@@ -16,7 +18,8 @@ export default {
       name: 'title',
       title: 'Twitter title',
       type: 'string',
-      description: 'Recommended: 70 characters.' // You’ve used 0
+      inputComponent: StringWithLimits,
+      validation: Rule => Rule.max(70).warning('Some text won\'t be visible.')
     },
     {
       name: 'description',
