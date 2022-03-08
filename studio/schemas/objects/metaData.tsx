@@ -12,7 +12,7 @@ export default {
       type: 'string',
       inputComponent: StringWithLimits,
       // description: 'Recommended: 70 characters.', // You’ve used 0
-      validation: Rule => Rule.max(70)
+      validation: Rule => Rule.max(70).warning('Some text won\'t be visible.')
     },
     {
       name: 'description',
@@ -20,7 +20,7 @@ export default {
       type: 'text',
       rows: 3,
       // description: 'Recommended: 156 characters.' // You’ve used 0
-      validation: Rule => Rule.max(156)
+      validation: Rule => Rule.max(156).warning('Some text won\'t be visible.')
     },
     {
       name: 'canonicalURL',
