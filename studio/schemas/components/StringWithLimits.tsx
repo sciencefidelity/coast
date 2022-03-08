@@ -54,7 +54,9 @@ const StringWithLimits = React.forwardRef((props, ref) => {
           ref={ref}
         />
         </FormField>
-        <Text muted size={1}>Recommended: {MaxConstraint} characters. You’ve used {value ? value.length : '0'}.</Text>
+        <Text muted size={1}>
+          Recommended: <strong>{MaxConstraint}</strong> characters.
+          You’ve used <strong style={{ color: '#30cf43', lineHeight: 2.1 }}>{value ? value.length : '0'}</strong></Text>
       </Stack>
     )
   }
