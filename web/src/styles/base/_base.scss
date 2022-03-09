@@ -1,1 +1,42 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+.outer {
+  position: relative;
+  padding: 0 4vmin;
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.horizontal-list {
+  &:not(:last-child)::after {
+    content: ', ';
+  }
+}
+
+.avatar {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.post-card-title {
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.excerpt {
+  display: -webkit-box;
+  overflow-y: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
