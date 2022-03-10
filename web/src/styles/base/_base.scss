@@ -3,17 +3,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.outer {
-  position: relative;
-  padding: 0 4vmin;
-}
-
-.inner {
-  margin: 0 auto;
-  max-width: 1200px;
-  width: 100%;
-}
-
 .horizontal-list {
   &:not(:last-child)::after {
     content: ', ';

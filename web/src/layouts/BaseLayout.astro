@@ -21,17 +21,17 @@ const accentColor = design.accentColor || "#0284C7"
   <head>
     <BaseHead settings={settings} design={design} />
   </head>
-  <body class="home-template">
-    <div id="app" class="viewport">
+  <body class="">
+    <div id="app" class="">
       <Header
         navigation={navigation}
         settings={settings}
       />
-      <div class="site-content">
-        <div class="site-header-content">
+      <div class="">
+        <div class="">
           {design.image &&
             <Image
-              className="site-header-cover"
+              className=""
               image={design.image}
               width={1512}
               lazy={false}
@@ -44,7 +44,7 @@ const accentColor = design.accentColor || "#0284C7"
             <p>{settings.siteDescription}</p>
           }
         </div>
-        <main id="site-main" class="outer mx-auto mb-20 mt-10">
+        <main id="site-main" class="container mx-auto mb-20 mt-10">
           <slot />
         </main>
 
@@ -58,6 +58,4 @@ const accentColor = design.accentColor || "#0284C7"
   </body>
 </html>
 
-<style define:vars={{ accentColor }} global>
-
-</style>
+<style define:vars={{ accentColor }} global></style>
