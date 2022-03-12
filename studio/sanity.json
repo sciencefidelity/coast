@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "coast"
+    "name": "Coast"
   },
   "plugins": [
     "@sanity/base",
@@ -24,6 +24,10 @@
       "path": "./schemas/schema"
     },
     {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.tsx"
+    },
+    {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./customizations/theme.css"
     },
@@ -34,10 +38,6 @@
     {
       "implements": "part:@sanity/base/document-actions/resolver",
       "path": "./actions/resolveDocumentActions.js"
-    },
-    {
-      "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
     }
   ]
 }
