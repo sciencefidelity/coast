@@ -10,7 +10,8 @@
     "@sanity/desk-tool",
     "@sanity/color-input",
     "@sanity/code-input",
-    "@sanity/dashboard"
+    "@sanity/dashboard",
+    "social-preview"
   ],
   "env": {
     "development": {
@@ -35,6 +36,10 @@
     {
       "implements": "part:@sanity/base/document-actions/resolver",
       "path": "./actions/resolveDocumentActions.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
     }
   ]
 }
