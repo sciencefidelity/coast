@@ -111,7 +111,7 @@ export default {
       author3: 'settings.authors.3.name',
       media: 'image'
     },
-    prepare: ({title, author0, author1, author2, author3}) => {
+    prepare: ({ title, author0, author1, author2, author3 }) => {
       const authors = [author0, author1, author2].filter(Boolean)
       const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
       const hasMoreAuthors = Boolean(author3)

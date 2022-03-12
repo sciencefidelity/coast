@@ -2,7 +2,7 @@ import React from 'react'
 import getYouTubeID from 'get-youtube-id'
 
 const YouTubePreview = ({ value }) => {
-  const id =getYouTubeID(value.url)
+  const id = getYouTubeID(value.url)
   const url = `https://www.youtube.com/embed/${id}`
   return (
     <iframe
@@ -13,7 +13,7 @@ const YouTubePreview = ({ value }) => {
       title="YouTube Preview"
       src={url}
       frameBorder="0"
-      style={{ width: "100%", aspectRatio: "16 / 9" }}
+      style={{ width: '100%', aspectRatio: '16 / 9' }}
     ></iframe>
   )
 }

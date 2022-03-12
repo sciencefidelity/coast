@@ -2,7 +2,7 @@
   "__comment": "Any compiler configuration in here will be ignored.",
   "compilerOptions": {
     "esModuleInterop": true,
-    "lib": [ "esnext" ],
+    "lib": ["esnext"],
     "jsx": "react",
     "types": ["@sanity/types"]
   },

@@ -47,6 +47,5 @@ export default createSchema({
     settings,
     design,
     navigation
-
   ])
 })

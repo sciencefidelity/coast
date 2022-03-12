@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useDocumentOperation } from '@sanity/react-hooks'
 
 export function SetAndPublishAction(props) {
-  const {patch, publish} = useDocumentOperation(props.id, props.type)
+  const { patch, publish } = useDocumentOperation(props.id, props.type)
   const [isPublishing, setIsPublishing] = useState(false)
 
   useEffect(() => {

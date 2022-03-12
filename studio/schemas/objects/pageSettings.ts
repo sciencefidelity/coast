@@ -2,7 +2,6 @@ import { Rule } from '@sanity/types'
 // import SlugInput from 'sanity-plugin-better-slug'
 import SlugWithPath from '../components/SlugWithPath'
 
-
 export default {
   name: 'pageSettings',
   type: 'object',
@@ -12,7 +11,8 @@ export default {
       title: 'Slug',
       type: 'string',
       inputComponent: SlugWithPath,
-      validation: (Rule: Rule) => Rule.max(70).warning('Some text won\'t be visible.')
+      validation: (Rule: Rule) =>
+        Rule.max(70).warning("Some text won't be visible.")
     },
     {
       name: 'publishedAt',

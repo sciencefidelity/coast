@@ -20,7 +20,8 @@ export default {
       title: 'Facebook title',
       type: 'string',
       inputComponent: StringWithLimits,
-      validation: (Rule: Rule) => Rule.max(70).warning('Some text won\'t be visible.')
+      validation: (Rule: Rule) =>
+        Rule.max(70).warning("Some text won't be visible.")
     },
     {
       name: 'description',
@@ -28,7 +29,8 @@ export default {
       type: 'text',
       rows: 3,
       description: 'Recommended: 125 characters.', // You’ve used 0
-      validation: (Rule: Rule) => Rule.max(156).warning("Some text won't be visible.")
+      validation: (Rule: Rule) =>
+        Rule.max(156).warning("Some text won't be visible.")
     }
   ],
   options: {
