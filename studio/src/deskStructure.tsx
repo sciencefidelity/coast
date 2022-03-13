@@ -29,6 +29,30 @@ export default () =>
                     .filter('_type == "post"')
                   ),
               S.listItem()
+                .title('Draft posts')
+                .icon(RiEdit2Line)
+                .child(
+                  S.documentTypeList('post')
+                    .title('Draft')
+                    .filter('_type == "post" && (_id in path("drafts.**"))')
+                  ),
+              S.listItem()
+                .title('Published posts')
+                .icon(RiEdit2Line)
+                .child(
+                  S.documentTypeList('post')
+                    .title('Published')
+                    .filter('_type == "post" && !(_id in path("drafts.**"))')
+                  ),
+              S.listItem()
+                .title('Featuerd posts')
+                .icon(RiEdit2Line)
+                .child(
+                  S.documentTypeList('post')
+                    .title('Featuerd')
+                    .filter('_type == "post" && feature == true')
+                  ),
+              S.listItem()
                 .title('Posts by tag')
                 .icon(RiPriceTag3Line)
                 .child(
@@ -69,11 +93,35 @@ export default () =>
             .items([
               S.listItem()
                 .title('All pages')
-                .icon(RiEdit2Line)
+                .icon(RiBook2Line)
                 .child(
                   S.documentTypeList('page')
                     .title('All pages')
                     .filter('_type == "page"')
+                  ),
+              S.listItem()
+                .title('Draft pages')
+                .icon(RiBook2Line)
+                .child(
+                  S.documentTypeList('page')
+                    .title('Draft')
+                    .filter('_type == "page" && (_id in path("drafts.**"))')
+                  ),
+              S.listItem()
+                .title('Published pages')
+                .icon(RiBook2Line)
+                .child(
+                  S.documentTypeList('page')
+                    .title('Published')
+                    .filter('_type == "page" && !(_id in path("drafts.**"))')
+                  ),
+              S.listItem()
+                .title('Featuerd pages')
+                .icon(RiBook2Line)
+                .child(
+                  S.documentTypeList('page')
+                    .title('Featuerd')
+                    .filter('_type == "page" && feature == true')
                   ),
               S.listItem()
                 .title('Pages by tag')
