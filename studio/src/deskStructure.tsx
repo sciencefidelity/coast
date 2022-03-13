@@ -1,4 +1,3 @@
-// import React from 'react'
 import Google from './components/Google'
 import S from '@sanity/desk-tool/structure-builder'
 import { HiOutlineColorSwatch } from 'react-icons/hi'
@@ -11,11 +10,13 @@ import {
   RiTeamLine
 } from 'react-icons/ri'
 
-export const getDefaultDocumentNode = () => {
-  return S.document().views([
-    S.view.form(),
-    S.view.component(Google).title('Google')
-  ])
+export const getDefaultDocumentNode = ({ schemaType }) => {
+  if (schemaType === "post" || schemaType === "page" || schemaType === "tag") {
+    return S.document().views([
+      S.view.form(),
+      S.view.component(Google).title('Google')
+    ])
+  }
 }
 
 export default () =>
