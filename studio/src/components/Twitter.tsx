@@ -8,9 +8,29 @@ import {
   TwitterLogo
 } from "./TwitterIcons"
 import s from "./Twitter.module.css"
-import u from "./Utils.module.css"
+import u from "./Seo.module.css"
 
-const Twitter: FC = () => {
+const Twitter = ({ document }) => {
+  const url = ("https://coast.blog/").replace(/\/$/, "")
+  let canonical = url
+  if (document.displayed.settings && document.displayed.settings.slug) {
+    canonical = `${url}/${document.displayed.settings.slug}`
+  }
+  let twitterTitle = "(untitled)"
+  if (document.displayed.title) twitterTitle = document.displayed.title
+  if (document.displayed.twitter && document.displayed.twitter.title) {
+    twitterTitle = document.displayed.twitter.title
+  }
+  let twitterDescription = ""
+  if (document.displayed.body) {
+    twitterDescription = document.displayed.body[0].children[0].text
+  }
+  if (document.displayed.settings && document.displayed.settings.excerpt) {
+    twitterDescription = document.displayed.settings.excerpt
+  }
+  if (document.displayed.twitter && document.displayed.twitter.description) {
+    twitterDescription = document.displayed.twitter.description
+  }
   return (
     <div className={u.previewPane}>
       <div className={u.previewContent}>
@@ -20,7 +40,7 @@ const Twitter: FC = () => {
               <TwitterLogo />
             </span>
             <div className={u.w100}>
-              <span className={s.twitterTitle}>Ghost</span>
+              <span className={s.twitterTitle}>Coast</span>
               {" "}
               <span className={s.twitterTime}>12 hrs</span>
               <div className={`${u.flex} ${u.flexColumn} ${u.mt2} ${u.mb3}`}>
@@ -35,13 +55,11 @@ const Twitter: FC = () => {
                   }}
                 ></div>
                 <div className={s.twitterPreviewContent}>
-                  <div className={s.twitterPreviewTitle}>
-                    Customizing your brand and design settings - Coast
-                  </div>
-                  <div className={s.twitterPreviewDesc}>How to tweak a few settings in Ghost to transform your site from a generic template to a custom brand with style and personality.</div>
+                  <div className={s.twitterPreviewTitle}>{twitterTitle}</div>
+                  <div className={s.twitterPreviewDesc}>{twitterDescription}</div>
                   <div className={s.twitterPreviewMeta}>
                     <LinkIcon />
-                    https://coast.blog/design
+                    {canonical}
                   </div>
                 </div>
               </div>

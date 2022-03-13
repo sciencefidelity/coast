@@ -1,5 +1,5 @@
 import React from "react"
-import u from "./Utils.module.css"
+import u from "./Seo.module.css"
 
 export const FacebookLogo = () => (
   <svg fill="none" viewBox="0 0 40 40" className={u.socialIcon}>

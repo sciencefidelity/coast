@@ -5,9 +5,25 @@ import {
   ThumbIcon
 } from "./FacebookIcons"
 import s from "./Facebook.module.css"
-import u from "./Utils.module.css"
+import u from "./Seo.module.css"
 
-const Facebook: FC = () => {
+const Facebook = ({ document }) => {
+  const url = ("coast.blog/").replace(/https:\/\//, "").replace(/\/$/, "")
+  let facebookTitle = "(untitled)"
+  if (document.displayed.title) facebookTitle = document.displayed.title
+  if (document.displayed.facebook && document.displayed.facebook.title) {
+    facebookTitle = document.displayed.facebook.title
+  }
+  let facebookDescription = ""
+  if (document.displayed.body) {
+    facebookDescription = document.displayed.body[0].children[0].text
+  }
+  if (document.displayed.settings && document.displayed.settings.excerpt) {
+    facebookDescription = document.displayed.settings.excerpt
+  }
+  if (document.displayed.facebook && document.displayed.facebook.description) {
+    facebookDescription = document.displayed.facebook.description
+  }
   return (
     <div className={u.previewPane}>
       <div className={u.previewContent}>
@@ -17,7 +33,7 @@ const Facebook: FC = () => {
               <FacebookLogo />
             </span>
             <div>
-              <div className={s.ogTitle}>Ghost</div>
+              <div className={s.ogTitle}>Coast</div>
               <div className={s.ogTime}>12 hrs</div>
             </div>
           </div>
@@ -34,9 +50,9 @@ const Facebook: FC = () => {
             ></div>
             <div className={s.ogPreviewBookmark}>
               <div className={s.ogPreviewContent}>
-                <div className={s.ogPreviewMeta}>coast.blog</div>
-                <div className={s.ogPreviewTitle}>Customizing your brand and design settings - Coast</div>
-                <div className={s.ogPreviewDesc}>How to tweak a few settings in Ghost to transform your site from a generic template to a custom brand with style and personality.</div>
+                <div className={s.ogPreviewMeta}>{url}</div>
+                <div className={s.ogPreviewTitle}>{facebookTitle}</div>
+                <div className={s.ogPreviewDesc}>{facebookDescription}</div>
               </div>
             </div>
           </div>

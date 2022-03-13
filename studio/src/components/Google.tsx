@@ -1,8 +1,8 @@
-import React from "react"
+import React, { FC } from "react"
 import moment from 'moment'
 import { GoogleLogo, SearchIcon } from "./GoogleIcons"
 import s from "./Google.module.css"
-import u from "./utils.module.css"
+import u from "./Seo.module.css"
 
 const googleize = (url: string) => {
   const arr: string[] = url.split(/(?<!\/)\/(?!\/)/g)
