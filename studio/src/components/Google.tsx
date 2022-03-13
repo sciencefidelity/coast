@@ -47,8 +47,8 @@ const Google = ({ document }) => {
     metaDescription = document.displayed.meta.description
   }
   return (
-    <div className={s.settingsMenuPane}>
-      <div className={s.settingsMenuContent}>
+    <div className={u.previewPane}>
+      <div className={u.previewContent}>
         <div className={s.seoContainer}>
           <div className={`${s.seoPreview} ${u.flex}`}>
             <div className={`${u.flex} ${u.mb7}`}>
