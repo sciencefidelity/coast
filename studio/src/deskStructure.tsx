@@ -1,3 +1,5 @@
+import React from 'react'
+import Google from './components/Google'
 import S from '@sanity/desk-tool/structure-builder'
 import { HiOutlineColorSwatch } from 'react-icons/hi'
 import {
@@ -8,6 +10,22 @@ import {
   RiSettings2Line,
   RiTeamLine
 } from 'react-icons/ri'
+
+const JsonPreview = ({ document }) => (
+  <div style={{
+    paddingInline: "1rem"
+  }}>
+    <h2>JSON Data for "{document.displayed.title}"</h2>
+    <pre>{JSON.stringify(document.displayed, null, 2)}</pre>
+  </div>
+)
+
+export const getDefaultDocumentNode = () => {
+  return S.document().views([
+    S.view.form(),
+    S.view.component(Google).title('Google')
+  ])
+}
 
 export default () =>
   S.list()
