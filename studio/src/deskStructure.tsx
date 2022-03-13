@@ -1,6 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { HiOutlineColorSwatch } from 'react-icons/hi'
 import {
+  RiBook2Line,
   RiEdit2Line,
   RiNavigationLine,
   RiPriceTag3Line,
@@ -24,7 +25,7 @@ export default () =>
                 .icon(RiEdit2Line)
                 .child(
                   S.documentTypeList('post')
-                    .title('All Posts')
+                    .title('All posts')
                     .filter('_type == "post"')
                   ),
               S.listItem()
@@ -59,8 +60,55 @@ export default () =>
                 )
             ])
         ),
+      S.listItem()
+        .title('Page')
+        .icon(RiBook2Line)
+        .child(
+          S.list()
+            .title('Filters')
+            .items([
+              S.listItem()
+                .title('All pages')
+                .icon(RiEdit2Line)
+                .child(
+                  S.documentTypeList('page')
+                    .title('All pages')
+                    .filter('_type == "page"')
+                  ),
+              S.listItem()
+                .title('Pages by tag')
+                .icon(RiPriceTag3Line)
+                .child(
+                  S.documentTypeList('tag')
+                  .title('Tag')
+                  .child(tagId =>
+                    S.documentList()
+                      .title('Pages')
+                      .filter(
+                        '_type == "page" && $tagId in settings.tags[]._ref'
+                      )
+                      .params({ tagId })
+                  )
+                ),
+              S.listItem()
+                .title('Pages by author')
+                .icon(RiTeamLine)
+                .child(
+                  S.documentTypeList('author')
+                  .title('Author')
+                  .child(authorId =>
+                    S.documentList()
+                      .title('Pages')
+                      .filter(
+                        '_type == "page" && $authorId in settings.authors[]._ref'
+                      )
+                      .params({ authorId })
+                  )
+                )
+            ])
+        ),
       ...S.documentTypeListItems().filter(
-        item => !['settings', 'design', 'navigation', 'post'].includes(item.getId())
+        item => !['settings', 'design', 'navigation', 'page', 'post'].includes(item.getId())
       ),
       S.divider(),
 
