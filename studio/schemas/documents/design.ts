@@ -1,7 +1,10 @@
+import { HiOutlineColorSwatch } from 'react-icons/hi'
+
 export default {
   name: 'design',
   title: 'Design',
   type: 'document',
+  icon: HiOutlineColorSwatch,
   groups: [
     {
       name: 'brand',

@@ -1,7 +1,10 @@
+import { RiNavigationLine } from 'react-icons/ri'
+
 export default {
   name: 'navigation',
   title: 'Navigation',
   type: 'document',
+  icon: RiNavigationLine,
   groups: [
     {
       name: 'primary',

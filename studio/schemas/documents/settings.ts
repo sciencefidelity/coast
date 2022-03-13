@@ -1,7 +1,10 @@
+import { RiSettings2Line } from 'react-icons/ri'
+
 export default {
   name: 'settings',
   title: 'Settings',
   type: 'document',
+  icon: RiSettings2Line,
   groups: [
     {
       name: 'site',
