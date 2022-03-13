@@ -17,6 +17,35 @@ const googleize = (url: string) => {
 }
 
 const Google = ({ document }) => {
+  const url = ("https://coast.blog/").replace(/\/$/, "")
+  let canonical = (<div>{url}</div>)
+  if (document.displayed.settings && document.displayed.settings.slug) {
+    canonical = googleize(`${url}/${document.displayed.settings.slug}`)
+  }
+  if (document.displayed.meta && document.displayed.meta.canonicalURL) {
+    canonical = googleize(document.displayed.meta.canonicalURL)
+  }
+  let metaTitle = "(untitled)"
+  if (document.displayed.title) metaTitle = document.displayed.title
+  if (document.displayed.meta && document.displayed.meta.title) {
+    metaTitle = document.displayed.meta.title
+  }
+  let publishedAt = moment(document.displayed._createdAt)
+    .format('DD MMM YYYY')
+  if (document.displayed.settings && document.displayed.settings.publishedAt) {
+    publishedAt = moment(document.displayed.settings.publishedAt)
+      .format('DD MMM YYYY')
+  }
+  let metaDescription = ""
+  if (document.displayed.body) {
+    metaDescription = document.displayed.body[0].children[0].text
+  }
+  if (document.displayed.settings && document.displayed.settings.excerpt) {
+    metaDescription = document.displayed.settings.excerpt
+  }
+  if (document.displayed.meta && document.displayed.meta.description) {
+    metaDescription = document.displayed.meta.description
+  }
   return (
     <div className={s.settingsMenuPane}>
       <div className={s.settingsMenuContent}>
@@ -28,21 +57,10 @@ const Google = ({ document }) => {
                 <SearchIcon />
               </div>
             </div>
-            <div className={s.seoPreviewLink}>
-              {document.displayed.meta.canonicalURL &&
-                googleize(document.displayed.meta.canonicalURL)}
-            </div>
-            <div className={s.seoPreviewTitle}>
-              {document.displayed.meta.title || document.displayed.title}
-            </div>
+            <div className={s.seoPreviewLink}>{canonical}</div>
+            <div className={s.seoPreviewTitle}>{metaTitle}</div>
             <div className={s.seoPreviewDesc}>
-              {document.displayed.settings.publishedAt &&
-                moment(document.displayed.settings.publishedAt).format(
-                  'DD MMM YYYY'
-                ) + ' — '}
-              {document.displayed.meta.description ||
-                document.displayed.excerpt ||
-                document.displayed.title || ""}
+              {publishedAt}{' — '}{metaDescription}
             </div>
           </div>
         </div>

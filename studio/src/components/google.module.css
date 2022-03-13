@@ -1,13 +1,3 @@
-/* body {
-  background-color: hsl(210, 9%, 9%);
-  background-color: hsl(180, 5%, 96%);
-} */
-
-/* html {
-  font-size: 62.5%;
-  letter-spacing: 0.2px;
-} */
-
 .flex {
   display: flex;
 }
@@ -17,7 +7,7 @@
 }
 
 .settingsMenuPane {
-  position: absolute;
+  position: relative;
   inset: 0 auto 0 0;
 }
 
@@ -27,11 +17,11 @@
 
 .seoContainer {
   padding: 20px 30px 16px;
-  // border: 1px solid hsl(220, 6%, 10%);
   border: 1px solid hsl(204, 11%, 91%);
   background: hsl(0, 0%, 100%);
   border-radius: 3px;
-  width: min(662px, 100% - 60px);
+  width: min(662px);
+  max-width: calc(100% - 60px);
 }
 
 .seoContainer svg {
