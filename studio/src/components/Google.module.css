@@ -12,6 +12,8 @@
   background: hsl(0, 0%, 100%);
   border: 1px solid hsl(204, 11%, 91%);
   border-radius: 3px;
+  width: 662px;
+  max-width: calc(100% - 60px);
 }
 
 .seoContainer svg {
@@ -22,7 +24,6 @@
 
 .seoPreview {
   flex-direction: column;
-  width: 600px;
   margin-bottom: 28px;
   font-family: Arial, sans-serif;
 }

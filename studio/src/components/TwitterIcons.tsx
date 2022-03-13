@@ -1,5 +1,5 @@
 import React from "react"
-import u from "styles/Utils.module.scss"
+import u from "./Utils.module.css"
 
 export const CommentIcon = () => (
   <svg viewBox="0 0 24 24">

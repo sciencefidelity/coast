@@ -1,33 +1,71 @@
 import React from "react"
-import Layout from "components/Layout"
-import { GoogleLogo, SearchIcon } from "components/GoogleIcons"
-import s from "styles/Google.module.scss"
-import u from "styles/utils.module.scss"
+import moment from 'moment'
+import { GoogleLogo, SearchIcon } from "./GoogleIcons"
+import s from "./Google.module.css"
+import u from "./utils.module.css"
 
-const Google = () => {
+const googleize = (url: string) => {
+  const arr: string[] = url.split(/(?<!\/)\/(?!\/)/g)
   return (
-    <Layout>
-      <div className={`${s.settingsMenu} ${s.settingsMenuPane} ${s.settingsMenuPaneWide}`}>
-        <div className={s.settingsMenuContent}>
-          <div className={s.seoContainer}>
-            <div className={`${s.seoPreview} ${u.flex}`}>
-              <div className={`${u.flex} ${u.mb7}`}>
-                <GoogleLogo />
-              </div>
+    <div>
+      {arr[0]}
+      {arr[1] && (
+        <span className={s.subdirectory}>{' › ' + arr[arr.length - 1]}</span>
+      )}
+    </div>
+  )
+}
+
+const Google = ({ document }) => {
+  const url = ("https://coast.blog/").replace(/\/$/, "")
+  let canonical = (<div>{url}</div>)
+  if (document.displayed.settings && document.displayed.settings.slug) {
+    canonical = googleize(`${url}/${document.displayed.settings.slug}`)
+  }
+  if (document.displayed.meta && document.displayed.meta.canonicalURL) {
+    canonical = googleize(document.displayed.meta.canonicalURL)
+  }
+  let metaTitle = "(untitled)"
+  if (document.displayed.title) metaTitle = document.displayed.title
+  if (document.displayed.meta && document.displayed.meta.title) {
+    metaTitle = document.displayed.meta.title
+  }
+  let publishedAt = moment(document.displayed._createdAt)
+    .format('DD MMM YYYY')
+  if (document.displayed.settings && document.displayed.settings.publishedAt) {
+    publishedAt = moment(document.displayed.settings.publishedAt)
+      .format('DD MMM YYYY')
+  }
+  let metaDescription = ""
+  if (document.displayed.body) {
+    metaDescription = document.displayed.body[0].children[0].text
+  }
+  if (document.displayed.settings && document.displayed.settings.excerpt) {
+    metaDescription = document.displayed.settings.excerpt
+  }
+  if (document.displayed.meta && document.displayed.meta.description) {
+    metaDescription = document.displayed.meta.description
+  }
+  return (
+    <div className={s.settingsMenuPane}>
+      <div className={s.settingsMenuContent}>
+        <div className={s.seoContainer}>
+          <div className={`${s.seoPreview} ${u.flex}`}>
+            <div className={`${u.flex} ${u.mb7}`}>
+              <GoogleLogo />
               <div className={`${s.seoSearchBar} ${u.flex}`}>
                 <SearchIcon />
               </div>
-              <div className={s.seoPreviewLink}>
-                https://coast.blog
-                <span className={s.subdirectory}> › design</span>
-              </div>
-              <div className={s.seoPreviewTitle}>Customizing your brand and design settings - Coast</div>
-              <div className={s.seoPreviewDesc}>07 Mar 2022 — How to tweak a few settings in Ghost to transform your site from a generic template to a custom brand with style and personality.</div>
+            </div>
+            <div className={s.seoPreviewLink}>{canonical}</div>
+            <div className={s.seoPreviewTitle}>{metaTitle}</div>
+            <div className={s.seoPreviewDesc}>
+              {publishedAt}{' — '}{metaDescription}
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   )
 }
 export default Google
