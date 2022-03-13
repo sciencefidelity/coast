@@ -1,10 +1,10 @@
-import { PostIcon } from '../../src/icons'
+import { RiEdit2Line } from 'react-icons/ri'
 
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
-  icon: PostIcon,
+  icon: RiEdit2Line,
   groups: [
     {
       name: 'post',
