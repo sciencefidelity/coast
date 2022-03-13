@@ -1,6 +1,6 @@
 import defaultResolve from 'part:@sanity/base/document-actions'
 
-import { SetAndPublishAction } from './SetAndPublishAction'
+import { SetAndPublishAction } from './actions/SetAndPublishAction'
 
 export default function resolveDocumentActions(props) {
   return [...defaultResolve(props), SetAndPublishAction]

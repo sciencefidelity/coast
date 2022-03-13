@@ -25,19 +25,19 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.tsx"
+      "path": "./src/deskStructure.tsx"
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./customizations/theme.css"
+      "path": "./src/theme.css"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./customizations/dashboard.ts"
+      "path": "./src/dashboard.ts"
     },
     {
       "implements": "part:@sanity/base/document-actions/resolver",
-      "path": "./actions/resolveDocumentActions.js"
+      "path": "./src/resolveDocumentActions.js"
     }
   ]
 }
