@@ -17,6 +17,11 @@
   mix-blend-mode: normal !important;
 }
 
-[data-text] {
+/* [data-text] {
   font-family: Georgia, serif !important;
+} */
+
+:global([data-as="fieldset"] [data-as="div"][data-ui="Box"]) {
+  border: 0 !important;
+  padding-left: 0 !important;
 }

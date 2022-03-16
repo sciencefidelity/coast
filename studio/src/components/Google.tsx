@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React from "react"
 import moment from 'moment'
 import { GoogleLogo, SearchIcon } from "./GoogleIcons"
 import s from "./Google.module.css"

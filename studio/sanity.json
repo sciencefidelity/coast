@@ -21,23 +21,23 @@
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+      "path": "./src/schemas/schema"
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./src/deskStructure.tsx"
+      "path": "./src/desk-structure"
     },
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./src/theme.css"
+      "path": "./src/styles/theme.css"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./src/dashboard.ts"
+      "path": "./src/dashboard"
     },
     {
       "implements": "part:@sanity/base/document-actions/resolver",
-      "path": "./src/resolveDocumentActions.js"
+      "path": "./src/document-actions"
     }
   ]
 }

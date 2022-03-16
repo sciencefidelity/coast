@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
-import Facebook from './components/Facebook'
-import Google from './components/Google'
-import Twitter from './components/Twitter'
+import Facebook from '../components/Facebook'
+import Google from '../components/Google'
+import Twitter from '../components/Twitter'
 import { HiOutlineColorSwatch } from 'react-icons/hi'
 import {
   RiBook2Line,
