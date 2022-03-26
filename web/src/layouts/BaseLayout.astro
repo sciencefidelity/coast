@@ -28,20 +28,21 @@ const accentColor = design.accentColor || "#0284C7"
         settings={settings}
       />
       <div class="">
-        <div class="">
+        <div class="relative">
           {design.image &&
             <Image
-              className=""
+              className="h-10"
               image={design.image}
               width={1512}
+              height={740}
               lazy={false}
             />
           }
           {settings.siteName &&
-            <h1 class="site-title">{settings.siteName}</h1>
+            <h1 class="absolute">{settings.siteName}</h1>
           }
           {settings.siteDescription &&
-            <p>{settings.siteDescription}</p>
+            <p class="absolute">{settings.siteDescription}</p>
           }
         </div>
         <main id="site-main" class="container mx-auto mb-20 mt-10">
