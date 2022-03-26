@@ -14,6 +14,11 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
+# Astro
+[*.astro]
+indent_style = space
+indent_size = 2
+
 # TypeScript, JavaScript
 [*.{ts,js,tsx,jsx}]
 indent_style = space

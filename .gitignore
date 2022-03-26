@@ -1,4 +1,5 @@
 node_modules
+.snowpack
 *.log
 *.bak
 .DS_Store
