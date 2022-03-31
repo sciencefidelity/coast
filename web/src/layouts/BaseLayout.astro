@@ -2,7 +2,7 @@
 import BaseHead from "components/BaseHead.astro"
 import Footer from "components/Footer.astro"
 import Header from "components/Header.astro"
-import Image from "components/Image.astro"
+// import Image from "components/Image.astro"
 import { Design, Navigation, Settings } from "lib/interfaces"
 import "styles/global.scss"
 
@@ -24,28 +24,12 @@ const accentColor = design.accentColor || "#0284C7"
   <body class="">
     <div id="app" class="">
       <Header
+        design={design}
         navigation={navigation}
         settings={settings}
       />
       <div class="">
-        <div class="relative">
-          {design.image &&
-            <Image
-              className="h-10"
-              image={design.image}
-              width={1512}
-              height={740}
-              lazy={false}
-            />
-          }
-          {settings.siteName &&
-            <h1 class="absolute">{settings.siteName}</h1>
-          }
-          {settings.siteDescription &&
-            <p class="absolute">{settings.siteDescription}</p>
-          }
-        </div>
-        <main id="site-main" class="container mx-auto mb-20 mt-10">
+        <main id="site-main" class="container mx-auto mb-20">
           <slot />
         </main>
 

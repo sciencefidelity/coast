@@ -6,9 +6,9 @@ const { navigation, settings } = Astro.props as {
   settings: Settings
 }
 ---
-<nav class="absolute hidden md:block text-white">
-  <div class="flex">
-    <div class="">
+<nav class="absolute hidden md:block text-white w-screen">
+  <div class="flex py-4 px-8 w-full">
+    <!-- <div class="">
       <a class="" href="/">
         {settings.siteName}
       </a>
@@ -17,9 +17,9 @@ const { navigation, settings } = Astro.props as {
             <div class=""></div>
         </div>
       </a>
-    </div>
+    </div> -->
     <div class="">
-      <ul id="nav" class="flex gap-3">
+      <ul id="nav" class="flex gap-5">
         <li class="block">
           <a href="/">Home</a>
         </li>
@@ -30,7 +30,7 @@ const { navigation, settings } = Astro.props as {
         )}
       </ul>
     </div>
-    <div class="flex gap-3">
+    <div class="flex gap-3 ml-auto">
       {settings.socialLinks[0] && <a
         class=""
         href={settings.socialLinks[0].url}
