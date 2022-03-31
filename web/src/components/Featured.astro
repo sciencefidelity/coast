@@ -1,9 +1,9 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "../lib/sanityClient"
-import { toPlainText } from "../lib/utils"
-import { featuredPostsQuery } from "../lib/queries"
-import { Home } from "../lib/interfaces"
+import sanityClient from "lib/sanityClient"
+import { toPlainText } from "lib/utils"
+import { featuredPostsQuery } from "lib/queries"
+import { Home } from "lib/interfaces"
 
 const response = await sanityClient.fetch(featuredPostsQuery)
 const data: { posts: Home } = await response

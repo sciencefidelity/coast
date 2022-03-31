@@ -1,9 +1,9 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "../../lib/sanityClient"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import { categoriesQuery } from "../../lib/queries"
-import { Category } from "../../lib/interfaces"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { categoriesQuery } from "lib/queries"
+import { Category } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { categories: Category[] } = await sanityClient

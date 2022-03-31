@@ -1,9 +1,9 @@
 ---
-import sanityClient from "../lib/sanityClient"
-import BaseLayout from "../layouts/BaseLayout.astro"
-import { kebabCase } from "../lib/utils"
-import { tagsQuery } from "../lib/queries"
-import { Post } from "../lib/interfaces"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { kebabCase } from "lib/utils"
+import { tagsQuery } from "lib/queries"
+import { Post } from "lib/interfaces"
 
 const response = await sanityClient.fetch(tagsQuery)
 const data: { posts: Post[] } = await response

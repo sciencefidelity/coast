@@ -7,12 +7,12 @@
     "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/lib/*": ["lib/*"],
-      "@/generated/*": ["generated/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"]
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "lib/*": ["src/lib/*"],
+      "generated/*": ["src/generated/*"],
+      "pages/*": ["src/pages/*"],
+      "styles/*": ["src/styles/*"]
     }
   },
   "include": [
