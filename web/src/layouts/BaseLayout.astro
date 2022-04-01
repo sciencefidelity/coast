@@ -2,7 +2,7 @@
 import BaseHead from "components/BaseHead.astro"
 import Footer from "components/Footer.astro"
 import Header from "components/Header.astro"
-// import Image from "components/Image.astro"
+import Image from "components/Image.astro"
 import { Design, Navigation, Settings } from "lib/interfaces"
 import "styles/global.scss"
 
@@ -21,25 +21,37 @@ const accentColor = design.accentColor || "#0284C7"
   <head>
     <BaseHead settings={settings} design={design} />
   </head>
-  <body class="">
-    <div id="app" class="">
-      <Header
-        design={design}
-        navigation={navigation}
-        settings={settings}
-      />
-      <div class="">
-        <main id="site-main" class="container mx-auto mb-20">
-          <slot />
-        </main>
-
-        <Footer
-          design={design}
-          navigation={navigation}
-          settings={settings}
+  <body class="relative">
+    <Header
+      design={design}
+      navigation={navigation}
+      settings={settings}
+    />
+    <div class="flex flex-col justify-center content-center">
+      {design.image &&
+        <Image
+          className="h-96 absolute"
+          image={design.image}
+          width={1796}
+          height={721}
+          lazy={false}
         />
-      </div>
+      }
+      {settings.siteName &&
+        <h1 class="font-bold text-5xl mb-1.5">{settings.siteName}</h1>
+      }
+      {settings.siteDescription &&
+        <p class="text-2xl">{settings.siteDescription}</p>
+      }
     </div>
+    <main id="site-main" class="container mx-auto mb-20">
+      <slot />
+    </main>
+    <Footer
+      design={design}
+      navigation={navigation}
+      settings={settings}
+    />
   </body>
 </html>
 

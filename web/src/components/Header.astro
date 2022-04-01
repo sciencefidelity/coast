@@ -1,40 +1,17 @@
 ---
 import Navbar from "components/Navbar.astro"
-import Image from "components/Image.astro"
-import { Design, Navigation, Settings } from "lib/interfaces"
+import { Navigation, Settings } from "lib/interfaces"
 
-const { design, navigation, settings } = Astro.props as {
-  design: Design
+const { navigation, settings } = Astro.props as {
   navigation: Navigation
   settings: Settings
 }
 ---
-<header id="header" class="relative">
-  <div class="relative">
-    <div class="flex absolute items-center h-full w-screen">
-      <div class="text-white text-center w-full">
-        {settings.siteName &&
-          <h1 class="font-bold text-5xl mb-1.5">{settings.siteName}</h1>
-        }
-        {settings.siteDescription &&
-          <p class="text-2xl">{settings.siteDescription}</p>
-        }
-      </div>
-    </div>
-    <Navbar
-      navigation={navigation}
-      settings={settings}
-    />
-    {design.image &&
-      <Image
-        className="h-96"
-        image={design.image}
-        width={1796}
-        height={721}
-        lazy={false}
-      />
-    }
-  </div>
+<header id="header" class="relative z-50">
+  <Navbar
+    navigation={navigation}
+    settings={settings}
+  />
 </header>
 
 <style>
