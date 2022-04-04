@@ -22,22 +22,20 @@ const position = hotspot
   ? `${Math.round(hotspot.x * 100)}% ${Math.round(hotspot.y * 100)}%`
   : "50% 50%"
 ---
-<div>
-  <img
-    src={urlFor(image)
-      .auto("format")
-      .width(width)
-      .height(height)
-      .quality(85)
-      .url()}
-    alt={caption}
-    width={width}
-    height={height}
-    loading={lazy ? "lazy" : "eager"}
-    style={`object-position: ${position}`}
-    class={className}
-  />
-</div>
+<img
+  src={urlFor(image)
+    .auto("format")
+    .width(width)
+    .height(height)
+    .quality(85)
+    .url()}
+  alt={caption}
+  width={width}
+  height={height}
+  loading={lazy ? "lazy" : "eager"}
+  style={`object-position: ${position}`}
+  class={className}
+/>
 
 <style>
 img {
