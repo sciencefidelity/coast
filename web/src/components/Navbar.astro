@@ -11,11 +11,13 @@ const { navigation, settings } = Astro.props as {
     <div class="">
       <ul id="nav" class="flex gap-5">
         <li class="block">
-          <a href="/">Home</a>
+          <a href="/" class="opacity-80 hover:opacity-100">Home</a>
         </li>
-        {navigation.primary.map(item =>
+        {navigation.primary.map(item => item.label &&
           <li class="block">
-            <a href={`/${item.url.slug}`}>{item.label}</a>
+            <a href={`/${item.url.slug}`} class="opacity-80 hover:opacity-100">
+              {item.label}
+            </a>
           </li>
         )}
       </ul>
@@ -23,7 +25,7 @@ const { navigation, settings } = Astro.props as {
     <div class="flex gap-3 ml-auto">
       {settings.socialLinks[0] &&
         <a
-          class=""
+          class="opacity-80 hover:opacity-100"
           href={settings.socialLinks[0].url}
           title="Facebook"
           target="_blank"
@@ -37,7 +39,7 @@ const { navigation, settings } = Astro.props as {
       }
       {settings.socialLinks[2] &&
         <a
-          class=""
+          class="opacity-80 hover:opacity-100"
           href={settings.socialLinks[2].url}
           title="Twitter"
           target="_blank"
