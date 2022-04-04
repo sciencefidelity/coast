@@ -22,6 +22,7 @@
     "@sanity/image-url": "^1.0.1",
     "@types/vhtml": "^2.2.4",
     "astro": "^1.0.0-beta.0",
+    "astro-control": "^0.0.1",
     "autoprefixer": "^10.4.4",
     "concurrently": "^7.1.0",
     "cssnano": "^5.1.7",

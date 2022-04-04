@@ -3,11 +3,9 @@ import tailwind from "@astrojs/tailwind"
 
 // https://astro.build/config
 export default defineConfig({
-  buildOptions: {
-    sitemap: true
-  },
-  devOptions: {
-    host: true
+  site: "https://coast.blog",
+  server: {
+    host: false
   },
   integrations: [tailwind()]
 })

@@ -660,6 +660,11 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
+astro-control@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/astro-control/-/astro-control-0.0.1.tgz#23affeecba6afa660c79a1bb22a66e42621b84ca"
+  integrity sha512-48FqFhwa6eZvnjG1ggwAUpV4ctPfIRvEybKEJ6cfnyNZFMNfPAuN8TfSQ64vmx/JG2jtP3/s10bjygfqDnuBig==
+
 astro@^1.0.0-beta.0:
   version "1.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.0-beta.0.tgz#61fd7514e7a5ae112ced6d7c7b3acefcae0ce229"
