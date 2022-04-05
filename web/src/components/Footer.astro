@@ -11,19 +11,48 @@ const {
 const year = new Date().getFullYear()
 ---
 
-<footer class="outer bg-zinc-700">
+<footer class="bg-gray-900">
   <div
-    class="inner mx-auto text-sm text-gray-100 grid grid-cols-3 pt-10 pb-40"
+    class="mx-8 smooth text-sm text-gray-100"
   >
-    <p>
-      <a href="/">{settings.siteName}</a>
-      &copy; {year}</p>
-    <p class="text-center">Data & privacy &bull; Contact</p>
-    <p class="text-right">
-      Powered by
-      <a href="https://astro.build" target="_blank" rel="noreferrer">Astro</a>
-      and
-      <a href="https://sanity.io" target="_blank" rel="noreferrer">Sanity</a>
-    </p>
+    <div
+      class="container grid grid-cols-3 pt-10 pb-40"
+    >
+      <p>
+        <a href="/">{settings.siteName}</a>
+        <span class="opacity-80">&copy; {year}</span>
+      </p>
+      <p class="text-center">
+        <a
+          href="/privacy"
+          target="_blank"
+          rel="noreferrer"
+          class="opacity-80 hover:opacity-100"
+        >Data & privacy</a>
+        <span class="opacity-80">&bull; </span>
+        <a
+          href="/contact"
+          target="_blank"
+          rel="noreferrer"
+          class="opacity-80 hover:opacity-100"
+        >Contact</a>
+      </p>
+      <p class="text-right">
+        <span class="opacity-80">Powered by</span>
+        <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noreferrer"
+          class="opacity-80 hover:opacity-100"
+        >Astro</a>
+        <span class="opacity-80">and</span>
+        <a
+          href="https://sanity.io"
+          target="_blank"
+          rel="noreferrer"
+          class="opacity-80 hover:opacity-100"
+        >Sanity</a>
+      </p>
+    </div>
   </div>
 </footer>
