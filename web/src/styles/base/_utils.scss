@@ -2,16 +2,21 @@
   font-family: Georgia, Times, serif;
 }
 
-.container {
-  width: min(100% - 4vmin, 75rem);
-  margin: auto;
+.smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+// .container {
+//   width: min(100% - 4vmin, 75rem);
+//   margin: auto;
+// }
 
 // .outer {
 //   position: relative;
 //   padding: 0 4vmin;
 // }
-//
+
 // .inner {
 //   margin: 0 auto;
 //   max-width: 1200px;
