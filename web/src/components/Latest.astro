@@ -10,7 +10,6 @@ const {
   posts
 } = Astro.props as { design: Design, posts: Post[] }
 const accentColor = design.accentColor || "#0284C7"
-console.log(posts[0])
 ---
 <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
   {posts && posts.map((post, idx) =>
