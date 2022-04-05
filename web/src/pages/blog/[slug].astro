@@ -4,73 +4,64 @@ import { toHTML } from "@portabletext/to-html"
 import sanityClient from "lib/sanityClient"
 import { kebabCase, portableTextComponents } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
-import { postQuery } from "lib/queries"
+import { posts } from "lib/queries"
 import { Post } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { posts: Post[] } = await sanityClient
-    .fetch(postQuery)
+    .fetch(posts)
     .then(response => response)
   return data.posts.map(post => {
     return {
-      params: { slug: post.slug },
+      params: { slug: post.settings.slug },
       props: { post }
     }
   })
 }
 
-const { slug } = Astro.request.params
+const { slug } = Astro.params
 const { post } = Astro.props as { post: Post }
-const {
-  author,
-  body,
-  categories,
-  keywords,
-  next,
-  previous,
-  publishedAt,
-  seoDescription,
-  seoImage,
-  seoTitle,
-  title
-} = post
-const date = format(new Date(publishedAt), "eeee, do MMMM yyyy")
-const tags = keywords.split(", ")
+// const {
+//   author,
+//   body,
+//   categories,
+//   keywords,
+//   next,
+//   previous,
+//   publishedAt,
+//   seoDescription,
+//   seoImage,
+//   seoTitle,
+//   title
+// } = post
+const date = format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")
+// const tags = keywords.split(", ")
 ---
 <BaseLayout
-  title={title}
-  seoDescription={seoDescription}
-  keywords={keywords}
-  seoImage={seoImage}
-  seoTitle={seoTitle}
-  slug={slug}
-  twitterHandle={author.twitterHandle}
+  post={post}
 >
   <div>
-    <h1>{title}</h1>
+    <h1>{post.title}</h1>
     <p>published on: {date}</p>
     <p>by:
-      <a href={`/authors/${author.slug}`}>{post.author.name}</a>
+      <a href={`/authors/${post.settings.authors[0].slug}`}>
+        {post.settings.authors[0].name}
+      </a>
     </p>
     <ul>
-      in: {categories.map(category =>
-        <li><a href={`/category/${category.slug}`}>{category.title}</a></li>
-      )}
-    </ul>
-    <ul>
-      tags: {tags.map(tag =>
-        <li><a href={`/tags/${kebabCase(tag)}`}>{tag}</a></li>
+      in: {post.settings.tags.map(tag =>
+        <li><a href={`/category/${tag.slug}`}>{tag.title}</a></li>
       )}
     </ul>
     <div
-      set:html={body && toHTML(body, {components: portableTextComponents})}
+      set:html={post.body && toHTML(post.body, {components: portableTextComponents})}
     />
-    {previous
+    <!-- {previous
       ? <p><a href={`/blog/${previous.slug}`}>Previous post</a></p>
       : <p>&nbsp;</p>}
     {next
       ? <p><a href={`/blog/${next.slug}`}>Next post</a></p>
-      : <p>&nbsp;</p>}
+      : <p>&nbsp;</p>} -->
   </div>
 </BaseLayout>
 

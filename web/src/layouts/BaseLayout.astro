@@ -38,14 +38,17 @@ const accentColor = design.accentColor || "#0284C7"
           lazy={false}
         />
       }
-      <Maybe as="h1" class="relative font-bold text-5xl text-white mb-1.5 z-10">
+      <Maybe
+        as="h1"
+        class="smooth relative font-bold text-5xl text-white mb-1.5 z-10"
+      >
         {settings.siteName}
       </Maybe>
-      <Maybe as="p" class="relative text-2xl text-white z-10">
+      <Maybe as="p" class="smooth relative text-2xl text-white z-10">
         {settings.siteDescription}
       </Maybe>
     </div>
-    <main id="site-main" class="container mx-auto mb-20">
+    <main id="site-main" class="mx-auto mb-20 mx-8">
       <slot />
     </main>
     <Footer

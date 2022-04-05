@@ -1,4 +1,5 @@
 ---
+import { Show } from "astro-control"
 import format from "date-fns/format"
 import { toPlainText } from "lib/utils"
 import Image from "components/Image.astro"
@@ -9,86 +10,178 @@ const {
   posts
 } = Astro.props as { design: Design, posts: Post[] }
 const accentColor = design.accentColor || "#0284C7"
+console.log(posts[0])
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+<div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
   {posts && posts.map((post, idx) =>
-    <article class="">
-      <a href={`/blog/${post.settings.slug}`} class="post-card-image-link">
-        <Image
-          className="rounded-sm"
-          image={post.image}
-          width={800}
-          lazy={true}
-        />
-      </a>
-      <div class="">
-        <a
-          href={`/blog/${post.settings.slug}`}
-          class=""
-        >
-          <header>
-            <div class="tag uppercase text-xs pt-6">
-              {post.settings.tags[0].title}
-            </div>
-            <h2 class="smooth font-bold text-2xl pt-2">
-              {post.title}
-            </h2>
-          </header>
-          <div class="smooth serif text-gray-500 pt-2">
-            <p>
-              {post.settings.excerpt
-                ? post.settings.excerpt
-                : toPlainText(post.body).substring(0, 210)}
-            </p>
-          </div>
+    <Show when={idx === 0}>
+      <article class="feature lg:grid grid-cols-3 gap-8">
+        <a href={`/blog/${post.settings.slug}`} class="feature-image">
+          <Image
+            className="rounded-sm h-52 lg:h-96"
+            image={post.image}
+            width={800}
+            lazy={true}
+          />
         </a>
-      </div>
-      <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
-        <ul class="flex">
-          {post.settings.authors && post.settings.authors.map(author =>
-            <li class="w-9">
-              <a href={`/authors/${author.slug}`} class="author block">
-                <Image
-                  className="rounded-full shadow-sm"
-                  image={author.image}
-                  width={72}
-                  height={72}
-                  lazy={true}
-                />
-              </a>
-            </li>
-          )}
-        </ul>
-        <div class="flex flex-col">
-          <span>
-            {post.settings.authors.map((author, idx) => {
-              const len = post.settings.authors.length
-              return (
-                <a href={`/authors/${author.slug}`} class="font-bold">
-                  {author.name + (idx === len - 1 ? "" : ", ")}
-                </a>
-              )
-            })}
-          </span>
-          <span class="text-gray-500">
-            <time
-              datetime={format(
-                new Date(post.settings.publishedAt), "yyyy-MM-dd"
-              )}
+        <div>
+          <div class="">
+            <a
+              href={`/blog/${post.settings.slug}`}
+              class=""
             >
-              {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
-            </time>
-            <span class="bull">&bull;</span>
-            {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
-            min read
-          </span>
+              <header>
+                <div class="tag uppercase text-xs pt-6">
+                  {post.settings.tags[0].title}
+                </div>
+                <h2 class="smooth font-bold text-2xl lg:text-3xl pt-2">
+                  {post.title}
+                </h2>
+              </header>
+              <div class="smooth serif text-gray-500 pt-2">
+                <p>
+                  {post.settings.excerpt
+                    ? post.settings.excerpt
+                    : toPlainText(post.body).substring(0, 210)}
+                </p>
+              </div>
+            </a>
+          </div>
+          <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
+            <ul class="flex">
+              {post.settings.authors && post.settings.authors.map(author =>
+                <li class="w-9">
+                  <a href={`/authors/${author.slug}`} class="author block">
+                    <Image
+                      className="rounded-full shadow-sm"
+                      image={author.image}
+                      width={72}
+                      height={72}
+                      lazy={true}
+                    />
+                  </a>
+                </li>
+              )}
+            </ul>
+            <div class="flex flex-col">
+              <span>
+                {post.settings.authors.map((author, idx) => {
+                  const len = post.settings.authors.length
+                  return (
+                    <a href={`/authors/${author.slug}`} class="font-bold">
+                      {author.name + (idx === len - 1 ? "" : ", ")}
+                    </a>
+                  )
+                })}
+              </span>
+              <span class="text-gray-500">
+                <time
+                  datetime={format(
+                    new Date(post.settings.publishedAt), "yyyy-MM-dd"
+                  )}
+                >
+                  {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
+                </time>
+                <span class="bull">&bull;</span>
+                {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
+                min read
+              </span>
+            </div>
+          </footer>
         </div>
-      </footer>
-    </article>
+      </article>
+    </Show>
+    <Show when={idx !== 0}>
+      <article class="">
+        <a href={`/blog/${post.settings.slug}`} class="">
+          <Image
+            className="rounded-sm h-52"
+            image={post.image}
+            width={800}
+            lazy={true}
+          />
+        </a>
+        <div>
+          <div class="">
+            <a
+              href={`/blog/${post.settings.slug}`}
+              class=""
+            >
+              <header>
+                <div class="tag uppercase text-xs pt-6">
+                  {post.settings.tags[0].title}
+                </div>
+                <h2 class="smooth font-bold text-2xl pt-2">
+                  {post.title}
+                </h2>
+              </header>
+              <div class="smooth serif text-gray-500 pt-2">
+                <p>
+                  {post.settings.excerpt
+                    ? post.settings.excerpt
+                    : toPlainText(post.body).substring(0, 210)}
+                </p>
+              </div>
+            </a>
+          </div>
+          <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
+            <ul class="flex">
+              {post.settings.authors && post.settings.authors.map(author =>
+                <li class="w-9">
+                  <a href={`/authors/${author.slug}`} class="author block">
+                    <Image
+                      className="rounded-full shadow-sm"
+                      image={author.image}
+                      width={72}
+                      height={72}
+                      lazy={true}
+                    />
+                  </a>
+                </li>
+              )}
+            </ul>
+            <div class="flex flex-col">
+              <span>
+                {post.settings.authors.map((author, idx) => {
+                  const len = post.settings.authors.length
+                  return (
+                    <a href={`/authors/${author.slug}`} class="font-bold">
+                      {author.name + (idx === len - 1 ? "" : ", ")}
+                    </a>
+                  )
+                })}
+              </span>
+              <span class="text-gray-500">
+                <time
+                  datetime={format(
+                    new Date(post.settings.publishedAt), "yyyy-MM-dd"
+                  )}
+                >
+                  {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
+                </time>
+                <span class="bull">&bull;</span>
+                {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
+                min read
+              </span>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </Show>
   )}
 </div>
 
 <style define:vars={{ accentColor }}>
+  @media (min-width: 1024px) {
+    .feature {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .feature-image {
+    grid-column: 1 / 3;
+  }
+
   .tag {
     color: var(--accentColor);
   }

@@ -28,7 +28,7 @@ const seo = `
 
 const pageSettings = `
   settings{
-    excerpt, publishedAt, ${slug},
+    excerpt, publishedAt, slug,
     authors[]->{
       _id, _type, image, name, ${slug}
     },
