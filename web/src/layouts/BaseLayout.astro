@@ -28,10 +28,10 @@ const accentColor = design.accentColor || "#0284C7"
       navigation={navigation}
       settings={settings}
     />
-    <div class="flex flex-col justify-center content-center h-96 text-center">
+    <div class="flex flex-col justify-center content-center h-56 md:h-96 text-center">
       {design.image &&
         <Image
-          className="h-96 absolute"
+          className="h-56 md:h-96 absolute"
           image={design.image}
           width={1796}
           height={721}
@@ -40,11 +40,11 @@ const accentColor = design.accentColor || "#0284C7"
       }
       <Maybe
         as="h1"
-        class="smooth relative font-bold text-5xl text-white mb-1.5 z-10"
+        class="smooth relative font-bold text-3xl md:text-5xl text-white mb-0.5 md:mb-1.5 z-10"
       >
         {settings.siteName}
       </Maybe>
-      <Maybe as="p" class="smooth relative text-2xl text-white z-10">
+      <Maybe as="p" class="smooth relative text-xl md:text-2xl text-white z-10">
         {settings.siteDescription}
       </Maybe>
     </div>

@@ -16,9 +16,9 @@ const year = new Date().getFullYear()
     class="mx-8 smooth text-sm text-gray-100"
   >
     <div
-      class="container grid grid-cols-3 pt-10 pb-40"
+      class="container grid md:grid-cols-3 pt-10 pb-40"
     >
-      <p>
+      <p class="text-center md:text-left">
         <a href="/">{settings.siteName}</a>
         <span class="opacity-80">&copy; {year}</span>
       </p>
@@ -37,7 +37,7 @@ const year = new Date().getFullYear()
           class="opacity-80 hover:opacity-100"
         >Contact</a>
       </p>
-      <p class="text-right">
+      <p class="text-center md:text-right">
         <span class="opacity-80">Powered by</span>
         <a
           href="https://astro.build"
