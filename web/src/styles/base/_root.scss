@@ -7,7 +7,18 @@
   --footer-heading: hsl(0, 0%, 100%);
   --footer-text: hsl(240, 1%, 62%);
   --footer-border: hsl(210, 3%, 14%);
-  --font-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
-  --font-serif: Georgia,Times,serif;
-  --font-mono: Menlo,Courier,monospace;
+  --font-sans-serif:
+    -apple-system,
+    blinkmacsystemfont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  --font-serif: georgia, times, serif;
+  --font-mono: menlo, courier, monospace;
 }

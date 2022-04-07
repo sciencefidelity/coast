@@ -3,8 +3,13 @@
     "stylelint-config-prettier",
     "stylelint-config-standard",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-recess-order",
-    "stylelint-config-html"
+    "stylelint-config-recess-order"
+  ],
+  "overrides": [
+    {
+      "files": ["*.astro", "**/*.astro"],
+      "customSyntax": "postcss-html"
+    }
   ],
   "plugins": ["stylelint-scss", "stylelint-selector-bem-pattern"],
   "rules": {
@@ -33,6 +38,7 @@
         "combined": "^\\.combined-{componentName}-[a-z]+$"
       },
       "utilitySelectors": "^\\.util-[a-z]+$"
-    }
+    },
+    "function-no-unknown": [true, { "ignoreFunctions": ["map.get"] }]
   }
 }
