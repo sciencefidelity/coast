@@ -10,12 +10,13 @@
     "@sanity/desk-tool",
     "@sanity/color-input",
     "@sanity/code-input",
-    "@sanity/dashboard",
-    "social-preview"
+    "@sanity/dashboard"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [
