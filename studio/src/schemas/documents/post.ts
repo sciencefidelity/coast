@@ -56,15 +56,6 @@ export default {
       group: 'post'
     },
     {
-      name: 'anotherDate',
-      title: 'Another date',
-      type: 'datetime',
-      options: {
-        timeStep: 15,
-        calendarTodayLabel: 'Today'
-      }
-    },
-    {
       name: 'settings',
       title: 'Post settings',
       type: 'pageSettings',
