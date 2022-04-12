@@ -30,7 +30,7 @@ export const portableTextComponents = {
       if (uriLooksSafe(href)) {
         const rel = href.startsWith("/") ? undefined : "noreferrer"
         return html`
-          <a href="${href}" rel="${rel}" class="body__link text-rose-500 underline">
+          <a href="${href}" rel="${rel}" class="post__link underline">
             ${children}
           </a>
         `
@@ -41,7 +41,7 @@ export const portableTextComponents = {
       return html`
         <a
           href=${buildUrl(value?.item._type, value?.item.slug)}
-          class="text-rose-500 underline"
+          class="post__link underline"
         >
           ${children}
         </a>

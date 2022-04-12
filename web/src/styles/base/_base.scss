@@ -7,6 +7,22 @@ p {
   padding-bottom: 1rem;
 }
 
+.post__link {
+  color: var(--accentColor);
+}
+
+h2 {
+  font-size: 1.75rem !important;
+  font-family: var(--font-sans-serif);
+  font-weight: 700 !important;
+}
+
+li {
+  list-style-type: initial;
+  padding: 0.3rem 1rem;
+  margin: 0 2.5rem;
+}
+
 .horizontal-list {
   &:not(:last-child)::after {
     content: ', ';

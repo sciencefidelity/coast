@@ -115,13 +115,14 @@ const accentColor = design.accentColor || "#0284C7"
         />
       </figure>
     </header>
-    <section class="max-w-2xl">
+    <section class="max-w-3xl mx-auto mt-12">
       <Maybe
         as="div"
-        class="smooth serif text-gray-700 text-md leading-6"
+        class="smooth serif text-gray-700 text-md md:text-xl leading-6 md:leading-8"
         set:html={toHTML(post.body, {components: portableTextComponents})}
       >
       </Maybe>
+      <span>{toHTML(post.body, {components: portableTextComponents})}</span>
     </section>
     <!-- {previous
       ? <p><a href={`/blog/${previous.slug}`}>Previous post</a></p>
