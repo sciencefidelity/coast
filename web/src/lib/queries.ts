@@ -4,37 +4,21 @@ const omitDrafts = `!(_id in path('drafts.**'))`
 
 const slug = `"slug": slug.current`
 
-const body = `body[]{
-  ...,
-  markDefs[]{
-    ...,
-    item->{
-      _type, ${slug}
-    }
-  }
-}`
+const body = `
+  body[]{ ..., markDefs[]{ ..., item->{ _type, ${slug} } } }
+`
 
 const seo = `
-  facebookCard{
-    description, image, title
-  },
-  meta{
-    canonicalURL, description, title
-  },
-  twitterCard{
-    description, image, title
-  }
+  facebookCard{ description, image, title },
+  meta{ canonicalURL, description, title },
+  twitterCard{ description, image, title }
 `
 
 const pageSettings = `
   settings{
     excerpt, publishedAt, slug,
-    authors[]->{
-      _id, _type, image, name, ${slug}
-    },
-    tags[]->{
-      _id, _type, ${slug}, title
-    }
+    authors[]->{ _id, _type, image, name, ${slug} },
+    tags[]->{ _id, _type, ${slug}, title }
   }
 `
 const pagePostFields = `
@@ -50,29 +34,21 @@ export const authors = `
     _id, _type, body, email, facebook, image,
     location, name, twitter, website, ${slug},
     "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
-    | order(publishedAt){
-      ${postReferenceFields}
-    }
+      | order(publishedAt){ ${postReferenceFields} }
   }[count(posts) > 0]
 `
 
 const design = `
   "design": *[_type == "design" && ${omitDrafts}][0]{
-    "accentColor": accentColor.hex,
-    "icon": icon.asset->{url},
-    image,
-    "logo": logo.asset->{url}
+    "accentColor": accentColor.hex, image,
+    "icon": icon.asset->{url}, "logo": logo.asset->{url}
   }
 `
 
 const navigation = `
   "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
-    primary[]{
-      _key, label, url->{${slug}, title}
-    },
-    secondary[]{
-      _key, label, url->{${slug}, title}
-    }
+    primary[]{ _key, label, url->{ ${slug}, title } },
+    secondary[]{ _key, label, url->{ ${slug}, title } }
   }
 `
 
@@ -90,11 +66,8 @@ export const posts = `
 
 const settings = `
   "settings": *[_type == "settings"][0]{
-    language, siteDescription, siteName,
-    socialLinks[]{
-      _key, name, url
-    },
-    ${seo}
+    language, siteDescription, siteName, ${seo},
+    socialLinks[]{ _key, name, url }
   }
 `
 
@@ -109,8 +82,9 @@ export const tags = `
 `
 
 export const indexQuery = groq`{
-  ${design},
-  ${navigation},
-  ${posts},
-  ${settings}
+  ${design}, ${navigation}, ${posts}, ${settings}
+}`
+
+export const postsQuery = groq`{
+  ${design}, ${navigation}, ${posts}, ${settings}
 }`
