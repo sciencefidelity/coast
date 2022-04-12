@@ -2,7 +2,7 @@ import htm from "htm"
 import vhtml from "vhtml"
 import { uriLooksSafe } from "@portabletext/to-html"
 import imageUrlBuilder from "@sanity/image-url"
-import { BlockContent } from "../generated/schema"
+import { PortableText } from "../lib/interfaces"
 import sanityClient from "./sanityClient"
 import { Image } from "./interfaces"
 
@@ -30,7 +30,7 @@ export const portableTextComponents = {
       if (uriLooksSafe(href)) {
         const rel = href.startsWith("/") ? undefined : "noreferrer"
         return html`
-          <a href="${href}" rel="${rel}" class="text-rose-500 underline">
+          <a href="${href}" rel="${rel}" class="body__link text-rose-500 underline">
             ${children}
           </a>
         `
@@ -63,7 +63,7 @@ export const subdir = (type: string): string => {
   }
 }
 
-export const toPlainText = (blocks: BlockContent = []): string => {
+export const toPlainText = (blocks: PortableText = []): string => {
   return blocks
     // loop through each block
     .map(block => {

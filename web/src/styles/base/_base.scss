@@ -3,6 +3,10 @@
 //   -moz-osx-font-smoothing: grayscale;
 // }
 
+p {
+  padding-bottom: 1rem;
+}
+
 .horizontal-list {
   &:not(:last-child)::after {
     content: ', ';
