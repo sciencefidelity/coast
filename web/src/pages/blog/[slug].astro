@@ -3,7 +3,8 @@ import { Maybe } from "astro-control"
 import format from "date-fns/format"
 import { toHTML } from "@portabletext/to-html"
 import sanityClient from "lib/sanityClient"
-import { portableTextComponents, toPlainText } from "lib/utils"
+import { toPlainText } from "lib/utils"
+import { portableTextComponents } from "lib/components"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Image from "components/Image.astro"
 import { postsQuery } from "lib/queries"
@@ -25,7 +26,6 @@ export async function getStaticPaths() {
   })
 }
 
-// const { slug } = Astro.params
 const { design, navigation, post, settings } = Astro.props as {
   design: Design
   navigation: Navigation

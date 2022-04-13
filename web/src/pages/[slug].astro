@@ -1,9 +1,8 @@
 ---
 import { Maybe } from "astro-control"
-import format from "date-fns/format"
 import { toHTML } from "@portabletext/to-html"
 import sanityClient from "lib/sanityClient"
-import { portableTextComponents, toPlainText } from "lib/utils"
+import { portableTextComponents } from "lib/components"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Image from "components/Image.astro"
 import { pagesQuery } from "lib/queries"
@@ -25,7 +24,7 @@ export async function getStaticPaths() {
     }
   })
 }
-// const { slug } = Astro.params
+
 const { design, navigation, page, settings } = Astro.props as {
   design: Design
   navigation: Navigation
