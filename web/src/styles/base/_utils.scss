@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.tag {
+  color: var(--accentColor);
+}
+
 // .container {
 //   width: min(100% - 4vmin, 75rem);
 //   margin: auto;

@@ -202,6 +202,7 @@ export interface Tag extends SanityDocument {
   facebookCard: SocalCard
   image: Image
   meta: MetaData
+  posts: Post[]
   slug: string
   title: string
   twitterCard: SocalCard

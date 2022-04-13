@@ -93,3 +93,7 @@ export const pagesQuery = groq`{
 export const postsQuery = groq`{
   ${design}, ${navigation}, ${posts}, ${settings}
 }`
+
+export const tagsQuery = groq`{
+  ${design}, ${navigation}, ${settings}, ${tags}
+}`
