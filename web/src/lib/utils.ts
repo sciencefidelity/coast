@@ -24,13 +24,25 @@ export const kebabCase = (str: string): string => {
 
 const html = htm.bind(vhtml)
 export const portableTextComponents = {
+  block: {
+    normal: ({children}) => {
+      return `
+        <p class="smooth serif mt-7 mb-4">${children}</p>
+      `
+    },
+    h2: ({children}) => {
+      return html`
+        <h2 class="smooth sans text-2xl md:text-3xl font-bold mt-7 mb-4">${children}</h2>
+      `
+    }
+  },
   marks: {
     link: ({children, value}) => {
       const href = value.href || ""
       if (uriLooksSafe(href)) {
         const rel = href.startsWith("/") ? undefined : "noreferrer"
-        return html`
-          <a href="${href}" rel="${rel}" class="post__link underline">
+        return `
+          <a href="${href}" rel="${rel}" class="link underline">
             ${children}
           </a>
         `
@@ -38,16 +50,23 @@ export const portableTextComponents = {
       return children
     },
     internalLink: ({children, value}) => {
-      return html`
+      return `
         <a
           href=${buildUrl(value?.item._type, value?.item.slug)}
-          class="post__link underline"
+          class="link underline"
         >
           ${children}
         </a>
       `
     }
-  }
+  },
+  // list: {
+  //   bullet: ({children}) => {
+  //     return `
+  //       <ul class="my-12">${children}</ul>
+  //     `
+  //   }
+  // }
 }
 
 export const subdir = (type: string): string => {
