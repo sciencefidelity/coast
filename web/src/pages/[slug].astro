@@ -15,7 +15,6 @@ export async function getStaticPaths() {
     pages: Page[]
     settings: Settings
   } = await sanityClient.fetch(pagesQuery).then(response => response)
-  console.log("data", data.pages)
   const { design, navigation, settings } = data
   return data.pages.map(page => {
     return {

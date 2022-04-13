@@ -27,7 +27,7 @@ const pagePostFields = `
 `
 
 const postReferenceFields = `
-  _id, _type, excerpt, image, title, ${pageSettings}
+  _id, _type, body, excerpt, image, title, ${pageSettings}
 `
 
 export const authors = `
@@ -76,7 +76,7 @@ export const tags = `
   "tags": *[_type == "tag"] | order(title){
     _id, _type, description, image, ${slug}, title,
     "posts": *[_type == "post" && references(^._id) && ${omitDrafts}]
-    | order(publishedAt){
+    | order(settings.publishedAt){
       ${postReferenceFields}
     },
   }[count(posts) > 0]
