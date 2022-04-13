@@ -32,7 +32,6 @@ const { design, navigation, post, settings } = Astro.props as {
   post: Post
   settings: Settings
 }
-const date = format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")
 const accentColor = design.accentColor || "#0284C7"
 ---
 <BaseLayout
@@ -44,7 +43,7 @@ const accentColor = design.accentColor || "#0284C7"
     <header class="container">
       <div class="max-w-3xl mx-auto">
         <section>
-          <ul>
+          <Maybe as="ul">
             {post.settings.tags && post.settings.tags.map(tag =>
               <li>
                 <a
@@ -55,51 +54,65 @@ const accentColor = design.accentColor || "#0284C7"
                 </a>
               </li>
             )}
-          </ul>
+          </Maybe>
         </section>
-        <h1
+        <Maybe as="h1"
           class="smooth font-bold text-2xl md:text-5xl leading-8 md:leading-12 pt-2"
-        >{post.title}</h1>
-        <p class="smooth text-lg md:text-xl text-gray-500 leading-6 pt-2 md:pt-6">
+        >
+          {post.title}
+        </Maybe>
+        <Maybe as="p"
+          class="smooth text-lg md:text-xl text-gray-500 leading-6 pt-2 md:pt-6"
+        >
           {post.settings.excerpt}
-        </p>
+        </Maybe>
         <div class="my-8 flex gap-3 text-sm smooth">
-          <ul class="flex">
-            {post.settings.authors && post.settings.authors.map(author =>
+          <Maybe as="ul" class="flex">
+            {post.settings.authors.map(author =>
               <li class="w-12">
-                <a href={`/authors/${author.slug}`} class="author block">
-                  <Image
-                    className="rounded-full shadow-sm"
-                    image={author.image}
-                    width={92}
-                    height={92}
-                    lazy={true}
-                  />
-                </a>
+                <Maybe
+                  as="a"
+                  href={`/authors/${author.slug}`}
+                  class="author block"
+                >
+                  {author.image &&
+                    <Image
+                      className="rounded-full shadow-sm"
+                      image={author.image}
+                      width={92}
+                      height={92}
+                      lazy={true}
+                    />
+                  }
+                </Maybe>
               </li>
             )}
-          </ul>
+          </Maybe>
           <div class="flex flex-col">
             <span>
-              {post.settings.authors.map((author, idx) => {
-                const len = post.settings.authors.length
-                return (
-                  <a href={`/authors/${author.slug}`} class="font-bold">
-                    {author.name + (idx === len - 1 ? "" : ", ")}
-                  </a>
-                )
-              })}
+              {post.settings.authors &&
+                post.settings.authors.map((author, idx) => {
+                  const len = post.settings.authors.length
+                  return (
+                    <a href={`/authors/${author.slug}`} class="font-bold">
+                      {author.name + (idx === len - 1 ? "" : ", ")}
+                    </a>
+                  )
+                })
+              }
             </span>
             <span class="text-gray-500">
-              <time
+              <Maybe as="time"
                 datetime={format(
                   new Date(post.settings.publishedAt), "yyyy-MM-dd"
                 )}
               >
                 {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
-              </time>
+              </Maybe>
               <span class="bull">&bull;</span>
-              {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
+              {post.body &&
+                Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)
+              }
               min read
             </span>
           </div>
@@ -122,7 +135,6 @@ const accentColor = design.accentColor || "#0284C7"
         set:html={toHTML(post.body, {components: portableTextComponents})}
       >
       </Maybe>
-      <span>{toHTML(post.body, {components: portableTextComponents})}</span>
     </section>
     <!-- {previous
       ? <p><a href={`/blog/${previous.slug}`}>Previous post</a></p>

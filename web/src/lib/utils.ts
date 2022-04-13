@@ -32,7 +32,23 @@ export const portableTextComponents = {
     },
     h2: ({children}) => {
       return html`
-        <h2 class="smooth sans text-2xl md:text-3xl font-bold mt-7 mb-4">${children}</h2>
+        <h2 class="smooth sans text-2xl md:text-3xl font-bold mt-14 mb-4">
+          ${children}
+        </h2>
+      `
+    }
+  },
+  list: {
+    bullet: ({children}) => {
+      return `
+        <ul class="my-2 list-disc">${children}</ul>
+      `
+    }
+  },
+  listItem: {
+    bullet: ({children}) => {
+      return `
+        <li class="leading-10 list-inside pl-4">${children}</li>
       `
     }
   },
@@ -60,13 +76,6 @@ export const portableTextComponents = {
       `
     }
   },
-  // list: {
-  //   bullet: ({children}) => {
-  //     return `
-  //       <ul class="my-12">${children}</ul>
-  //     `
-  //   }
-  // }
 }
 
 export const subdir = (type: string): string => {
