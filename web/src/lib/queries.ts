@@ -54,7 +54,7 @@ const navigation = `
 `
 
 export const pages = `
-  "posts": *[_type == "post" && ${omitDrafts}] | order(settings.publishedAt){
+  "pages": *[_type == "page" && ${omitDrafts}] | order(settings.publishedAt){
     ${pagePostFields}
   }
 `
@@ -84,6 +84,10 @@ export const tags = `
 
 export const indexQuery = groq`{
   ${design}, ${navigation}, ${posts}, ${settings}
+}`
+
+export const pagesQuery = groq`{
+  ${design}, ${navigation}, ${pages}, ${settings}
 }`
 
 export const postsQuery = groq`{

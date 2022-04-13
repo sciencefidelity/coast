@@ -1,46 +1,86 @@
 ---
+import { Maybe } from "astro-control"
+import format from "date-fns/format"
+import { toHTML } from "@portabletext/to-html"
 import sanityClient from "lib/sanityClient"
+import { portableTextComponents, toPlainText } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
-import Article from "components/Article.astro"
-import Blog from "components/Blog.astro"
-import Contact from "components/Contact.astro"
+import Image from "components/Image.astro"
 import { pagesQuery } from "lib/queries"
-import { Page } from "lib/interfaces"
+import { Design, Navigation, Page, Settings } from "lib/interfaces"
 
 export async function getStaticPaths() {
-  const data: { pages: Page[] } = await sanityClient.fetch(pagesQuery).then(response => response)
+  const data: {
+    design: Design
+    navigation: Navigation
+    pages: Page[]
+    settings: Settings
+  } = await sanityClient.fetch(pagesQuery).then(response => response)
+  console.log("data", data.pages)
+  const { design, navigation, settings } = data
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },
-      props: { page }
+      props: { design, navigation, page, settings }
     }
   })
 }
-const { slug } = Astro.request.params
-const { page } = Astro.props as { page: Page }
-const {
-  body,
-  keywords,
-  seoDescription,
-  seoImage,
-  seoTitle,
-  template,
-  title
-} = page
+// const { slug } = Astro.params
+const { design, navigation, page, settings } = Astro.props as {
+  design: Design
+  navigation: Navigation
+  page: Page
+  settings: Settings
+}
+const accentColor = design.accentColor || "#0284C7"
 ---
 <BaseLayout
-  title={page.title}
-  keywords={keywords}
-  seoDescription={seoDescription}
-  seoImage={seoImage}
-  seoTitle={seoTitle}
-  siteDescription={seoDescription}
-  slug={slug}
+  design={design}
+  navigation={navigation}
+  settings={settings}
 >
-  <div>
-    <h1>{title}</h1>
-    {template === "article" && <Article body={body} />}
-    {template === "blog" && <Blog />}
-    {template === "contact" && <Contact />}
-  </div>
+  <article class="mx-4 md:mx-8 my-28">
+    <header class="container">
+      <div class="max-w-3xl mx-auto">
+        <Maybe as="h1"
+          class="smooth font-bold text-2xl md:text-5xl leading-8 md:leading-12 pt-2"
+        >
+          {page.title}
+        </Maybe>
+      </div>
+      <figure>
+        {page.image &&
+          <Image
+            className=""
+            image={page.image}
+            width={1200}
+            height={729}
+            lazy={true}
+          />
+        }
+      </figure>
+    </header>
+    <section class="max-w-3xl mx-auto mt-12">
+      <Maybe
+        as="div"
+        class="smooth serif text-gray-700 text-md md:text-xl leading-6 md:leading-8"
+        set:html={toHTML(page.body, {components: portableTextComponents})}
+      >
+      </Maybe>
+    </section>
+  </article>
 </BaseLayout>
+
+<style lang="scss" define:vars={{ accentColor }}>
+  li {
+    display: inline;
+    &:not(:last-child)::after {
+      content: ', ';
+    }
+  }
+
+  .tag {
+    color: var(--accentColor); /* stylelint-disable-line custom-property-pattern */
+  }
+</style>
+

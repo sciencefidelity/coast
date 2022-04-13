@@ -31,10 +31,17 @@ export const portableTextComponents = {
       `
     },
     h2: ({children}) => {
-      return html`
+      return `
         <h2 class="smooth sans text-2xl md:text-3xl font-bold mt-14 mb-4">
           ${children}
         </h2>
+      `
+    },
+    blockquote: ({children}) => {
+      return `
+        <blockquote class="blockquote italic mt-7 mb-4">
+          ${children}
+        </blockquote>
       `
     }
   },

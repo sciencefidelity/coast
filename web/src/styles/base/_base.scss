@@ -3,28 +3,27 @@
 //   -moz-osx-font-smoothing: grayscale;
 // }
 
-// p {
-//   padding-bottom: 1rem;
-// }
-
 .link {
   color: var(--accentColor);
 }
-
-// h2 {
-//   font-size: 1.75rem !important;
-//   font-family: var(--font-sans-serif);
-//   font-weight: 700 !important;
-// }
-
-// li {
-//   list-style-type: initial;
-//   padding: 0.3rem 1rem;
-//   margin: 0 2.5rem;
-// }
 
 .horizontal-list {
   &:not(:last-child)::after {
     content: ', ';
   }
 }
+
+.blockquote {
+  border-left: 4px solid var(--accentColor);
+  margin-left: -2rem;
+  padding-left: calc(2rem - 4px);
+  @media (max-width: 767px) {
+    margin-left: -1rem;
+    padding-left: calc(1rem - 4px);
+  }
+}
+
+code {
+
+}
+
