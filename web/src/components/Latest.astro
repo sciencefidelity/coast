@@ -16,7 +16,7 @@ const accentColor = design.accentColor || "#0284C7"
     {posts && posts.map((post, idx) =>
       <Show when={idx === 0}>
         <article class="feature lg:grid grid-cols-3 gap-8 mb-2">
-          <a href={`/blog/${post.settings.slug}`} class="feature-image">
+          <a href={`/blog/${post.slug}`} class="feature-image">
             <Image
               className="rounded-sm h-52 lg:h-96"
               image={post.image}
@@ -27,7 +27,7 @@ const accentColor = design.accentColor || "#0284C7"
           <div>
             <div class="">
               <a
-                href={`/blog/${post.settings.slug}`}
+                href={`/blog/${post.slug}`}
                 class=""
               >
                 <header>
@@ -93,7 +93,7 @@ const accentColor = design.accentColor || "#0284C7"
       </Show>
       <Show when={idx !== 0}>
         <article class="mb-2">
-          <a href={`/blog/${post.settings.slug}`} class="">
+          <a href={`/blog/${post.slug}`} class="">
             <Image
               className="rounded-sm h-52"
               image={post.image}
@@ -104,7 +104,7 @@ const accentColor = design.accentColor || "#0284C7"
           <div>
             <div class="">
               <a
-                href={`/blog/${post.settings.slug}`}
+                href={`/blog/${post.slug}`}
                 class=""
               >
                 <header>

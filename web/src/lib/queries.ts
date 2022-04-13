@@ -16,13 +16,14 @@ const seo = `
 
 const pageSettings = `
   settings{
-    excerpt, publishedAt, slug,
+    excerpt, publishedAt,
     authors[]->{ _id, _type, image, name, ${slug} },
     tags[]->{ _id, _type, ${slug}, title }
   }
 `
 const pagePostFields = `
-  _id, _type, ${body}, excerpt, feature, image, title, ${pageSettings}, ${seo}
+  _id, _type, excerpt, feature, image, title,
+  ${body}, ${pageSettings}, ${seo}, ${slug}
 `
 
 const postReferenceFields = `

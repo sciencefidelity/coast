@@ -1,3 +1,4 @@
+import { Rule } from '@sanity/types'
 import { RiEdit2Line } from 'react-icons/ri'
 
 export default {
@@ -54,6 +55,16 @@ export default {
       title: 'Body',
       type: 'portableText',
       group: 'post'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96
+      },
+      group: 'settings'
     },
     {
       name: 'settings',

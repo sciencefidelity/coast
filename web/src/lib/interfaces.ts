@@ -57,6 +57,7 @@ export interface Page extends SanityDocument {
   image: Image
   meta: MetaData
   settings: PageSettings
+  slug: string
   title: string
   twitterCard: SocalCard
 }
@@ -65,7 +66,6 @@ export interface PageSettings {
   authors: Author[]
   excerpt: string
   publishedAt: string
-  slug: string
   tags: Tag[]
 }
 
@@ -86,6 +86,7 @@ export interface Post extends SanityDocument {
   image: Image
   meta: MetaData
   settings: PageSettings
+  slug: string
   title: string
   twitterCard: SocalCard
 }
