@@ -27,7 +27,7 @@ const pagePostFields = `
 `
 
 const postReferenceFields = `
-  _id, _type, body, excerpt, image, title, ${pageSettings}
+  _id, _type, body, excerpt, image, title, ${pageSettings}, ${slug}
 `
 
 export const authors = `

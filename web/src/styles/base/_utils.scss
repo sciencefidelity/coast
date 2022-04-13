@@ -1,3 +1,8 @@
+.smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .serif {
   font-family: Georgia, Times, serif;
 }
@@ -5,28 +10,3 @@
 .sans {
   font-family: var(--font-sans-serif);
 }
-
-.smooth {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.tag {
-  color: var(--accentColor);
-}
-
-// .container {
-//   width: min(100% - 4vmin, 75rem);
-//   margin: auto;
-// }
-
-// .outer {
-//   position: relative;
-//   padding: 0 4vmin;
-// }
-
-// .inner {
-//   margin: 0 auto;
-//   max-width: 1200px;
-//   width: 100%;
-// }
