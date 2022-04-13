@@ -45,6 +45,7 @@ export interface NavItem {
   _key: string
   label: string
   url: {
+    _type: string
     slug: string
     title: string
   }

@@ -1,4 +1,5 @@
 ---
+import { buildUrl } from "lib/utils"
 import { Navigation, Settings } from "lib/interfaces"
 
 const { navigation, settings } = Astro.props as {
@@ -15,7 +16,9 @@ const { navigation, settings } = Astro.props as {
         </li>
         {navigation.primary.map(item => item.label &&
           <li class="block">
-            <a href={`/${item.url.slug}`} class="opacity-80 hover:opacity-100">
+            <a
+              href={buildUrl(item.url._type, item.url.slug)}
+              class="opacity-80 hover:opacity-100">
               {item.label}
             </a>
           </li>

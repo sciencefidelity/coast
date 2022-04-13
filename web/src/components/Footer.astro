@@ -1,4 +1,6 @@
 ---
+import { Show } from "astro-control"
+import { buildUrl } from "lib/utils"
 import { Navigation, Settings } from "lib/interfaces"
 
 const {
@@ -23,19 +25,19 @@ const year = new Date().getFullYear()
         <span class="opacity-100 md:opacity-80">&copy; {year}</span>
       </p>
       <p class="text-center mb-8">
-        <a
-          href="/privacy"
-          target="_self"
-          rel="noreferrer"
-          class="opacity-80 hover:opacity-100"
-        >Data & privacy</a>
-        <span class="opacity-80">&bull; </span>
-        <a
-          href="/contact"
-          target="_self"
-          rel="noreferrer"
-          class="opacity-80 hover:opacity-100"
-        >Contact</a>
+        {navigation.secondary &&
+          navigation.secondary.map((item, idx) =>
+            <a
+              href={buildUrl(item.url._type, item.url.slug)}
+              target="_self"
+              rel="noreferrer"
+              class="opacity-80 hover:opacity-100"
+            >{item.label}</a>
+            <Show when={idx !== navigation.secondary.length - 1}>
+              <span class="opacity-80"> &bull; </span>
+            </Show>
+          )
+        }
       </p>
       <p class="text-center md:text-right">
         <span class="opacity-80">Powered by</span>

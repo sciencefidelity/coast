@@ -48,8 +48,8 @@ const design = `
 
 const navigation = `
   "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
-    primary[]{ _key, label, url->{ ${slug}, title } },
-    secondary[]{ _key, label, url->{ ${slug}, title } }
+    primary[]{ _key, label, url->{ _type, ${slug}, title } },
+    secondary[]{ _key, label, url->{ _type, ${slug}, title } }
   }
 `
 
