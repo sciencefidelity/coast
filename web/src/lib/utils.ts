@@ -17,7 +17,6 @@ export const capitalize = (str: string): string => {
     .join(" ")
 }
 
-
 export const kebabCase = (str: string): string => {
   return str.toLowerCase().split(" ").join("-").replace(/[^a-z0-9-]/g, "")
 }
@@ -33,6 +32,13 @@ export const portableTextComponents = {
     h2: ({children}) => {
       return `
         <h2 class="smooth sans text-2xl md:text-3xl font-bold mt-14 mb-4">
+          ${children}
+        </h2>
+      `
+    },
+    h3: ({children}) => {
+      return `
+        <h2 class="smooth sans text-xl md:text-2xl font-bold mt-12 mb-4">
           ${children}
         </h2>
       `
@@ -83,6 +89,20 @@ export const portableTextComponents = {
       `
     }
   },
+  types: {
+    image: ({value}) => {
+      return `
+        <img
+          src=${urlFor(value)
+            .auto("format")
+            .width(2400)
+            .quality(85)
+            .url()}
+          class="mt-12"
+        />
+      `
+    }
+  }
 }
 
 export const subdir = (type: string): string => {
