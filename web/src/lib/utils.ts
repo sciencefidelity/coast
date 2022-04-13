@@ -21,11 +21,11 @@ export const kebabCase = (str: string): string => {
 export const subdir = (type: string): string => {
   switch (type) {
   case "author":
-    return "/authors"
-  case "category":
-    return "/categories"
+    return "/author"
   case "post":
     return "/blog"
+  case "tag":
+    return "/tag"
   default:
     return ""
   }
