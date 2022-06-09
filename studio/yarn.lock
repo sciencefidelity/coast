@@ -1596,7 +1596,7 @@
 
 "@sanity/eslint-config-studio@^2.0.0":
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@sanity/eslint-config-studio/-/eslint-config-studio-2.0.0.tgz#1c7a0a559ff364c475d951fe882bfdc33c41ca38"
+  resolved "https://registry.npmjs.org/@sanity/eslint-config-studio/-/eslint-config-studio-2.0.0.tgz#1c7a0a559ff364c475d951fe882bfdc33c41ca38"
   integrity sha512-dlrtfrtrYd9gmC3/HO+aZ4QMPWbdDMPNGouFPAk/r3izR9E4EYlL5o7B9nucSEtz9hJmqUfLBQmXsTc571J4uA==
   dependencies:
     "@babel/core" "^7.16.7"

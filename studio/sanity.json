@@ -10,7 +10,8 @@
     "@sanity/desk-tool",
     "@sanity/color-input",
     "@sanity/code-input",
-    "@sanity/dashboard"
+    "@sanity/dashboard",
+    "@sanity/eslint-config-studio"
   ],
   "env": {
     "development": {
