@@ -1,0 +1,57 @@
+{
+  "name": "coast",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Matt Cook <sciencefidelity@hotmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "dev": "sanity start",
+    "build": "sanity build",
+    "format": "prettier --write '**/*.{ts,js,tsx,jsx,json,md,yml}'"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "yarn-upgrade-all": {
+    "ignore": [
+      "@sanity/base",
+      "@sanity/code-input",
+      "@sanity/color-input",
+      "@sanity/core",
+      "@sanity/dashboard",
+      "@sanity/default-layout",
+      "@sanity/default-login",
+      "@sanity/desk-tool",
+      "@sanity/eslint-config-studio",
+      "@sanity/language-filter",
+      "@sanity/vision",
+      "react",
+      "react-dom"
+    ]
+  },
+  "dependencies": {
+    "@sanity/base": "^2.30.1",
+    "@sanity/code-input": "^2.30.1",
+    "@sanity/color-input": "^2.30.1",
+    "@sanity/core": "^2.30.2",
+    "@sanity/dashboard": "^2.30.1",
+    "@sanity/default-layout": "^2.30.1",
+    "@sanity/default-login": "^2.30.1",
+    "@sanity/desk-tool": "^2.30.1",
+    "@sanity/vision": "^2.30.1",
+    "get-youtube-id": "^1.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.4.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "eslint": "^8.17.0",
+    "prettier": "^2.6.2"
+  }
+}
