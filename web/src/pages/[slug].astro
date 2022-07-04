@@ -32,22 +32,20 @@ const { design, navigation, page, settings } = Astro.props as {
 }
 const accentColor = design.accentColor || "#0284C7"
 ---
-<BaseLayout
-  design={design}
-  navigation={navigation}
-  settings={settings}
->
+
+<BaseLayout design={design} navigation={navigation} settings={settings}>
   <article class="mx-4 md:mx-8 my-28">
     <header class="container">
       <div class="max-w-3xl mx-auto">
-        <Maybe as="h1"
+        <Maybe
+          as="h1"
           class="smooth font-bold text-2xl md:text-5xl leading-8 md:leading-12 pt-2"
         >
           {page.title}
         </Maybe>
       </div>
       <figure>
-        {page.image &&
+        {page.image && (
           <Image
             className=""
             image={page.image}
@@ -55,16 +53,15 @@ const accentColor = design.accentColor || "#0284C7"
             height={729}
             lazy={true}
           />
-        }
+        )}
       </figure>
     </header>
     <section class="max-w-3xl mx-auto mt-12">
       <Maybe
         as="div"
         class="smooth serif text-gray-700 text-md md:text-xl leading-6 md:leading-8"
-        set:html={toHTML(page.body, {components: portableTextComponents})}
-      >
-      </Maybe>
+        set:html={toHTML(page.body, { components: portableTextComponents })}
+      />
     </section>
   </article>
 </BaseLayout>
@@ -72,13 +69,14 @@ const accentColor = design.accentColor || "#0284C7"
 <style lang="scss" define:vars={{ accentColor }}>
   li {
     display: inline;
+
     &:not(:last-child)::after {
-      content: ', ';
+      content: ", ";
     }
   }
 
   .tag {
-    color: var(--accentColor); /* stylelint-disable-line custom-property-pattern */
+    color: var(--accentColor);
+    /* stylelint-disable-line custom-property-pattern */
   }
 </style>
-

@@ -74,11 +74,11 @@ export type PortableText = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
       _type: "image"
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
+      asset: SanityReference<SanityImageAsset>
+      crop?: SanityImageCrop
+      hotspot?: SanityImageHotspot
     }>
->;
+>
 
 export interface Post extends SanityDocument {
   _type: "post"
@@ -169,14 +169,16 @@ export interface SanityImagePaletteSwatch {
   title: string
 }
 
-export declare type SanityKeyed<T> = T extends object ? T & {
-  _key: string
-} : T
+export declare type SanityKeyed<T> = T extends object
+  ? T & {
+      _key: string
+    }
+  : T
 
 export declare type SanityReference<_T> = {
   _type: "reference"
   _ref: string
-};
+}
 
 export interface Settings extends SanityDocument {
   siteDescription: string
@@ -193,7 +195,16 @@ export interface SocalCard {
 export interface socialLink {
   _key: string
   url: string
-  name: "facebook" | "github" | "intagram" | "linkedin" | "pinterest" | "soundcloud" | "tiktok" | "twitter" | "youtube"
+  name:
+    | "facebook"
+    | "github"
+    | "intagram"
+    | "linkedin"
+    | "pinterest"
+    | "soundcloud"
+    | "tiktok"
+    | "twitter"
+    | "youtube"
 }
 
 export interface Tag extends SanityDocument {

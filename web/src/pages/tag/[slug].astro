@@ -32,106 +32,118 @@ const { design, navigation, settings, tag } = Astro.props as {
 }
 const accentColor = design.accentColor || "#0284C7"
 ---
-<BaseLayout
-  design={design}
-  navigation={navigation}
-  settings={settings}
->
+
+<BaseLayout design={design} navigation={navigation} settings={settings}>
   <div class="mx-4 md:mx-8">
     <section class="container">
       <header>
         <div class="tag uppercase text-xs pt-6">Tagged</div>
         <Maybe as="h1" class="smooth text-3xl font-bold">{tag.title}</Maybe>
       </header>
-      <p class="smooth serif text-grey-500">A collection of {tag.posts ? tag.posts.length : 0} posts</p>
+      <p class="smooth serif text-grey-500">
+        A collection of {tag.posts ? tag.posts.length : 0} posts
+      </p>
     </section>
     <div
       class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 md:mt-8"
     >
-      {tag.posts && tag.posts.map(post =>
-        <article class="mb-2">
-          <a href={buildUrl(post._type, post.slug)}>
-            {post.image &&
-              <Image
-                className="rounded-sm h-52"
-                image={post.image}
-                width={800}
-                lazy={true}
-              />
-            }
-          </a>
-          <div>
+      {tag.posts &&
+        tag.posts.map(post => (
+          <article class="mb-2">
+            <a href={buildUrl(post._type, post.slug)}>
+              {post.image && (
+                <Image
+                  className="rounded-sm h-52"
+                  image={post.image}
+                  width={800}
+                  lazy={true}
+                />
+              )}
+            </a>
             <div>
-              <a href={buildUrl(post._type, post.slug)}>
-                <header>
-                  <div class="tag uppercase text-xs pt-6">
-                    {post.settings.tags[0].title}
+              <div>
+                <a href={buildUrl(post._type, post.slug)}>
+                  <header>
+                    <div class="tag uppercase text-xs pt-6">
+                      {post.settings.tags[0].title}
+                    </div>
+                    <h2 class="smooth font-bold text-xl md:text-2xl leading-6 md:leading-7 pt-2">
+                      {post.title}
+                    </h2>
+                  </header>
+                  <div class="smooth serif text-gray-500 pt-2">
+                    <p>
+                      {post.settings.excerpt
+                        ? post.settings.excerpt
+                        : toPlainText(post.body).substring(0, 210)}
+                    </p>
                   </div>
-                  <h2 class="smooth font-bold text-xl md:text-2xl leading-6 md:leading-7 pt-2">
-                    {post.title}
-                  </h2>
-                </header>
-                <div class="smooth serif text-gray-500 pt-2">
-                  <p>
-                    {post.settings.excerpt
-                      ? post.settings.excerpt
-                      : toPlainText(post.body).substring(0, 210)}
-                  </p>
-                </div>
-              </a>
-            </div>
-            <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
-              <ul class="flex">
-                {post.settings.authors && post.settings.authors.map(author =>
-                  <li class="w-9">
-                    <a href={`/authors/${author.slug}`} class="author block">
-                      {author.image &&
-                        <Image
-                          className="rounded-full shadow-sm"
-                          image={author.image}
-                          width={72}
-                          height={72}
-                          lazy={true}
-                        />
-                      }
-                    </a>
-                  </li>
-                )}
-              </ul>
-              <div class="flex flex-col">
-                <span>
-                  {post.settings.authors.map((author, idx) => {
-                    const len = post.settings.authors.length
-                    return (
-                      <a href={`/authors/${author.slug}`} class="font-bold">
-                        {author.name + (idx === len - 1 ? "" : ", ")}
-                      </a>
-                    )
-                  })}
-                </span>
-                <span class="text-gray-500">
-                  <time
-                    datetime={format(
-                      new Date(post.settings.publishedAt), "yyyy-MM-dd"
-                    )}
-                  >
-                    {format(new Date(post.settings.publishedAt), "MMM do, yyyy")}
-                  </time>
-                  <span class="bull">&bull;</span>
-                  {Math.ceil(toPlainText(post.body).split(/\W+/).length / 250)}
-                  min read
-                </span>
+                </a>
               </div>
-            </footer>
-          </div>
-        </article>
-      )}
+              <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
+                <ul class="flex">
+                  {post.settings.authors &&
+                    post.settings.authors.map(author => (
+                      <li class="w-9">
+                        <a
+                          href={`/authors/${author.slug}`}
+                          class="author block"
+                        >
+                          {author.image && (
+                            <Image
+                              className="rounded-full shadow-sm"
+                              image={author.image}
+                              width={72}
+                              height={72}
+                              lazy={true}
+                            />
+                          )}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+                <div class="flex flex-col">
+                  <span>
+                    {post.settings.authors.map((author, idx) => {
+                      const len = post.settings.authors.length
+                      return (
+                        <a href={`/authors/${author.slug}`} class="font-bold">
+                          {author.name + (idx === len - 1 ? "" : ", ")}
+                        </a>
+                      )
+                    })}
+                  </span>
+                  <span class="text-gray-500">
+                    <time
+                      datetime={format(
+                        new Date(post.settings.publishedAt),
+                        "yyyy-MM-dd"
+                      )}
+                    >
+                      {format(
+                        new Date(post.settings.publishedAt),
+                        "MMM do, yyyy"
+                      )}
+                    </time>
+                    <span class="bull">&bull;</span>
+                    {Math.ceil(
+                      toPlainText(post.body).split(/\W+/).length / 250
+                    )}
+                    min read
+                  </span>
+                </div>
+              </footer>
+            </div>
+          </article>
+        ))}
     </div>
   </div>
 </BaseLayout>
 
 <style lang="scss" define:vars={{ accentColor }}>
   .tag {
-    color: var(--accentColor); /* stylelint-disable-line custom-property-pattern */
+    color: var(
+      --accentColor
+    ); /* stylelint-disable-line custom-property-pattern */
   }
 </style>

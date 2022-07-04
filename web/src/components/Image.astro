@@ -9,19 +9,13 @@ interface Props {
   height?: number
   lazy?: boolean
 }
-const {
-  caption,
-  className,
-  image,
-  width,
-  height,
-  lazy
-} = Astro.props as Props
+const { caption, className, image, width, height, lazy } = Astro.props as Props
 const hotspot = image.hotspot
 const position = hotspot
   ? `${Math.round(hotspot.x * 100)}% ${Math.round(hotspot.y * 100)}%`
   : "50% 50%"
 ---
+
 <img
   src={urlFor(image)
     .auto("format")
@@ -38,8 +32,8 @@ const position = hotspot
 />
 
 <style>
-img {
-  object-fit: cover;
-  width: 100vw;
-}
+  img {
+    object-fit: cover;
+    width: 100vw;
+  }
 </style>

@@ -1,6 +1,6 @@
 ---
 import { toHTML } from "@portabletext/to-html"
-import { portableTextComponents } from "lib/utils"
+import { portableTextComponents } from "lib/components"
 import { BlockContent } from "generated/schema"
 
 interface Article {
@@ -8,4 +8,5 @@ interface Article {
 }
 const { body } = Astro.props as Article
 ---
-<div set:html={toHTML(body, {components: portableTextComponents})} />
+
+<div set:html={toHTML(body, { components: portableTextComponents })}></div>

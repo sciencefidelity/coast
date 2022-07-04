@@ -7,11 +7,9 @@ const { navigation, settings } = Astro.props as {
   settings: Settings
 }
 ---
+
 <header id="header" class="relative z-10 mx-8">
-  <Navbar
-    navigation={navigation}
-    settings={settings}
-  />
+  <Navbar navigation={navigation} settings={settings} />
 </header>
 
 <style>

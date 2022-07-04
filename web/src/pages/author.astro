@@ -8,15 +8,16 @@ const response = await sanityClient.fetch(authorsQuery)
 const data: { authors: Author[] } = await response
 const title = "All Authors"
 ---
+
 <BaseLayout title={title}>
   <div>
     <h1>{title}</h1>
     <ul>
-      {data.authors.map(author =>
+      {data.authors.map(author => (
         <li>
           <a href={`/author/${author.slug}`}>{author.name}</a>
         </li>
-      )}
+      ))}
     </ul>
   </div>
 </BaseLayout>

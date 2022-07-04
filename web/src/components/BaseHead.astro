@@ -1,22 +1,19 @@
 ---
 import { Design, Settings } from "lib/interfaces"
-const {
-  design,
-  settings
-} = Astro.props as {
+const { design, settings } = Astro.props as {
   design: Design
   settings: Settings
 }
 ---
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
 
 <title>{settings.siteName && settings.siteName}</title>
 <meta
   name="description"
   content={settings.siteDescription && settings.siteDescription}
->
+/>
 <!-- <meta name="keywords" content={keywords}> -->
 
 <!-- <meta property="og:title" content={socialTitle}>
@@ -38,6 +35,5 @@ const {
 
 <link rel="icon" type="image/x-icon" href={design.icon.url} />
 <link rel="mask-icon" href={design.icon.url} color="#FFDC5D" />
-<meta name="theme-color" content={design.accentColor}>
+<meta name="theme-color" content={design.accentColor} />
 <!-- <link rel="stylesheet" href={Astro.resolve("../styles/global.scss")}> -->
-

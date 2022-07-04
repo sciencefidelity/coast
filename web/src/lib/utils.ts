@@ -15,19 +15,23 @@ export const capitalize = (str: string): string => {
 }
 
 export const kebabCase = (str: string): string => {
-  return str.toLowerCase().split(" ").join("-").replace(/[^a-z0-9-]/g, "")
+  return str
+    .toLowerCase()
+    .split(" ")
+    .join("-")
+    .replace(/[^a-z0-9-]/g, "")
 }
 
 export const subdir = (type: string): string => {
   switch (type) {
-  case "author":
-    return "/author"
-  case "post":
-    return "/blog"
-  case "tag":
-    return "/tag"
-  default:
-    return ""
+    case "author":
+      return "/author"
+    case "post":
+      return "/blog"
+    case "tag":
+      return "/tag"
+    default:
+      return ""
   }
 }
 
@@ -35,12 +39,12 @@ export const subdir = (type: string): string => {
 export const toPlainText = (blocks: PortableText = []): string => {
   return blocks
     .map(block => {
-      if (block._type !== 'block' || !block.children) {
-        return ''
+      if (block._type !== "block" || !block.children) {
+        return ""
       }
-      return block.children.map(child => child.text).join('')
+      return block.children.map(child => child.text).join("")
     })
-    .join('\n\n')
+    .join("\n\n")
 }
 
 export const urlFor = (source: Image) => {

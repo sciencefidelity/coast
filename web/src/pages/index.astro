@@ -14,14 +14,7 @@ const data: {
 } = await response
 const { design, navigation, posts, settings } = data
 ---
-<BaseLayout
-  design={design}
-  navigation={navigation}
-  settings={settings}
->
-  <Latest
-    design={design}
-    posts={posts}
-  />
-</BaseLayout>
 
+<BaseLayout design={design} navigation={navigation} settings={settings}>
+  <Latest design={design} posts={posts} />
+</BaseLayout>

@@ -7,7 +7,7 @@ import BaseLayout from "layouts/BaseLayout.astro"
 import { authorsQuery } from "lib/queries"
 import { Author } from "lib/interfaces"
 
-export async function getStaticPaths( ) {
+export async function getStaticPaths() {
   const data: { authors: Author[] } = await sanityClient
     .fetch(authorsQuery)
     .then(response => response)
@@ -18,27 +18,28 @@ export async function getStaticPaths( ) {
     }
   })
 }
-const { slug } = Astro.request.params
+const { slug } = Astro.params
 const { author } = Astro.props as { author: Author }
 const title = `Author: ${author.name}`
 ---
+
 <BaseLayout title={title}>
   <div>
     <h1>{title}</h1>
     <h2>Bio</h2>
     <div
-      set:html={author.body && toHTML(
-        author.body,
-        {components: portableTextComponents}
-      )}
-    />
+      set:html={author.body &&
+        toHTML(author.body, { components: portableTextComponents })}
+    >
+    </div>
     <h2>Posts</h2>
     <ul>
-      {author.posts.map(post =>
-        <li><a href={`/blog/${post.slug}`}>{post.title}</a>
+      {author.posts.map(post => (
+        <li>
+          <a href={`/blog/${post.slug}`}>{post.title}</a>
           {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
         </li>
-      )}
+      ))}
     </ul>
     <p><a href="/authors">All authors</a></p>
   </div>

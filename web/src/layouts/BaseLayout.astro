@@ -7,29 +7,24 @@ import Header from "components/Header.astro"
 import Image from "components/Image.astro"
 import { Design, Navigation, Settings } from "lib/interfaces"
 
-const {
-  design,
-  navigation,
-  settings
-} = Astro.props as {
+const { design, navigation, settings } = Astro.props as {
   design: Design
   navigation: Navigation
   settings: Settings
 }
 const accentColor = design.accentColor || "#0284C7"
 ---
+
 <html lang="en">
   <head>
     <BaseHead settings={settings} design={design} />
   </head>
   <body class="relative">
-    <Header
-      design={design}
-      navigation={navigation}
-      settings={settings}
-    />
-    <div class="flex flex-col justify-center content-center h-56 md:h-96 text-center">
-      {design.image &&
+    <Header design={design} navigation={navigation} settings={settings} />
+    <div
+      class="flex flex-col justify-center content-center h-56 md:h-96 text-center"
+    >
+      {design.image && (
         <Image
           className="h-56 md:h-96 absolute"
           image={design.image}
@@ -37,7 +32,7 @@ const accentColor = design.accentColor || "#0284C7"
           height={721}
           lazy={false}
         />
-      }
+      )}
       <Maybe
         as="h1"
         class="smooth relative font-bold text-3xl md:text-5xl text-white mb-0.5 md:mb-1.5 z-10"
@@ -49,14 +44,11 @@ const accentColor = design.accentColor || "#0284C7"
       </Maybe>
     </div>
     <main id="site-main" class="mx-auto mb-20 mx-8">
-      <slot />
+      <slot></slot>
     </main>
-    <Footer
-      design={design}
-      navigation={navigation}
-      settings={settings}
-    />
+    <Footer design={design} navigation={navigation} settings={settings} />
+    <style is:global define:vars="accentColor">
+
+    </style>
   </body>
 </html>
-
-<style is:global define:vars="accentColor" />

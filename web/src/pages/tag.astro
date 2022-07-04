@@ -8,15 +8,16 @@ const response = await sanityClient.fetch(categoriesQuery)
 const data: { categories: Category[] } = await response
 const title = "All Categories"
 ---
+
 <BaseLayout title={title}>
   <div>
     <h1>{title}</h1>
     <ul>
-      {data.categories.map(category =>
+      {data.categories.map(category => (
         <li>
           <a href={`/category/${category.slug}`}>{category.title}</a>
         </li>
-      )}
+      ))}
     </ul>
   </div>
 </BaseLayout>
