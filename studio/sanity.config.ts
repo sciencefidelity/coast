@@ -4,9 +4,9 @@ import {schemaTypes} from './schemas'
 
 export default createConfig({
   name: 'default',
-  title: 'Forage',
+  title: 'Coast',
 
-  projectId: 'm3imd9u3',
+  projectId: 'eom0zz6k',
   dataset: 'production',
 
   plugins: [deskTool()],

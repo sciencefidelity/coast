@@ -13,14 +13,21 @@
   ],
   "dependencies": {
     "@sanity/eslint-config-studio": "^2.0.0",
+    "esbuild": "^0.14.48",
     "eslint": "^8.6.0",
+    "get-youtube-id": "^1.0.1",
     "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-icons": "^4.4.0",
+    "react-is": "^18.2.0",
     "sanity": "dev-preview",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  },
   "prettier": {
     "semi": false,
     "printWidth": 100,
