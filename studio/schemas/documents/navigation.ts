@@ -1,22 +1,23 @@
+import {defineType, defineField} from 'sanity'
 // import { RiNavigationLine } from 'react-icons/ri'
 
-export default {
+export default defineType({
   name: 'navigation',
   title: 'Navigation',
   type: 'document',
   // icon: RiNavigationLine,
-  groups: [
-    {
-      name: 'primary',
-      title: 'Primary navigation',
-    },
-    {
-      name: 'secondary',
-      title: 'Secondary navigation',
-    },
-  ],
+  // groups: [
+  //   {
+  //     name: 'primary',
+  //     title: 'Primary navigation',
+  //   },
+  //   {
+  //     name: 'secondary',
+  //     title: 'Secondary navigation',
+  //   },
+  // ],
   fields: [
-    {
+    defineField({
       name: 'primary',
       title: 'Primary navigation',
       type: 'array',
@@ -37,10 +38,10 @@ export default {
           ],
         },
       ],
-      sortable: true,
+      // sortable: true,
       group: 'primary',
-    },
-    {
+    }),
+    defineField({
       name: 'secondary',
       title: 'Secondary navigation',
       type: 'array',
@@ -57,18 +58,18 @@ export default {
           ],
         },
       ],
-      sortable: true,
+      // sortable: true,
       group: 'secondary',
-    },
+    }),
   ],
   preview: {
     select: {
       title: 'title',
     },
-    prepare: () => {
-      return {
-        title: 'Navigation',
-      }
-    },
+    // prepare: () => {
+    //   return {
+    //     title: 'Navigation',
+    //   }
+    // },
   },
-}
+})

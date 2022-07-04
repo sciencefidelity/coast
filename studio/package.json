@@ -12,6 +12,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/color-input": "^3.0.0-v3-studio.3",
     "@sanity/eslint-config-studio": "^2.0.0",
     "esbuild": "^0.14.48",
     "eslint": "^8.6.0",

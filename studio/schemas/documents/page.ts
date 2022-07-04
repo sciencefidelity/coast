@@ -1,7 +1,8 @@
+import {defineType, defineField} from 'sanity'
 // import { Rule } from '@sanity/types'
 // import {RiBook2Line} from 'react-icons/ri'
 
-export default {
+export default defineType({
   name: 'page',
   title: 'Page',
   type: 'document',
@@ -29,7 +30,7 @@ export default {
     },
   ],
   fields: [
-    {
+    defineField({
       name: 'image',
       title: 'Feature image',
       type: 'image',
@@ -37,26 +38,26 @@ export default {
         hotspot: true,
       },
       group: 'page',
-    },
-    {
+    }),
+    defineField({
       name: 'imageData',
       title: 'Image data',
       type: 'imageData',
       group: 'page',
-    },
-    {
+    }),
+    defineField({
       name: 'title',
       title: 'Page title',
       type: 'string',
       group: 'page',
-    },
-    {
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
       group: 'page',
-    },
-    {
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -66,37 +67,37 @@ export default {
         maxLength: 96,
       },
       group: 'settings',
-    },
-    {
+    }),
+    defineField({
       name: 'settings',
       title: 'Page settings',
       type: 'pageSettings',
       group: 'settings',
-    },
-    {
+    }),
+    defineField({
       name: 'meta',
       title: 'Meta data',
       type: 'metaData',
       group: 'meta',
-    },
-    {
+    }),
+    defineField({
       name: 'twitterCard',
       title: 'Twitter Card',
       type: 'twitterCard',
       group: 'twitter',
-    },
-    {
+    }),
+    defineField({
       name: 'facebookCard',
       title: 'Facebook Card',
       type: 'facebookCard',
       group: 'facebook',
-    },
-    {
+    }),
+    defineField({
       name: 'feature',
       title: 'Feature this page',
       type: 'boolean',
       group: 'settings',
-    },
+    }),
   ],
 
   preview: {
@@ -108,21 +109,7 @@ export default {
       author3: 'settings.authors.3.name',
       media: 'image',
     },
-    prepare: ({
-      title,
-      author0,
-      author1,
-      author2,
-      author3,
-      media,
-    }: {
-      title: string
-      author0: string
-      author1: string
-      author2: string
-      author3: string
-      media: string
-    }) => {
+    prepare: ({title, author0, author1, author2, author3, media}) => {
       const authors = [author0, author1, author2].filter(Boolean)
       const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
       const hasMoreAuthors = Boolean(author3)
@@ -133,4 +120,4 @@ export default {
       }
     },
   },
-}
+})

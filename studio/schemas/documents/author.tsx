@@ -1,4 +1,4 @@
-// import { RiTeamLine } from 'react-icons/ri'
+// import {RiTeamLine} from 'react-icons/ri'
 import {defineType, defineField} from 'sanity'
 
 export default defineType({
