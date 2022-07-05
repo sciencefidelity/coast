@@ -11,7 +11,11 @@
       "customSyntax": "postcss-html"
     }
   ],
-  "plugins": ["stylelint-scss", "stylelint-selector-bem-pattern"],
+  "plugins": [
+    "stylelint-color-format",
+    "stylelint-scss",
+    "stylelint-selector-bem-pattern"
+  ],
   "rules": {
     "at-rule-empty-line-before": [
       "always",
@@ -39,6 +43,9 @@
       },
       "utilitySelectors": "^\\.util-[a-z]+$"
     },
-    "function-no-unknown": [true, { "ignoreFunctions": ["map.get"] }]
+    "function-no-unknown": [true, { "ignoreFunctions": ["map.get"] }],
+    "color-format/format": {
+      "format": "hsl"
+    }
   }
 }
