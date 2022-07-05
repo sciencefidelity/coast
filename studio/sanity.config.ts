@@ -1,6 +1,8 @@
 import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
-import {schemaTypes} from './schemas'
+// import {structure, defaultDocumentNode} from './src/structure'
+import {structure} from './src/structure'
+import {schemaTypes} from './src/schemas'
 import {colorInput} from '@sanity/color-input'
 
 export default createConfig({
@@ -10,7 +12,12 @@ export default createConfig({
   projectId: 'eom0zz6k',
   dataset: 'production',
 
-  plugins: [colorInput(), deskTool()],
+  plugins: [
+    colorInput(),
+    deskTool({
+      structure,
+    }),
+  ],
 
   schema: {
     types: schemaTypes,
