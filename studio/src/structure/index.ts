@@ -1,7 +1,6 @@
-// import S from '@sanity/desk-tool/structure-builder'
-// import Facebook from '../components/Facebook'
-// import Google from '../components/Google'
-// import Twitter from '../components/Twitter'
+import Facebook from '../components/Facebook'
+import Google from '../components/Google'
+import Twitter from '../components/Twitter'
 import {HiOutlineColorSwatch} from 'react-icons/hi'
 import {
   RiBook2Line,
@@ -12,16 +11,16 @@ import {
   RiTeamLine,
 } from 'react-icons/ri'
 
-// export const getDefaultDocumentNode = ({ schemaType }) => {
-//   if (schemaType === "post" || schemaType === "page" || schemaType === "tag") {
-//     return S.document().views([
-//       S.view.form(),
-//       S.view.component(Google).title('Google'),
-//       S.view.component(Twitter).title('Twitter'),
-//       S.view.component(Facebook).title('Facebook')
-//     ])
-//   }
-// }
+export const defaultDocumentNode = (S: any, {schemaType}: {schemaType: any}) => {
+  if (schemaType === 'post' || schemaType === 'page' || schemaType === 'tag') {
+    return S.document().views([
+      S.view.form(),
+      S.view.component(Google).title('Google'),
+      S.view.component(Twitter).title('Twitter'),
+      S.view.component(Facebook).title('Facebook'),
+    ])
+  }
+}
 
 export const structure = (S: any, _context: any) =>
   S.list()
@@ -153,9 +152,11 @@ export const structure = (S: any, _context: any) =>
                 ),
             ])
         ),
-      ...S.documentTypeListItems().filter(
-        (item: any) => !['settings', 'design', 'navigation', 'page', 'post'].includes(item.getId())
-      ),
+      S.listItem()
+        .title('Author')
+        .icon(RiTeamLine)
+        .child(S.documentTypeList('author').title('Author')),
+      S.listItem().title('Tag').icon(RiPriceTag3Line).child(S.documentTypeList('tag').title('Tag')),
       S.divider(),
       S.listItem()
         .title('settings')
@@ -178,4 +179,10 @@ export const structure = (S: any, _context: any) =>
                 .icon(RiNavigationLine),
             ])
         ),
+      ...S.documentTypeListItems().filter(
+        (item: any) =>
+          !['author', 'design', 'navigation', 'page', 'post', 'settings', 'tag'].includes(
+            item.getId()
+          )
+      ),
     ])
