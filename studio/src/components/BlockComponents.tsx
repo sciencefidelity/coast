@@ -4,7 +4,7 @@ export const CodeRender = ({children}: {children: ReactNode}) => (
   <code
     style={{
       color: '#ff79c6',
-      backgroundColor: '#151719',
+      backgroundColor: 'transparent',
     }}
   >
     {children}
@@ -16,6 +16,7 @@ export const InternalLink = ({children}: {children: ReactNode}) => (
     style={{
       color: '#7aa9f3',
       borderBottom: '1px solid #7aa9f3',
+      backgroundColor: 'transparent',
     }}
   >
     {children}
@@ -27,6 +28,7 @@ export const EmailLink = ({children}: {children: ReactNode}) => (
     style={{
       color: '#7aa9f3',
       borderBottom: '1px solid #7aa9f3',
+      backgroundColor: 'transparent',
     }}
   >
     {children}
