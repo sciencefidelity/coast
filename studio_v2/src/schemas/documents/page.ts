@@ -1,4 +1,3 @@
-import { Rule } from '@sanity/types'
 import { RiBook2Line } from 'react-icons/ri'
 
 export default {

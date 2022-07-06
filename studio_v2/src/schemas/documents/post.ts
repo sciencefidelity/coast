@@ -1,4 +1,3 @@
-import { Rule } from '@sanity/types'
 import { RiEdit2Line } from 'react-icons/ri'
 
 export default {

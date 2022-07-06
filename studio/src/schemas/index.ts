@@ -13,7 +13,7 @@ import settings from './documents/settings'
 import socialLinks from './objects/socialLinks'
 import tag from './taxonomy/tag'
 import twitterCard from './objects/twitterCard'
-// import youtube from './objects/youtube'
+import youtube from './objects/youtube'
 
 export const schemaTypes = [
   author,
@@ -31,5 +31,5 @@ export const schemaTypes = [
   socialLinks,
   tag,
   twitterCard,
-  // youtube,
+  youtube,
 ]

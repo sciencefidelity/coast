@@ -2,6 +2,7 @@ import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {structure, defaultDocumentNode} from './src/structure'
 import {schemaTypes} from './src/schemas'
+// import {codeInput} from '@sanity/code-input'
 import {colorInput} from '@sanity/color-input'
 
 export default createConfig({
@@ -12,6 +13,7 @@ export default createConfig({
   dataset: 'production',
 
   plugins: [
+    // codeInput(),
     colorInput(),
     deskTool({
       defaultDocumentNode,
