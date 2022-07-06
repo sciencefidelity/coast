@@ -4,3 +4,5 @@ declare module '*module.css' {
   }
   export default styles
 }
+
+declare module 'sanity-plugin-dashboard-widget-vercel/lib/index'

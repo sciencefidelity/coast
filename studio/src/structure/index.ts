@@ -1,3 +1,4 @@
+import {DocumentActionComponent, ListItemBuilder, StructureBuilder} from 'sanity/desk'
 import Facebook from '../components/Facebook'
 import Google from '../components/Google'
 import Twitter from '../components/Twitter'
@@ -22,7 +23,7 @@ export const defaultDocumentNode = (S: any, {schemaType}: {schemaType: any}) => 
   }
 }
 
-export const structure = (S: any, _context: any) =>
+export const structure = (S: StructureBuilder, _context: any) =>
   S.list()
     .title('Content')
     .items([
