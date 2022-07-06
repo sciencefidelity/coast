@@ -1236,6 +1236,17 @@
     object-assign "^4.1.1"
     rxjs "^6.0.0"
 
+"@sanity/code-input@^3.0.0-v3-studio.2":
+  version "3.0.0-v3-studio.2"
+  resolved "https://registry.yarnpkg.com/@sanity/code-input/-/code-input-3.0.0-v3-studio.2.tgz#1ea88ddc063f74c9889df33d19b5135db2b37652"
+  integrity sha512-5f23uFb6bt708i9ZvW8zgVvrbuPa0LSdWsthzJBYaAhmyKjusUTzN41oficSWiZxYfCN654UEsXbFfHaW5XuUg==
+  dependencies:
+    "@sanity/icons" "^1.2.8"
+    "@sanity/incompatible-plugin" "^0.0.1-studio-v3.1"
+    "@sanity/ui" "^0.37.8"
+    ace-builds "^1.4.13"
+    react-ace "^9.5.0"
+
 "@sanity/color-input@^3.0.0-v3-studio.3":
   version "3.0.0-v3-studio.3"
   resolved "https://registry.yarnpkg.com/@sanity/color-input/-/color-input-3.0.0-v3-studio.3.tgz#70dc973c3fc1c379f5aa32e30d2770bcfcf1d64f"
@@ -1345,6 +1356,15 @@
     split2 "^3.2.2"
     tar-fs "^2.1.1"
 
+"@sanity/incompatible-plugin@^0.0.1-studio-v3.1":
+  version "0.0.1-studio-v3.1"
+  resolved "https://registry.yarnpkg.com/@sanity/incompatible-plugin/-/incompatible-plugin-0.0.1-studio-v3.1.tgz#ee722df57839df39691fde57102ecd0ab88c09e2"
+  integrity sha512-JK0FgXTWpXGxyFsN1+vRXf7pqwyQPi3U2cYccJJfULkC+7yB1XMj8NdRdVmxRxSp2ya9QG3JtMbfO/MIn6s3cA==
+  dependencies:
+    "@sanity/icons" "^1.3.0"
+    "@sanity/ui" "^0.37.0"
+    react-copy-to-clipboard "^5.0.0"
+
 "@sanity/incompatible-plugin@^0.0.1-studio-v3.3":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@sanity/incompatible-plugin/-/incompatible-plugin-0.0.1.tgz#ea2c089c7fb5feb17818ea3b79744bcd8236e60e"
@@ -1448,7 +1468,7 @@
     "@sanity/client" "^3.3.2"
     "@types/react" "^17.0.42"
 
-"@sanity/ui@^0.37.0", "@sanity/ui@^0.37.11", "@sanity/ui@^0.37.9":
+"@sanity/ui@^0.37.0", "@sanity/ui@^0.37.11", "@sanity/ui@^0.37.8", "@sanity/ui@^0.37.9":
   version "0.37.12"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.37.12.tgz#9b8fb197a988f5914b59d62559679665f26a5904"
   integrity sha512-TWsNnJsG/DETZyc0EqxOjxKJKaTQttDVz5i27LJkNpYv+f/G/ABuO/voroFffgkjA3jf/VZiz8VY4O5AdXsOLQ==
@@ -1705,6 +1725,11 @@ abab@^2.0.0:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
   integrity sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==
+
+ace-builds@^1.4.13:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/ace-builds/-/ace-builds-1.7.1.tgz#be796fbd98610dda5e138aed98d309cac2ab0872"
+  integrity sha512-1mcbP5kXvr729sJ9dA/8tul0pjuvKbma0LF/ZMRwPEwjoNWNpe/x0OXpaPJo36aRpZCjRZMl5zsME3hAKTiaNw==
 
 acorn-globals@^4.3.0:
   version "4.3.4"
@@ -4179,6 +4204,16 @@ lodash.flatten@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
   integrity sha512-C5N2Z3DgnnKr0LOpv/hKCgKdb7ZZwafIrsesve6lmzvZIRZRGaZ/l6Q8+2W7NaT+ZwO3fFlSCzCzrDCFdJfZ4g==
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
@@ -4802,7 +4837,7 @@ progress-stream@^2.0.0:
     speedometer "~1.0.0"
     through2 "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -4874,6 +4909,17 @@ raf@^3.4.1:
   integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
   dependencies:
     performance-now "^2.1.0"
+
+react-ace@^9.5.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/react-ace/-/react-ace-9.5.0.tgz#b6c32b70d404dd821a7e01accc2d76da667ff1f7"
+  integrity sha512-4l5FgwGh6K7A0yWVMQlPIXDItM4Q9zzXRqOae8KkCl6MkOob7sC1CzHxZdOGvV+QioKWbX2p5HcdOVUv6cAdSg==
+  dependencies:
+    ace-builds "^1.4.13"
+    diff-match-patch "^1.0.5"
+    lodash.get "^4.4.2"
+    lodash.isequal "^4.5.0"
+    prop-types "^15.7.2"
 
 react-clientside-effect@^1.2.6:
   version "1.2.6"

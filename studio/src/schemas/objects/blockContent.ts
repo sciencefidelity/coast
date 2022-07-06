@@ -91,6 +91,13 @@ export default {
       options: {hotspot: true},
     },
     {
+      type: 'code',
+      options: {
+        theme: 'monokai',
+        darkTheme: 'monokai',
+      },
+    },
+    {
       type: 'youtube',
     },
   ],

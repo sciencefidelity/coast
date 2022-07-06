@@ -5,6 +5,7 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
+    "dev": "sanity start",
     "start": "sanity start",
     "build": "sanity build"
   },
@@ -12,6 +13,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/code-input": "^3.0.0-v3-studio.2",
     "@sanity/color-input": "^3.0.0-v3-studio.3",
     "@sanity/eslint-config-studio": "^2.0.0",
     "esbuild": "^0.14.48",
@@ -30,8 +32,7 @@
     "typescript": "^4.7.4"
   },
   "resolutions": {
-    "esbuild": "0.14.44",
-    "__comment": "https://github.com/vitejs/vite/discussions/8640#discussioncomment-2971776"
+    "esbuild": "0.14.44"
   },
   "prettier": {
     "semi": false,
