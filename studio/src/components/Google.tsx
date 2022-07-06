@@ -1,42 +1,38 @@
-import React from "react"
+import React from 'react'
 import moment from 'moment'
-import { GoogleLogo, SearchIcon } from "./GoogleIcons"
-import s from "./Google.module.css"
-import u from "./Seo.module.css"
+import {GoogleLogo, SearchIcon} from './GoogleIcons'
+import s from './Google.module.css'
+import u from './Seo.module.css'
 
 const googleize = (url: string) => {
   const arr: string[] = url.split(/(?<!\/)\/(?!\/)/g)
   return (
     <div>
       {arr[0]}
-      {arr[1] && (
-        <span className={s.subdirectory}>{' › ' + arr[arr.length - 1]}</span>
-      )}
+      {arr[1] && <span className={s.subdirectory}>{' › ' + arr[arr.length - 1]}</span>}
     </div>
   )
 }
 
-const Google = ({ document }) => {
-  const url = ("https://coast.blog/").replace(/\/$/, "")
-  let canonical = (<div>{url}</div>)
+const Google = ({document}: {document: any}) => {
+  const url = 'https://coast.blog/'.replace(/\/$/, '')
+  let canonical = <div>{url}</div>
   if (document.displayed.settings && document.displayed.settings.slug) {
     canonical = googleize(`${url}/${document.displayed.settings.slug}`)
   }
   if (document.displayed.meta && document.displayed.meta.canonicalURL) {
     canonical = googleize(document.displayed.meta.canonicalURL)
   }
-  let metaTitle = "(untitled)"
+  let metaTitle = '(untitled)'
   if (document.displayed.title) metaTitle = document.displayed.title
   if (document.displayed.meta && document.displayed.meta.title) {
     metaTitle = document.displayed.meta.title
   }
-  let publishedAt = moment(document.displayed._createdAt)
-    .format('DD MMM YYYY')
+  let publishedAt = moment(document.displayed._createdAt).format('DD MMM YYYY')
   if (document.displayed.settings && document.displayed.settings.publishedAt) {
-    publishedAt = moment(document.displayed.settings.publishedAt)
-      .format('DD MMM YYYY')
+    publishedAt = moment(document.displayed.settings.publishedAt).format('DD MMM YYYY')
   }
-  let metaDescription = ""
+  let metaDescription = ''
   if (document.displayed.body) {
     metaDescription = document.displayed.body[0].children[0].text
   }
@@ -60,7 +56,9 @@ const Google = ({ document }) => {
             <div className={s.seoPreviewLink}>{canonical}</div>
             <div className={s.seoPreviewTitle}>{metaTitle}</div>
             <div className={s.seoPreviewDesc}>
-              {publishedAt}{' — '}{metaDescription}
+              {publishedAt}
+              {' — '}
+              {metaDescription}
             </div>
           </div>
         </div>
