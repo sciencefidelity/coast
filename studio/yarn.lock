@@ -1263,6 +1263,18 @@
   resolved "https://registry.yarnpkg.com/@sanity/color/-/color-2.1.11.tgz#aed52a1c1ba0157938d5e7516811449de1a4a00e"
   integrity sha512-ZComCEDE7Y5xu/+BksJDVkAffawRWrJvoI7VdIA+szhqzYQWgLRLfsr+UBkYZMtb9a+8HyUm6Uqoo028GNGREQ==
 
+"@sanity/dashboard@^3.0.0-v3-studio.1":
+  version "3.0.0-v3-studio.1"
+  resolved "https://registry.yarnpkg.com/@sanity/dashboard/-/dashboard-3.0.0-v3-studio.1.tgz#f309da18671c06742844b3fadb1172d511ad5c35"
+  integrity sha512-tmAYx7AOEtKK46qE5HL4EF02sVr+pAqV5ZWuICtOtAwTEBU0T77yBMs1ihBW7f4Pnf8YuArc7zSwNjKwnkvm8g==
+  dependencies:
+    "@sanity/icons" "^1.2.8"
+    "@sanity/image-url" "^1.0.1"
+    "@sanity/incompatible-plugin" "^0.0.1-studio-v3.1"
+    "@sanity/ui" "^0.37.9"
+    lodash "^4.17.21"
+    rxjs "^6.5.3"
+
 "@sanity/diff@3.0.0-dev-preview.8":
   version "3.0.0-dev-preview.8"
   resolved "https://registry.yarnpkg.com/@sanity/diff/-/diff-3.0.0-dev-preview.8.tgz#b3aebbb567322e69aeae1d4293bb74e7584785e9"

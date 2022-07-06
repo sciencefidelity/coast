@@ -7,7 +7,6 @@ import metaData from './objects/metaData'
 import navigation from './documents/navigation'
 import page from './documents/page'
 import pageSettings from './objects/pageSettings'
-// import portableText from './objects/portableText'
 import post from './documents/post'
 import settings from './documents/settings'
 import socialLinks from './objects/socialLinks'
@@ -25,7 +24,6 @@ export const schemaTypes = [
   navigation,
   page,
   pageSettings,
-  // portableText,
   post,
   settings,
   socialLinks,
