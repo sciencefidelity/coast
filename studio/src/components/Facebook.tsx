@@ -1,20 +1,16 @@
-import React from "react"
-import {
-  FacebookLogo,
-  HeartIcon,
-  ThumbIcon
-} from "./FacebookIcons"
-import s from "./Facebook.module.css"
-import u from "./Seo.module.css"
+import React from 'react'
+import {FacebookLogo, HeartIcon, ThumbIcon} from './FacebookIcons'
+import s from './Facebook.module.css'
+import u from './Seo.module.css'
 
-const Facebook = ({ document }) => {
-  const url = ("coast.blog/").replace(/https:\/\//, "").replace(/\/$/, "")
-  let facebookTitle = "(untitled)"
+const Facebook = ({document}: {document: any}) => {
+  const url = 'coast.blog/'.replace(/https:\/\//, '').replace(/\/$/, '')
+  let facebookTitle = '(untitled)'
   if (document.displayed.title) facebookTitle = document.displayed.title
   if (document.displayed.facebook && document.displayed.facebook.title) {
     facebookTitle = document.displayed.facebook.title
   }
-  let facebookDescription = ""
+  let facebookDescription = ''
   if (document.displayed.body) {
     facebookDescription = document.displayed.body[0].children[0].text
   }
@@ -45,7 +41,8 @@ const Facebook = ({ document }) => {
             <div
               className={s.ogPreviewImage}
               style={{
-                backgroundImage: "url('https://images.unsplash.com/photo-1647164926512-2cca88470829?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8YWxsfDE0fHx8fHx8Mnx8MTY0NzE4Nzc1Mg&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000')"
+                backgroundImage:
+                  "url('https://images.unsplash.com/photo-1647164926512-2cca88470829?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8YWxsfDE0fHx8fHx8Mnx8MTY0NzE4Nzc1Mg&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000')",
               }}
             ></div>
             <div className={s.ogPreviewBookmark}>

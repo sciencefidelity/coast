@@ -1,27 +1,20 @@
-import React from "react"
-import {
-  CommentIcon,
-  LikeIcon,
-  LinkIcon,
-  RetweetIcon,
-  ShareIcon,
-  TwitterLogo
-} from "./TwitterIcons"
-import s from "./Twitter.module.css"
-import u from "./Seo.module.css"
+import React from 'react'
+import {CommentIcon, LikeIcon, LinkIcon, RetweetIcon, ShareIcon, TwitterLogo} from './TwitterIcons'
+import s from './Twitter.module.css'
+import u from './Seo.module.css'
 
-const Twitter = ({ document }) => {
-  const url = ("https://coast.blog/").replace(/\/$/, "")
+const Twitter = ({document}: {document: any}) => {
+  const url = 'https://coast.blog/'.replace(/\/$/, '')
   let canonical = url
   if (document.displayed.settings && document.displayed.settings.slug) {
     canonical = `${url}/${document.displayed.settings.slug}`
   }
-  let twitterTitle = "(untitled)"
+  let twitterTitle = '(untitled)'
   if (document.displayed.title) twitterTitle = document.displayed.title
   if (document.displayed.twitter && document.displayed.twitter.title) {
     twitterTitle = document.displayed.twitter.title
   }
-  let twitterDescription = ""
+  let twitterDescription = ''
   if (document.displayed.body) {
     twitterDescription = document.displayed.body[0].children[0].text
   }
@@ -40,8 +33,7 @@ const Twitter = ({ document }) => {
               <TwitterLogo />
             </span>
             <div className={u.w100}>
-              <span className={s.twitterTitle}>Coast</span>
-              {" "}
+              <span className={s.twitterTitle}>Coast</span>{' '}
               <span className={s.twitterTime}>12 hrs</span>
               <div className={`${u.flex} ${u.flexColumn} ${u.mt2} ${u.mb3}`}>
                 <span className={`${s.twitterDesc} ${u.w100} ${u.mb2}`}></span>
@@ -51,7 +43,8 @@ const Twitter = ({ document }) => {
                 <div
                   className={s.twitterPreviewImage}
                   style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1647119126202-d13a4263d40c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8YWxsfDEyfHx8fHx8Mnx8MTY0NzE4Nzc1Mg&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000')"
+                    backgroundImage:
+                      "url('https://images.unsplash.com/photo-1647119126202-d13a4263d40c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8YWxsfDEyfHx8fHx8Mnx8MTY0NzE4Nzc1Mg&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000')",
                   }}
                 ></div>
                 <div className={s.twitterPreviewContent}>
@@ -65,8 +58,7 @@ const Twitter = ({ document }) => {
               </div>
               <div className={s.twitterReactions}>
                 <div className={`${u.flex} ${s.itemsCenter}`}>
-                  <CommentIcon />
-                  2
+                  <CommentIcon />2
                 </div>
                 <div className={`${u.flex} ${u.itemsCenter}`}>
                   <RetweetIcon />
