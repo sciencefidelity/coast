@@ -1,4 +1,4 @@
-import {DocumentActionComponent, ListItemBuilder, StructureBuilder} from 'sanity/desk'
+import {StructureBuilder} from 'sanity/desk'
 import Facebook from '../components/Facebook'
 import Google from '../components/Google'
 import Twitter from '../components/Twitter'

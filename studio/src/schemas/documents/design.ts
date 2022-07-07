@@ -50,7 +50,7 @@ export default defineType({
       title: 'title',
       media: 'image',
     },
-    prepare({media}) {
+    prepare({title, media}: {title: string; media: string}) {
       return {
         title: 'Site design',
         media,
