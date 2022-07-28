@@ -1,18 +1,18 @@
 ---
-import sanityClient from "lib/sanityClient"
-import BaseLayout from "layouts/BaseLayout.astro"
-import Latest from "components/Latest.astro"
-import { indexQuery } from "lib/queries"
-import { Design, Navigation, Post, Settings } from "lib/interfaces"
+import sanityClient from "lib/sanityClient";
+import BaseLayout from "layouts/BaseLayout.astro";
+import Latest from "components/Latest.astro";
+import { indexQuery } from "lib/queries";
+import { Design, Navigation, Post, Settings } from "lib/interfaces";
 
-const response = await sanityClient.fetch(indexQuery)
+const response = await sanityClient.fetch(indexQuery);
 const data: {
-  design: Design
-  navigation: Navigation
-  posts: Post[]
-  settings: Settings
-} = await response
-const { design, navigation, posts, settings } = data
+  design: Design;
+  navigation: Navigation;
+  posts: Post[];
+  settings: Settings;
+} = await response;
+const { design, navigation, posts, settings } = data;
 ---
 
 <BaseLayout design={design} navigation={navigation} settings={settings}>

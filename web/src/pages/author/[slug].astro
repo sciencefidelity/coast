@@ -1,26 +1,26 @@
 ---
-import format from "date-fns/format"
-import { toHTML } from "@portabletext/to-html"
-import sanityClient from "lib/sanityClient"
-import { portableTextComponents } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import { authorsQuery } from "lib/queries"
-import { Author } from "lib/interfaces"
+import format from "date-fns/format";
+import { toHTML } from "@portabletext/to-html";
+import sanityClient from "lib/sanityClient";
+import { portableTextComponents } from "lib/utils";
+import BaseLayout from "layouts/BaseLayout.astro";
+import { authorsQuery } from "lib/queries";
+import { Author } from "lib/interfaces";
 
 export async function getStaticPaths() {
   const data: { authors: Author[] } = await sanityClient
     .fetch(authorsQuery)
-    .then(response => response)
-  return data.authors.map(author => {
+    .then((response) => response);
+  return data.authors.map((author) => {
     return {
       params: { slug: author.slug },
-      props: { author }
-    }
-  })
+      props: { author },
+    };
+  });
 }
-const { slug } = Astro.params
-const { author } = Astro.props as { author: Author }
-const title = `Author: ${author.name}`
+const { slug } = Astro.params;
+const { author } = Astro.props as { author: Author };
+const title = `Author: ${author.name}`;
 ---
 
 <BaseLayout title={title}>
@@ -34,7 +34,7 @@ const title = `Author: ${author.name}`
     </div>
     <h2>Posts</h2>
     <ul>
-      {author.posts.map(post => (
+      {author.posts.map((post) => (
         <li>
           <a href={`/blog/${post.slug}`}>{post.title}</a>
           {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}

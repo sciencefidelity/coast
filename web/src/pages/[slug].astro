@@ -1,36 +1,36 @@
 ---
-import { Maybe } from "astro-control"
-import { toHTML } from "@portabletext/to-html"
-import sanityClient from "lib/sanityClient"
-import { portableTextComponents } from "lib/components"
-import BaseLayout from "layouts/BaseLayout.astro"
-import Image from "components/Image.astro"
-import { pagesQuery } from "lib/queries"
-import { Design, Navigation, Page, Settings } from "lib/interfaces"
+import { Maybe } from "astro-control";
+import { toHTML } from "@portabletext/to-html";
+import sanityClient from "lib/sanityClient";
+import { portableTextComponents } from "lib/components";
+import BaseLayout from "layouts/BaseLayout.astro";
+import Image from "components/Image.astro";
+import { pagesQuery } from "lib/queries";
+import { Design, Navigation, Page, Settings } from "lib/interfaces";
 
 export async function getStaticPaths() {
   const data: {
-    design: Design
-    navigation: Navigation
-    pages: Page[]
-    settings: Settings
-  } = await sanityClient.fetch(pagesQuery).then(response => response)
-  const { design, navigation, settings } = data
-  return data.pages.map(page => {
+    design: Design;
+    navigation: Navigation;
+    pages: Page[];
+    settings: Settings;
+  } = await sanityClient.fetch(pagesQuery).then((response) => response);
+  const { design, navigation, settings } = data;
+  return data.pages.map((page) => {
     return {
       params: { slug: page.slug },
-      props: { design, navigation, page, settings }
-    }
-  })
+      props: { design, navigation, page, settings },
+    };
+  });
 }
 
 const { design, navigation, page, settings } = Astro.props as {
-  design: Design
-  navigation: Navigation
-  page: Page
-  settings: Settings
-}
-const accentColor = design.accentColor || "#0284C7"
+  design: Design;
+  navigation: Navigation;
+  page: Page;
+  settings: Settings;
+};
+const accentColor = design.accentColor || "#0284C7";
 ---
 
 <BaseLayout design={design} navigation={navigation} settings={settings}>

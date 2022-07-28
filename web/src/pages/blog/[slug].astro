@@ -1,38 +1,38 @@
 ---
-import { Maybe } from "astro-control"
-import format from "date-fns/format"
-import { toHTML } from "@portabletext/to-html"
-import sanityClient from "lib/sanityClient"
-import { toPlainText } from "lib/utils"
-import { portableTextComponents } from "lib/components"
-import BaseLayout from "layouts/BaseLayout.astro"
-import Image from "components/Image.astro"
-import { postsQuery } from "lib/queries"
-import { Design, Navigation, Post, Settings } from "lib/interfaces"
+import { Maybe } from "astro-control";
+import format from "date-fns/format";
+import { toHTML } from "@portabletext/to-html";
+import sanityClient from "lib/sanityClient";
+import { toPlainText } from "lib/utils";
+import { portableTextComponents } from "lib/components";
+import BaseLayout from "layouts/BaseLayout.astro";
+import Image from "components/Image.astro";
+import { postsQuery } from "lib/queries";
+import { Design, Navigation, Post, Settings } from "lib/interfaces";
 
 export async function getStaticPaths() {
   const data: {
-    design: Design
-    navigation: Navigation
-    posts: Post[]
-    settings: Settings
-  } = await sanityClient.fetch(postsQuery).then(response => response)
-  const { design, navigation, settings } = data
-  return data.posts.map(post => {
+    design: Design;
+    navigation: Navigation;
+    posts: Post[];
+    settings: Settings;
+  } = await sanityClient.fetch(postsQuery).then((response) => response);
+  const { design, navigation, settings } = data;
+  return data.posts.map((post) => {
     return {
       params: { slug: post.slug },
-      props: { design, navigation, post, settings }
-    }
-  })
+      props: { design, navigation, post, settings },
+    };
+  });
 }
 
 const { design, navigation, post, settings } = Astro.props as {
-  design: Design
-  navigation: Navigation
-  post: Post
-  settings: Settings
-}
-const accentColor = design.accentColor || "#0284C7"
+  design: Design;
+  navigation: Navigation;
+  post: Post;
+  settings: Settings;
+};
+const accentColor = design.accentColor || "#0284C7";
 ---
 
 <BaseLayout design={design} navigation={navigation} settings={settings}>
@@ -42,7 +42,7 @@ const accentColor = design.accentColor || "#0284C7"
         <section>
           <Maybe as="ul">
             {post.settings.tags &&
-              post.settings.tags.map(tag => (
+              post.settings.tags.map((tag) => (
                 <li>
                   <a
                     href={`/category/${tag.slug}`}
@@ -68,7 +68,7 @@ const accentColor = design.accentColor || "#0284C7"
         </Maybe>
         <div class="my-8 flex gap-3 text-sm smooth">
           <Maybe as="ul" class="flex">
-            {post.settings.authors.map(author => (
+            {post.settings.authors.map((author) => (
               <li class="w-12">
                 <Maybe
                   as="a"

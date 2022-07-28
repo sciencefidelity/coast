@@ -1,200 +1,200 @@
 export interface Author extends SanityDocument {
-  _type: "author"
-  body: string
-  email: string
-  facebook: string
-  image: Image
-  location: string
-  name: string
-  posts: Post[]
-  twitter: string
-  slug: string
-  website: string
+  _type: "author";
+  body: string;
+  email: string;
+  facebook: string;
+  image: Image;
+  location: string;
+  name: string;
+  posts: Post[];
+  twitter: string;
+  slug: string;
+  website: string;
 }
 
 export interface Design extends SanityDocument {
-  accentColor: string
+  accentColor: string;
   icon: {
-    url: string
-  }
-  image: Image
+    url: string;
+  };
+  image: Image;
   logo: {
-    url: string
-  }
+    url: string;
+  };
 }
 
 export interface Image {
-  _type: "image"
-  asset: SanityReference<SanityImageAsset>
-  crop?: SanityImageCrop
-  hotspot?: SanityImageHotspot
+  _type: "image";
+  asset: SanityReference<SanityImageAsset>;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
 }
 
 export interface MetaData {
-  canonicalURL: string
-  description: string
-  title: string
+  canonicalURL: string;
+  description: string;
+  title: string;
 }
 
 export interface Navigation extends SanityDocument {
-  primary: NavItem[]
-  secondary: NavItem[]
+  primary: NavItem[];
+  secondary: NavItem[];
 }
 
 export interface NavItem {
-  _key: string
-  label: string
+  _key: string;
+  label: string;
   url: {
-    _type: string
-    slug: string
-    title: string
-  }
+    _type: string;
+    slug: string;
+    title: string;
+  };
 }
 
 export interface Page extends SanityDocument {
-  _type: "page"
-  body: PortableText
-  facebookCard: SocalCard
-  image: Image
-  meta: MetaData
-  settings: PageSettings
-  slug: string
-  title: string
-  twitterCard: SocalCard
+  _type: "page";
+  body: PortableText;
+  facebookCard: SocalCard;
+  image: Image;
+  meta: MetaData;
+  settings: PageSettings;
+  slug: string;
+  title: string;
+  twitterCard: SocalCard;
 }
 
 export interface PageSettings {
-  authors: Author[]
-  excerpt: string
-  publishedAt: string
-  tags: Tag[]
+  authors: Author[];
+  excerpt: string;
+  publishedAt: string;
+  tags: Tag[];
 }
 
 export type PortableText = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: "image"
-      asset: SanityReference<SanityImageAsset>
-      crop?: SanityImageCrop
-      hotspot?: SanityImageHotspot
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
     }>
->
+>;
 
 export interface Post extends SanityDocument {
-  _type: "post"
-  body: PortableText
-  facebookCard: SocalCard
-  image: Image
-  meta: MetaData
-  settings: PageSettings
-  slug: string
-  title: string
-  twitterCard: SocalCard
+  _type: "post";
+  body: PortableText;
+  facebookCard: SocalCard;
+  image: Image;
+  meta: MetaData;
+  settings: PageSettings;
+  slug: string;
+  title: string;
+  twitterCard: SocalCard;
 }
 
 export interface SanityBlock {
-  _type: "block"
-  [key: string]: any
+  _type: "block";
+  [key: string]: any;
 }
 
 export interface SanityDocument {
-  _id: string
-  _createdAt: string
-  _rev: string
-  _updatedAt: string
+  _id: string;
+  _createdAt: string;
+  _rev: string;
+  _updatedAt: string;
 }
 
 export interface SanityImageAsset extends SanityDocument {
-  _type: "sanity.imageAsset"
-  assetId: string
-  extension: string
-  metadata: SanityImageMetadata
-  mimeType: string
-  originalFilename: string
-  path: string
-  sha1hash: string
-  size: number
-  uploadId: string
-  url: string
+  _type: "sanity.imageAsset";
+  assetId: string;
+  extension: string;
+  metadata: SanityImageMetadata;
+  mimeType: string;
+  originalFilename: string;
+  path: string;
+  sha1hash: string;
+  size: number;
+  uploadId: string;
+  url: string;
 }
 
 export interface SanityImageCrop {
-  _type: "sanity.imageCrop"
-  bottom: number
-  left: number
-  right: number
-  top: number
+  _type: "sanity.imageCrop";
+  bottom: number;
+  left: number;
+  right: number;
+  top: number;
 }
 
 export interface SanityImageDimensions {
-  _type: "sanity.imageDimensions"
-  aspectRatio: number
-  height: number
-  width: number
+  _type: "sanity.imageDimensions";
+  aspectRatio: number;
+  height: number;
+  width: number;
 }
 
 export interface SanityImageHotspot {
-  _type: "sanity.imageHotspot"
-  height: number
-  width: number
-  x: number
-  y: number
+  _type: "sanity.imageHotspot";
+  height: number;
+  width: number;
+  x: number;
+  y: number;
 }
 
 export interface SanityImageMetadata {
-  _type: "sanity.imageMetadata"
-  dimensions: SanityImageDimensions
-  hasAlpha: boolean
-  isOpaque: boolean
-  lqip: string
-  palette: SanityImagePalette
+  _type: "sanity.imageMetadata";
+  dimensions: SanityImageDimensions;
+  hasAlpha: boolean;
+  isOpaque: boolean;
+  lqip: string;
+  palette: SanityImagePalette;
 }
 
 export interface SanityImagePalette {
-  _type: "sanity.imagePalette"
-  darkMuted: SanityImagePaletteSwatch
-  darkVibrant: SanityImagePaletteSwatch
-  dominant: SanityImagePaletteSwatch
-  lightMuted: SanityImagePaletteSwatch
-  lightVibrant: SanityImagePaletteSwatch
-  muted: SanityImagePaletteSwatch
-  vibrant: SanityImagePaletteSwatch
+  _type: "sanity.imagePalette";
+  darkMuted: SanityImagePaletteSwatch;
+  darkVibrant: SanityImagePaletteSwatch;
+  dominant: SanityImagePaletteSwatch;
+  lightMuted: SanityImagePaletteSwatch;
+  lightVibrant: SanityImagePaletteSwatch;
+  muted: SanityImagePaletteSwatch;
+  vibrant: SanityImagePaletteSwatch;
 }
 
 export interface SanityImagePaletteSwatch {
-  _type: "sanity.imagePaletteSwatch"
-  background: string
-  foreground: string
-  population: number
-  title: string
+  _type: "sanity.imagePaletteSwatch";
+  background: string;
+  foreground: string;
+  population: number;
+  title: string;
 }
 
 export declare type SanityKeyed<T> = T extends object
   ? T & {
-      _key: string
+      _key: string;
     }
-  : T
+  : T;
 
 export declare type SanityReference<_T> = {
-  _type: "reference"
-  _ref: string
-}
+  _type: "reference";
+  _ref: string;
+};
 
 export interface Settings extends SanityDocument {
-  siteDescription: string
-  siteName: string
-  socialLinks: socialLink[]
+  siteDescription: string;
+  siteName: string;
+  socialLinks: socialLink[];
 }
 
 export interface SocalCard {
-  description: string
-  image: Image
-  title: string
+  description: string;
+  image: Image;
+  title: string;
 }
 
 export interface socialLink {
-  _key: string
-  url: string
+  _key: string;
+  url: string;
   name:
     | "facebook"
     | "github"
@@ -204,17 +204,17 @@ export interface socialLink {
     | "soundcloud"
     | "tiktok"
     | "twitter"
-    | "youtube"
+    | "youtube";
 }
 
 export interface Tag extends SanityDocument {
-  _type: "tag"
-  description: string
-  facebookCard: SocalCard
-  image: Image
-  meta: MetaData
-  posts: Post[]
-  slug: string
-  title: string
-  twitterCard: SocalCard
+  _type: "tag";
+  description: string;
+  facebookCard: SocalCard;
+  image: Image;
+  meta: MetaData;
+  posts: Post[];
+  slug: string;
+  title: string;
+  twitterCard: SocalCard;
 }

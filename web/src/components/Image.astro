@@ -1,19 +1,19 @@
 ---
-import { urlFor } from "lib/utils"
-import { Image } from "lib/interfaces"
+import { urlFor } from "lib/utils";
+import { Image } from "lib/interfaces";
 interface Props {
-  caption?: string
-  className?: string
-  image: Image
-  width: number
-  height?: number
-  lazy?: boolean
+  caption?: string;
+  className?: string;
+  image: Image;
+  width: number;
+  height?: number;
+  lazy?: boolean;
 }
-const { caption, className, image, width, height, lazy } = Astro.props as Props
-const hotspot = image.hotspot
+const { caption, className, image, width, height, lazy } = Astro.props as Props;
+const hotspot = image.hotspot;
 const position = hotspot
   ? `${Math.round(hotspot.x * 100)}% ${Math.round(hotspot.y * 100)}%`
-  : "50% 50%"
+  : "50% 50%";
 ---
 
 <img

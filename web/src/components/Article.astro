@@ -1,12 +1,12 @@
 ---
-import { toHTML } from "@portabletext/to-html"
-import { portableTextComponents } from "lib/components"
-import { BlockContent } from "generated/schema"
+import { toHTML } from "@portabletext/to-html";
+import { portableTextComponents } from "lib/components";
+import { BlockContent } from "generated/schema";
 
 interface Article {
-  body: BlockContent
+  body: BlockContent;
 }
-const { body } = Astro.props as Article
+const { body } = Astro.props as Article;
 ---
 
 <div set:html={toHTML(body, { components: portableTextComponents })}></div>

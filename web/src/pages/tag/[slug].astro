@@ -1,36 +1,36 @@
 ---
-import { Maybe } from "astro-control"
-import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl, toPlainText } from "lib/utils"
-import Image from "components/Image.astro"
-import BaseLayout from "layouts/BaseLayout.astro"
-import { tagsQuery } from "lib/queries"
-import { Design, Navigation, Settings, Tag } from "lib/interfaces"
+import { Maybe } from "astro-control";
+import format from "date-fns/format";
+import sanityClient from "lib/sanityClient";
+import { buildUrl, toPlainText } from "lib/utils";
+import Image from "components/Image.astro";
+import BaseLayout from "layouts/BaseLayout.astro";
+import { tagsQuery } from "lib/queries";
+import { Design, Navigation, Settings, Tag } from "lib/interfaces";
 
 export async function getStaticPaths() {
   const data: {
-    design: Design
-    navigation: Navigation
-    settings: Settings
-    tags: Tag[]
-  } = await sanityClient.fetch(tagsQuery).then(response => response)
-  const { design, navigation, settings } = data
-  return data.tags.map(tag => {
+    design: Design;
+    navigation: Navigation;
+    settings: Settings;
+    tags: Tag[];
+  } = await sanityClient.fetch(tagsQuery).then((response) => response);
+  const { design, navigation, settings } = data;
+  return data.tags.map((tag) => {
     return {
       params: { slug: tag.slug },
-      props: { design, navigation, settings, tag }
-    }
-  })
+      props: { design, navigation, settings, tag },
+    };
+  });
 }
 
 const { design, navigation, settings, tag } = Astro.props as {
-  design: Design
-  navigation: Navigation
-  settings: Settings
-  tag: Tag
-}
-const accentColor = design.accentColor || "#0284C7"
+  design: Design;
+  navigation: Navigation;
+  settings: Settings;
+  tag: Tag;
+};
+const accentColor = design.accentColor || "#0284C7";
 ---
 
 <BaseLayout design={design} navigation={navigation} settings={settings}>
@@ -48,7 +48,7 @@ const accentColor = design.accentColor || "#0284C7"
       class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 md:mt-8"
     >
       {tag.posts &&
-        tag.posts.map(post => (
+        tag.posts.map((post) => (
           <article class="mb-2">
             <a href={buildUrl(post._type, post.slug)}>
               {post.image && (
@@ -83,7 +83,7 @@ const accentColor = design.accentColor || "#0284C7"
               <footer class="mt-4 flex gap-3 text-sm smooth translate-x-1.5">
                 <ul class="flex">
                   {post.settings.authors &&
-                    post.settings.authors.map(author => (
+                    post.settings.authors.map((author) => (
                       <li class="w-9">
                         <a
                           href={`/authors/${author.slug}`}
