@@ -26,5 +26,8 @@
     "astro": "^1.0.0-beta.63",
     "eslint": "^8.12.0",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "sanity-plugin-seo-preview": "link:.yalc/sanity-plugin-seo-preview"
   }
 }

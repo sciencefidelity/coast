@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "sanity-plugin-seo-preview": {
+      "signature": "2df1c644d83f11984aee31e65761c112",
+      "link": true
+    }
+  }
+}
